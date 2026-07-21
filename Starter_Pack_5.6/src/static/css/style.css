@@ -1,0 +1,180 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f5f7;
+    color: #333;
+}
+
+.navbar {
+    background: #1a73e8;
+    padding: 1rem;
+    color: white;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu li a {
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: white;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    background: #1a73e8;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background: #6c757d;
+}
+
+.btn-warning {
+    background: #f0ad4e;
+}
+
+.btn-danger {
+    background: #dc3545;
+}
+
+.btn-info {
+    background: #17a2b8;
+}
+
+.btn-sm {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.9rem;
+}
+
+.filter-form {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+table th {
+    background: #f8fafc;
+}
+
+.status-badge {
+    padding: 0.3rem 0.5rem;
+    border-radius: 999px;
+    color: white;
+    font-size: 0.85rem;
+}
+
+.status-pending { background: #ffc107; }
+.status-paid { background: #28a745; }
+.status-failed { background: #dc3545; }
+.status-reconciled { background: #007bff; }
+.status-revenue { background: #3498db; }
+.status-commission { background: #9b59b6; }
+.status-expense { background: #e74c3c; }
+.status-payment { background: #2ecc71; }
+.status-all { background: #f39c12; }
+.status-exporting { background: #2980b9; }
+.status-completed { background: #27ae60; }
+.status-synced { background: #2ecc71; }
+
+.form-card,
+.detail-card {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+.form-row {
+    margin-bottom: 1rem;
+    display: grid;
+    gap: 0.5rem;
+}
+
+.form-row label {
+    font-weight: 600;
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-actions {
+    margin-top: 1rem;
+}
+
+.empty-state {
+    border: 2px dashed #ced4da;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    color: #6c757d;
+}
+
+.detail-card dl {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    row-gap: 0.75rem;
+}
+
+.detail-card dt {
+    font-weight: 700;
+}
+
+.detail-card dd {
+    margin: 0;
+}

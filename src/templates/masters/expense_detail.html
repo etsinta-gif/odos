@@ -1,0 +1,29 @@
+{% extends "masters/base.html" %}
+
+{% block title %}Expense Detail - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Expense Detail</h1>
+    <a href="/masters/expenses" class="btn btn-secondary">Back to Expenses</a>
+</div>
+
+<div class="detail-card">
+    <dl>
+        <dt>Expense ID</dt><dd>{{ expense.expense_id }}</dd>
+        <dt>Expense Date</dt><dd>{{ expense.expense_date }}</dd>
+        <dt>Vendor</dt><dd>{{ vendor.vendor_name if vendor else '-' }}</dd>
+        <dt>Category</dt><dd>{{ category.category_name if category else '-' }}</dd>
+        <dt>Cost Center</dt><dd>{{ cost_center.center_name if cost_center else '-' }}</dd>
+        <dt>Case</dt><dd>{{ case.case_number if case else expense.case_id or '-' }}</dd>
+        <dt>Description</dt><dd>{{ expense.description }}</dd>
+        <dt>Amount</dt><dd>₹{{ "%.2f"|format(expense.amount) }}</dd>
+        <dt>GST Amount</dt><dd>₹{{ "%.2f"|format(expense.gst_amount) }}</dd>
+        <dt>TDS Amount</dt><dd>₹{{ "%.2f"|format(expense.tds_amount) }}</dd>
+        <dt>Net Amount</dt><dd>₹{{ "%.2f"|format(expense.net_amount) }}</dd>
+        <dt>Invoice Reference</dt><dd>{{ expense.invoice_reference or '-' }}</dd>
+        <dt>Payment Status</dt><dd>{{ expense.payment_status }}</dd>
+        <dt>Notes</dt><dd>{{ expense.notes or '-' }}</dd>
+    </dl>
+</div>
+{% endblock %}

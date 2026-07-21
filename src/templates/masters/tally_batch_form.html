@@ -1,0 +1,46 @@
+{% extends "masters/base.html" %}
+
+{% block title %}{% if action == 'edit' %}Edit Export Batch{% else %}Create Export Batch{% endif %} - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{% if action == 'edit' %}Edit Export Batch{% else %}Create Export Batch{% endif %}</h1>
+    <a href="/masters/tally/exports" class="btn btn-secondary">Back to List</a>
+</div>
+
+<form method="POST" action="{% if action == 'edit' %}/masters/tally/exports/{{ batch.batch_id }}/edit{% else %}/masters/tally/exports{% endif %}" class="form-card">
+    <div class="form-row">
+        <label for="batch_name">Batch Name</label>
+        <input type="text" id="batch_name" name="batch_name" required value="{{ batch.batch_name if batch else '' }}">
+    </div>
+
+    <div class="form-row">
+        <label for="export_type">Export Type</label>
+        <select id="export_type" name="export_type" required>
+            <option value="">Select type</option>
+            {% for et in export_types %}
+            <option value="{{ et }}" {% if batch and batch.export_type == et %}selected{% endif %}>{{ et }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label for="period_start">Period Start</label>
+        <input type="date" id="period_start" name="period_start" required value="{{ batch.period_start if batch else '' }}">
+    </div>
+
+    <div class="form-row">
+        <label for="period_end">Period End</label>
+        <input type="date" id="period_end" name="period_end" required value="{{ batch.period_end if batch else '' }}">
+    </div>
+
+    <div class="form-row">
+        <label for="notes">Notes</label>
+        <textarea id="notes" name="notes">{{ batch.notes if batch else '' }}</textarea>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">{% if action == 'edit' %}Update Batch{% else %}Create Batch{% endif %}</button>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,4 @@
+batch_guid,file_name,source_system,import_status,total_rows,successful_rows,failed_rows,is_complete
+88032d0f-09d1-4306-9d22-24322761d8c2,Connector Master - 2026 04 V1.xlsx,FCPL,PROMOTED,60,60,0,True
+dda875d9-4726-444f-acff-3b8cc18ed90e,FCPL - Lender Payout - Master Sheet - 2026 04 V3.3.xlsx,FCPL,PROMOTED,35,35,0,True
+8be2bad3-86af-41a2-9e98-85c1ec831c48,Secured Tracker FY 26-27 (2).xlsx,FCPL,PROMOTED,2999,2999,0,True

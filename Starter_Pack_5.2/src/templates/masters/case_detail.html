@@ -1,0 +1,52 @@
+<!-- src/templates/masters/case_detail.html -->
+{% extends "masters/base.html" %}
+
+{% block title %}Case Details - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Case Details</h1>
+    <div>
+        <a href="/masters/cases" class="btn btn-secondary">Back to List</a>
+        <a href="/masters/cases/{{ case.case_id }}/edit" class="btn btn-warning">Edit</a>
+        <a href="/masters/cases/{{ case.case_id }}/delete" class="btn btn-danger" onclick="return confirm('Delete this case?')">Delete</a>
+    </div>
+</div>
+
+<div class="table-container">
+    <table>
+        <tbody>
+            <tr><th>Case ID</th><td>{{ case.case_id }}</td></tr>
+            <tr><th>Case Number</th><td>{{ case.case_number }}</td></tr>
+            <tr><th>Customer ID</th><td>{{ case.customer_id }}</td></tr>
+            <tr><th>Lender ID</th><td>{{ case.lender_id }}</td></tr>
+            <tr><th>Product ID</th><td>{{ case.product_id }}</td></tr>
+            <tr><th>Application Date</th><td>{{ case.application_date or '-' }}</td></tr>
+            <tr><th>Sanction Date</th><td>{{ case.sanction_date or '-' }}</td></tr>
+            <tr><th>Disbursement Date</th><td>{{ case.disbursement_date or '-' }}</td></tr>
+            <tr><th>Sanction Amount</th><td>{{ case.sanction_amount or '-' }}</td></tr>
+            <tr><th>Disbursement Amount</th><td>{{ case.disbursement_amount or '-' }}</td></tr>
+            <tr><th>Status</th><td><span class="status-badge status-{{ case.status|lower }}">{{ case.status }}</span></td></tr>
+            <tr><th>Active</th><td>{{ case.is_active }}</td></tr>
+            <tr><th>Created</th><td>{{ case.created_at }}</td></tr>
+            <tr><th>Updated</th><td>{{ case.updated_at }}</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="form-container">
+    <form method="POST" action="/masters/cases/{{ case.case_id }}/status">
+        <div class="form-group">
+            <label for="new_status">Change Status</label>
+            <select id="new_status" name="new_status" required>
+                {% for status in statuses %}
+                <option value="{{ status }}" {% if case.status == status %}selected{% endif %}>{{ status }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Update Status</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,243 @@
+{
+  "root": "C:\\Users\\etsin\\Desktop\\1infinity\\FinOps - Old Data\\Master Data Sheets - For Suresh CFO",
+  "file_count": 6,
+  "results": [
+    {
+      "file": "C:\\Users\\etsin\\Desktop\\1infinity\\FinOps - Old Data\\Master Data Sheets - For Suresh CFO\\1.RENT FOR FINEOTERIC PVT LTD FY 2026-27.xlsx",
+      "name": "1.RENT FOR FINEOTERIC PVT LTD FY 2026-27.xlsx",
+      "result": "PASS_IGNORE",
+      "notes": [
+        "no relevant columns mapped"
+      ],
+      "entity_type": "MST_Lender",
+      "sheet": "Thane New",
+      "analyze_status": 200,
+      "mapped_columns": 0,
+      "ignored_columns": 11
+    },
+    {
+      "file": "C:\\Users\\etsin\\Desktop\\1infinity\\FinOps - Old Data\\Master Data Sheets - For Suresh CFO\\Combine Salary Sheet APR-2026.xlsx",
+      "name": "Combine Salary Sheet APR-2026.xlsx",
+      "result": "PASS_IGNORE",
+      "notes": [
+        "no relevant columns mapped"
+      ],
+      "entity_type": "TRN_Case",
+      "sheet": "Payroll Sheet",
+      "analyze_status": 200,
+      "mapped_columns": 0,
+      "ignored_columns": 67
+    },
+    {
+      "file": "C:\\Users\\etsin\\Desktop\\1infinity\\FinOps - Old Data\\Master Data Sheets - For Suresh CFO\\Connector Master - 2026 04 V1.xlsx",
+      "name": "Connector Master - 2026 04 V1.xlsx",
+      "result": "FAIL",
+      "notes": [
+        "promote did not complete"
+      ],
+      "entity_type": "MST_Connector",
+      "sheet": "Master",
+      "analyze_status": 200,
+      "mapped_columns": 2,
+      "ignored_columns": 60,
+      "template_create_status": 200,
+      "template_id": 66,
+      "template_approve_status": 200,
+      "template_active_status": 200,
+      "upload_status": 200,
+      "upload_body": {
+        "message": "Upload successful",
+        "batch_guid": "1413480a-13c5-48db-9605-daa03119a25a",
+        "file_name": "Connector Master - 2026 04 V1.xlsx",
+        "file_hash": "9ac08945811fa152c7ae3785cb76e8644d8568ea266ac44f63ae082f275b85d0",
+        "table_name": "MST_Connector",
+        "workbook_fingerprint": "0e06fde2e3c4bbcb6cbd8bd95fb9c4deaa2eaf41ba8518aa623e0bc6ef030dca",
+        "template_id": 66,
+        "sheet_name": "Master",
+        "staged_rows": 270,
+        "deduplicated_rows": 2696
+      },
+      "batch_guid": "1413480a-13c5-48db-9605-daa03119a25a",
+      "promote_status": 400,
+      "promote_body": {
+        "detail": "No eligible staged records for this batch"
+      },
+      "error_count": 270,
+      "error_sample": [
+        {
+          "type": "VALIDATION",
+          "table": "MST_Connector",
+          "message": "PAN must be 10 characters"
+        },
+        {
+          "type": "VALIDATION",
+          "table": "MST_Connector",
+          "message": "PAN must be 10 characters"
+        },
+        {
+          "type": "VALIDATION",
+          "table": "MST_Connector",
+          "message": "PAN must be 10 characters"
+        },
+        {
+          "type": "VALIDATION",
+          "table": "MST_Connector",
+          "message": "PAN must be 10 characters"
+        },
+        {
+          "type": "VALIDATION",
+          "table": "MST_Connector",
+          "message": "PAN must be 10 characters"
+        },
+        {
+          "type": "VALIDATION",
+          "table": "MST_Connector",
+          "message": "PAN must be 10 characters"
+        },
+        {
+          "type": "VALIDATION",
+          "table": "MST_Connector",
+          "message": "PAN must be 10 characters"
+        },
+        {
+          "type": "VALIDATION",
+          "table": "MST_Connector",
+          "message": "PAN must be 10 characters"
+        },
+        {
+          "type": "VALIDATION",
+          "table": "MST_Connector",
+          "message": "PAN must be 10 characters"
+        },
+        {
+          "type": "VALIDATION",
+          "table": "MST_Connector",
+          "message": "PAN must be 10 characters"
+        }
+      ],
+      "promote_summary": {
+        "created": 0,
+        "updated": 0,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "file": "C:\\Users\\etsin\\Desktop\\1infinity\\FinOps - Old Data\\Master Data Sheets - For Suresh CFO\\DSR - BL AND PL MIS - APRIL_2026.xlsx",
+      "name": "DSR - BL AND PL MIS - APRIL_2026.xlsx",
+      "result": "PASS",
+      "notes": [],
+      "entity_type": "TRN_Case",
+      "sheet": "BL",
+      "analyze_status": 200,
+      "mapped_columns": 8,
+      "ignored_columns": 22,
+      "template_create_status": 200,
+      "template_id": 67,
+      "template_approve_status": 200,
+      "template_active_status": 200,
+      "upload_status": 200,
+      "upload_body": {
+        "message": "Upload successful",
+        "batch_guid": "409ca05e-c9e8-4b8b-827e-a25c980ae459",
+        "file_name": "DSR - BL AND PL MIS - APRIL_2026.xlsx",
+        "file_hash": "276f002da0de3a6100485486c02605fce7d72da79977b361b0a71873212e1691",
+        "table_name": "TRN_Case",
+        "workbook_fingerprint": "f666e545d5fe729b31bb450bc62d970d428b0027477f0d7aa674484664299fd4",
+        "template_id": 67,
+        "sheet_name": "BL",
+        "staged_rows": 19,
+        "deduplicated_rows": 236
+      },
+      "batch_guid": "409ca05e-c9e8-4b8b-827e-a25c980ae459",
+      "promote_status": 200,
+      "promote_body": {
+        "message": "Promotion completed",
+        "batch_guid": "409ca05e-c9e8-4b8b-827e-a25c980ae459",
+        "promoted_count": 19,
+        "skipped_count": 0,
+        "conflict_resolution": "UPDATE"
+      },
+      "promote_summary": {
+        "created": 0,
+        "updated": 0,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "file": "C:\\Users\\etsin\\Desktop\\1infinity\\FinOps - Old Data\\Master Data Sheets - For Suresh CFO\\FCPL - Lender Payout - Master Sheet - 2026 04 V3.4.xlsx",
+      "name": "FCPL - Lender Payout - Master Sheet - 2026 04 V3.4.xlsx",
+      "result": "PASS",
+      "notes": [],
+      "entity_type": "MST_Lender",
+      "sheet": "Master",
+      "analyze_status": 200,
+      "mapped_columns": 17,
+      "ignored_columns": 22,
+      "template_create_status": 200,
+      "template_id": 68,
+      "template_approve_status": 200,
+      "template_active_status": 200,
+      "upload_status": 200,
+      "upload_body": {
+        "message": "Upload successful",
+        "batch_guid": "735ff390-ad1b-4f03-b991-a1136fcc727d",
+        "file_name": "FCPL - Lender Payout - Master Sheet - 2026 04 V3.4.xlsx",
+        "file_hash": "49b97c7c7adacde014325bfbf3762938d0694882a0cae6b6edb0d97f30640f47",
+        "table_name": "MST_Lender",
+        "workbook_fingerprint": "e9e215210ac198f45daed8e626f882eaa43e6b502d2ea91495984713ec35ee45",
+        "template_id": 68,
+        "sheet_name": "Master",
+        "staged_rows": 230,
+        "deduplicated_rows": 0
+      },
+      "batch_guid": "735ff390-ad1b-4f03-b991-a1136fcc727d",
+      "promote_status": 200,
+      "promote_body": {
+        "batch_guid": "735ff390-ad1b-4f03-b991-a1136fcc727d",
+        "template_id": 68,
+        "results": {
+          "MST_Lender": {
+            "created": 0,
+            "updated": 230,
+            "skipped": 0,
+            "failed": 0
+          },
+          "MST_Product": {
+            "created": 0,
+            "updated": 230,
+            "skipped": 0,
+            "failed": 0
+          },
+          "RUL_CommissionSlab": {
+            "created": 0,
+            "updated": 494,
+            "skipped": 0,
+            "failed": 0
+          }
+        },
+        "message": "Promotion completed"
+      },
+      "promote_summary": {
+        "created": 0,
+        "updated": 954,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "file": "C:\\Users\\etsin\\Desktop\\1infinity\\FinOps - Old Data\\Master Data Sheets - For Suresh CFO\\Secured Tracker FY 26-27 (2)_1.xlsx",
+      "name": "Secured Tracker FY 26-27 (2)_1.xlsx",
+      "result": "PASS_IGNORE",
+      "notes": [
+        "no relevant columns mapped"
+      ],
+      "entity_type": "TRN_Case",
+      "sheet": "Tracker",
+      "analyze_status": 200,
+      "mapped_columns": 0,
+      "ignored_columns": 79
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+<!-- src/templates/masters/case_list.html -->
+{% extends "masters/base.html" %}
+
+{% block title %}Cases - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Cases</h1>
+    <a href="/masters/cases/add" class="btn btn-primary">Add Case</a>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Case Number</th>
+                <th>Customer</th>
+                <th>Lender</th>
+                <th>Product</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for case in cases %}
+            <tr>
+                <td>{{ case.case_id }}</td>
+                <td>{{ case.case_number }}</td>
+                <td>{{ case.customer_id }}</td>
+                <td>{{ case.lender_id }}</td>
+                <td>{{ case.product_id }}</td>
+                <td><span class="status-badge status-{{ case.status|lower }}">{{ case.status }}</span></td>
+                <td>
+                    <a href="/masters/cases/{{ case.case_id }}" class="btn btn-sm btn-secondary">View</a>
+                    <a href="/masters/cases/{{ case.case_id }}/edit" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="/masters/cases/{{ case.case_id }}/delete" class="btn btn-sm btn-danger" onclick="return confirm('Delete this case?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

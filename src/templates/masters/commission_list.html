@@ -1,0 +1,77 @@
+{% extends "masters/base.html" %}
+
+{% block title %}Commission - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Commission</h1>
+    <a href="/masters/commission/add" class="btn btn-primary">Add Commission</a>
+</div>
+
+<div class="filter-info">
+    <form method="GET" action="/masters/commission" class="filter-form">
+        <div>
+            <label for="case_id">Case ID:</label>
+            <input type="number" id="case_id" name="case_id" value="{{ case_id or '' }}">
+        </div>
+        <div>
+            <label for="connector_id">Connector ID:</label>
+            <input type="number" id="connector_id" name="connector_id" value="{{ connector_id or '' }}">
+        </div>
+        <div>
+            <label for="payment_status">Status:</label>
+            <select id="payment_status" name="payment_status">
+                <option value="">All</option>
+                <option value="PENDING" {% if payment_status == 'PENDING' %}selected{% endif %}>Pending</option>
+                <option value="PAID" {% if payment_status == 'PAID' %}selected{% endif %}>Paid</option>
+                <option value="FAILED" {% if payment_status == 'FAILED' %}selected{% endif %}>Failed</option>
+                <option value="RECONCILED" {% if payment_status == 'RECONCILED' %}selected{% endif %}>Reconciled</option>
+            </select>
+        </div>
+        <div class="filter-actions">
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <a href="/masters/commission" class="btn btn-secondary">Clear</a>
+        </div>
+    </form>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Case #</th>
+                <th>Connector</th>
+                <th>Date</th>
+                <th>Net Amount</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for comm in commissions %}
+            <tr>
+                <td>{{ comm.commission_id }}</td>
+                <td>{{ comm.case_number or comm.case_id }}</td>
+                <td>{{ comm.connector_name or '-' }}</td>
+                <td>{{ comm.commission_date }}</td>
+                <td>₹{{ "%.2f"|format(comm.net_amount) }}</td>
+                <td><span class="status-badge status-{{ comm.payment_status.lower() }}">{{ comm.payment_status }}</span></td>
+                <td>
+                    <a href="/masters/commission/{{ comm.commission_id }}" class="btn btn-sm btn-info">View</a>
+                    <a href="/masters/commission/{{ comm.commission_id }}/edit" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="/masters/commission/{{ comm.commission_id }}/delete" class="btn btn-sm btn-danger" onclick="return confirm('Delete this commission?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% if not commissions %}
+<div class="empty-state">
+    <p>No commission records found.</p>
+    <p><a href="/masters/commission/add">Add Commission</a> to get started.</p>
+</div>
+{% endif %}
+{% endblock %}

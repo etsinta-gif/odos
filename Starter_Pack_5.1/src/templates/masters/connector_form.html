@@ -1,0 +1,50 @@
+<!-- src/templates/masters/connector_form.html -->
+{% extends "masters/base.html" %}
+
+{% block title %}
+    {% if action == 'add' %}Add Connector{% else %}Edit Connector{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{% if action == 'add' %}Add Connector{% else %}Edit Connector{% endif %}</h1>
+    <a href="/masters/connectors" class="btn btn-secondary">Back to List</a>
+</div>
+
+<div class="form-container">
+    <form method="POST" action="{% if action == 'add' %}/masters/connectors{% else %}/masters/connectors/{{ connector.connector_id }}/edit{% endif %}">
+        <div class="form-group">
+            <label for="connector_code">Connector Code *</label>
+            <input type="text" id="connector_code" name="connector_code" value="{{ connector.connector_code if connector else '' }}" required>
+        </div>
+        <div class="form-group">
+            <label for="full_name">Full Name *</label>
+            <input type="text" id="full_name" name="full_name" value="{{ connector.full_name if connector else '' }}" required>
+        </div>
+        <div class="form-group">
+            <label for="pan">PAN</label>
+            <input type="text" id="pan" name="pan" value="{{ connector.pan if connector else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="gstin">GSTIN</label>
+            <input type="text" id="gstin" name="gstin" value="{{ connector.gstin if connector else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="bank_name">Bank Name</label>
+            <input type="text" id="bank_name" name="bank_name" value="{{ connector.bank_name if connector else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="account_number">Account Number</label>
+            <input type="text" id="account_number" name="account_number" value="{{ connector.account_number if connector else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="ifsc">IFSC</label>
+            <input type="text" id="ifsc" name="ifsc" value="{{ connector.ifsc if connector else '' }}">
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="/masters/connectors" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

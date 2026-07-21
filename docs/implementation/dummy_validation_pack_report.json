@@ -1,0 +1,69 @@
+{
+  "generated_at": "2026-07-21T09:46:14.062196",
+  "mode": "dummy_only_validation_pack",
+  "cases": [
+    {
+      "id": "DV-01",
+      "result": "PASS",
+      "details": {
+        "status": 200,
+        "body": "{\"status\":\"ok\"}"
+      }
+    },
+    {
+      "id": "DV-02",
+      "result": "PASS",
+      "details": {
+        "active_count": 10,
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "id": "DV-03",
+      "result": "PASS",
+      "details": {
+        "batch_guid": "6af3587f-6796-46a6-b227-f8c2f86159ae",
+        "staged_rows": 1
+      }
+    },
+    {
+      "id": "DV-04",
+      "result": "PASS",
+      "details": {
+        "promote_status": 200,
+        "promote_body": "{\"batch_guid\":\"6af3587f-6796-46a6-b227-f8c2f86159ae\",\"template_id\":70,\"results\":{\"MST_Lender\":{\"created\":1,\"updated\":0,\"skipped\":0,\"failed\":0},\"RUL_Contest\":{\"created\":1,\"updated\":0,\"skipped\":0,\"failed\":0},\"MST_Product\":{\"created\":0,\"updated\":0,\"skipped\":0,\"failed\":1},\"RUL_CommissionRule\":{\"created\"",
+        "critical_errors": 0,
+        "staged_rows": 1,
+        "promoted_rows": 1,
+        "lineage_rows": 2
+      }
+    },
+    {
+      "id": "DV-05",
+      "result": "PASS",
+      "details": {
+        "second_upload": {
+          "status_code": 409,
+          "message": "This file was already uploaded in batch 6af3587f-6796-46a6-b227-f8c2f86159ae. Open that batch or upload a different file.",
+          "batch_guid": "6af3587f-6796-46a6-b227-f8c2f86159ae",
+          "file_name": "MIS_TEMPLATE_LenderMaster.xlsx",
+          "file_hash": "0f8ecd9a1196f477723634d945bdcda460fe1ea61403635ee2a8136e1553b7a9"
+        }
+      }
+    },
+    {
+      "id": "DV-06",
+      "result": "PASS",
+      "details": {
+        "exit_code": 0,
+        "output_head": "........................                                                 [100%]\n24 passed in 1.07s\n\n"
+      }
+    }
+  ],
+  "summary": {
+    "PASS": 6,
+    "FAIL": 0,
+    "BLOCKED": 0
+  }
+}

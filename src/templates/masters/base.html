@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/" class="nav-brand">ODOS</a>
+        <div class="nav-meta">
+            <span>User: {{ current_user.username if current_user else 'N/A' }}</span>
+            <span>Company: {{ current_company_id if current_company_id is not none else 'N/A' }}</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/masters/dsas">DSA</a></li>
+            <li><a href="/masters/etl/upload">ETL Upload</a></li>
+            <li><a href="/masters/lenders">Lenders</a></li>
+            <li><a href="/masters/products">Products</a></li>
+            <li><a href="/masters/cases">Cases</a></li>
+            <li><a href="/masters/commission">Commission</a></li>
+            <li><a href="/masters/data/overview">Data Overview</a></li>
+            <li><a href="/masters/data/tax-summary">Tax Summary</a></li>
+            <li><a href="/masters/rules/commission">Rules</a></li>
+            <li><a href="/masters/tally/exports">Tally Exports</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="footer">
+        <p>&copy; 2026 ODOS Enterprise</p>
+    </footer>
+</body>
+</html>

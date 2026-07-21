@@ -1,0 +1,404 @@
+{
+  "health": {
+    "status_code": 200,
+    "body": {
+      "status": "ok"
+    }
+  },
+  "runs": [
+    {
+      "file": "samples\\Lender_Master.xlsx",
+      "entity_type": "MST_Lender",
+      "sheet": "Master",
+      "result": "FAIL",
+      "mapped_columns": 6,
+      "ignored_columns": 0,
+      "notes": [
+        "upload1 failed"
+      ],
+      "analyze_status": 200,
+      "template_create": 200,
+      "template_id": 10,
+      "template_approve": 200,
+      "template_active": 200,
+      "upload1_status": 202,
+      "upload1_body": {
+        "message": "Template not found. Please analyze and confirm mapping first.",
+        "file_name": "Lender_Master.xlsx",
+        "file_hash": "10c05a817269c76f3a3f90c108bf94877f88c0d7a1bdacf7470a505f62153b0d",
+        "entity_type": "MST_Lender",
+        "workbook_fingerprint": "8c5f9606efa08126c6316463a974ff15037ca4f492e480f8c336b6015d91189d",
+        "mapping_required": true,
+        "proposal": {
+          "workbook_fingerprint": "8c5f9606efa08126c6316463a974ff15037ca4f492e480f8c336b6015d91189d",
+          "sheet_count": 2,
+          "sheets": [
+            {
+              "fingerprint": "c4e2ed54804393a690257daac0d8beab164d755cf834fb75b0070be702d2911b",
+              "sheet_name": "Intro",
+              "header_row": 1,
+              "row_count": 1,
+              "columns": [
+                {
+                  "source_column": "Readme",
+                  "inferred_type": "text",
+                  "sample_values": [
+                    "Use Master sheet"
+                  ],
+                  "null_count": 0,
+                  "unique_count": 1,
+                  "pattern": null,
+                  "suggested_target_table": null,
+                  "suggested_target_field": null,
+                  "confidence_score": 0,
+                  "ignore": true,
+                  "notes": "No mapping found"
+                }
+              ]
+            },
+            {
+              "fingerprint": "98ac60f639a60b1e99593d55854874d2dc93e26307db51186f406c1d77f6e752",
+              "sheet_name": "Master",
+              "header_row": 1,
+              "row_count": 2,
+              "columns": [
+                {
+                  "source_column": "Lender / NBFC",
+                  "inferred_type": "text",
+                  "sample_values": [
+                    "ABC Finance",
+                    "XYZ Capital"
+                  ],
+                  "null_count": 0,
+                  "unique_count": 2,
+                  "pattern": null,
+                  "suggested_target_table": "MST_Lender",
+                  "suggested_target_field": "lender_name",
+                  "confidence_score": 92,
+                  "ignore": false,
+                  "notes": "Alias match with 'lender_name'"
+                },
+                {
+                  "source_column": "NBFC?",
+                  "inferred_type": "percentage",
+                  "sample_values": [
+                    true,
+                    false
+                  ],
+                  "null_count": 0,
+                  "unique_count": 2,
+                  "pattern": null,
+                  "suggested_target_table": "MST_Lender",
+                  "suggested_target_field": "is_nbfc",
+                  "confidence_score": 92,
+                  "ignore": false,
+                  "notes": "Alias match with 'is_nbfc'"
+                },
+                {
+                  "source_column": "PAN",
+                  "inferred_type": "text",
+                  "sample_values": [
+                    "ABCDE1234F",
+                    "FGHIJ5678K"
+                  ],
+                  "null_count": 0,
+                  "unique_count": 2,
+                  "pattern": "pan",
+                  "suggested_target_table": "MST_Lender",
+                  "suggested_target_field": "pan",
+                  "confidence_score": 95,
+                  "ignore": false,
+                  "notes": "Exact normalized match"
+                },
+                {
+                  "source_column": "GSTIN",
+                  "inferred_type": "text",
+                  "sample_values": [
+                    "27ABCDE1234F1Z5",
+                    "27FGHIJ5678K1Z2"
+                  ],
+                  "null_count": 0,
+                  "unique_count": 2,
+                  "pattern": "pan",
+                  "suggested_target_table": "MST_Lender",
+                  "suggested_target_field": "gstin",
+                  "confidence_score": 95,
+                  "ignore": false,
+                  "notes": "Exact normalized match"
+                },
+                {
+                  "source_column": "< \u20b950 L",
+                  "inferred_type": "percentage",
+                  "sample_values": [
+                    0.5,
+                    0.6
+                  ],
+                  "null_count": 0,
+                  "unique_count": 2,
+                  "pattern": null,
+                  "suggested_target_table": "RUL_CommissionSlab",
+                  "suggested_target_field": "rate",
+                  "confidence_score": 70,
+                  "ignore": false,
+                  "notes": "Detected as slab column"
+                },
+                {
+                  "source_column": "\u20b950 L \u2013 < \u20b91 Cr",
+                  "inferred_type": "percentage",
+                  "sample_values": [
+                    0.7,
+                    0.8
+                  ],
+                  "null_count": 0,
+                  "unique_count": 2,
+                  "pattern": null,
+                  "suggested_target_table": "RUL_CommissionSlab",
+                  "suggested_target_field": "rate",
+                  "confidence_score": 70,
+                  "ignore": false,
+                  "notes": "Detected as slab column"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "file": "samples\\Connector_Master.xlsx",
+      "entity_type": "MST_Connector",
+      "sheet": "Master",
+      "result": "PARTIAL",
+      "mapped_columns": 5,
+      "ignored_columns": 1,
+      "notes": [],
+      "analyze_status": 200,
+      "template_create": 200,
+      "template_id": 11,
+      "template_approve": 200,
+      "template_active": 200,
+      "upload1_status": 200,
+      "upload1_body": {
+        "message": "Upload successful",
+        "batch_guid": "e5875125-f8eb-402e-9858-e1e0912c4a42",
+        "file_name": "Connector_Master.xlsx",
+        "file_hash": "18567037d1ce27e4e05797e87d7ea026800f774e20edd510c72bf8c1d49e0060",
+        "table_name": "MST_Connector",
+        "workbook_fingerprint": "0c304363d3169c79fa1d6c785c45bc68dac1500349634423e558d783ce077058",
+        "template_id": 2,
+        "sheet_name": "Master",
+        "staged_rows": 5,
+        "deduplicated_rows": 0
+      },
+      "promote1_status": 400,
+      "promote1_body": {
+        "detail": "No eligible staged records for this batch"
+      },
+      "lineage1_total": 0,
+      "upload2_status": 200,
+      "upload2_body": {
+        "message": "Upload successful",
+        "batch_guid": "2729f22d-00ea-46b3-9f27-9899f3cb9704",
+        "file_name": "Connector_Master.xlsx",
+        "file_hash": "18567037d1ce27e4e05797e87d7ea026800f774e20edd510c72bf8c1d49e0060",
+        "table_name": "MST_Connector",
+        "workbook_fingerprint": "0c304363d3169c79fa1d6c785c45bc68dac1500349634423e558d783ce077058",
+        "template_id": 2,
+        "sheet_name": "Master",
+        "staged_rows": 5,
+        "deduplicated_rows": 0
+      },
+      "promote2_status": 400,
+      "promote2_body": {
+        "detail": "No eligible staged records for this batch"
+      },
+      "lineage2_total": 0
+    },
+    {
+      "file": "samples\\Secured_Tracker.xlsx",
+      "entity_type": "TRN_Case",
+      "sheet": "Master",
+      "result": "FAIL",
+      "mapped_columns": 5,
+      "ignored_columns": 2,
+      "notes": [
+        "upload1 failed"
+      ],
+      "analyze_status": 200,
+      "template_create": 200,
+      "template_id": 12,
+      "template_approve": 200,
+      "template_active": 200,
+      "upload1_status": 202,
+      "upload1_body": {
+        "message": "Template not found. Please analyze and confirm mapping first.",
+        "file_name": "Secured_Tracker.xlsx",
+        "file_hash": "cc741ebbe4754831640e7a2803c20654f1ac1c9e69f07a19f14198529ba2b371",
+        "entity_type": "TRN_Case",
+        "workbook_fingerprint": "a890dbca1e41d20b8a92530120981b2d0c1b4dbf765b4da0da636b840233b8a1",
+        "mapping_required": true,
+        "proposal": {
+          "workbook_fingerprint": "a890dbca1e41d20b8a92530120981b2d0c1b4dbf765b4da0da636b840233b8a1",
+          "sheet_count": 2,
+          "sheets": [
+            {
+              "fingerprint": "79f31eebbd1c53e510f781377b35a28c1eee815252e0cf421e3fb5332b4ef5fa",
+              "sheet_name": "Info",
+              "header_row": 1,
+              "row_count": 1,
+              "columns": [
+                {
+                  "source_column": "meta",
+                  "inferred_type": "text",
+                  "sample_values": [
+                    "tracker"
+                  ],
+                  "null_count": 0,
+                  "unique_count": 1,
+                  "pattern": null,
+                  "suggested_target_table": null,
+                  "suggested_target_field": null,
+                  "confidence_score": 0,
+                  "ignore": true,
+                  "notes": "No mapping found"
+                }
+              ]
+            },
+            {
+              "fingerprint": "7c7b2f1469e1f0623f8a72b253d1e5733dc912ac35b7f5f0e77937d9363ebb2b",
+              "sheet_name": "Master",
+              "header_row": 1,
+              "row_count": 2,
+              "columns": [
+                {
+                  "source_column": "case_number",
+                  "inferred_type": "text",
+                  "sample_values": [
+                    "CASE-001",
+                    "CASE-002"
+                  ],
+                  "null_count": 0,
+                  "unique_count": 2,
+                  "pattern": null,
+                  "suggested_target_table": "TRN_Case",
+                  "suggested_target_field": "case_number",
+                  "confidence_score": 95,
+                  "ignore": false,
+                  "notes": "Exact normalized match"
+                },
+                {
+                  "source_column": "customer_name",
+                  "inferred_type": "text",
+                  "sample_values": [
+                    "Cust A",
+                    "Cust B"
+                  ],
+                  "null_count": 0,
+                  "unique_count": 2,
+                  "pattern": null,
+                  "suggested_target_table": "MST_Connector",
+                  "suggested_target_field": "full_name",
+                  "confidence_score": 92,
+                  "ignore": false,
+                  "notes": "Alias match with 'full_name'"
+                },
+                {
+                  "source_column": "sanction_amount",
+                  "inferred_type": "amount",
+                  "sample_values": [
+                    1000000,
+                    2000000
+                  ],
+                  "null_count": 0,
+                  "unique_count": 2,
+                  "pattern": null,
+                  "suggested_target_table": "TRN_Case",
+                  "suggested_target_field": "sanction_amount",
+                  "confidence_score": 95,
+                  "ignore": false,
+                  "notes": "Exact normalized match"
+                },
+                {
+                  "source_column": "disbursement_amount",
+                  "inferred_type": "amount",
+                  "sample_values": [
+                    950000,
+                    1800000
+                  ],
+                  "null_count": 0,
+                  "unique_count": 2,
+                  "pattern": null,
+                  "suggested_target_table": "TRN_Case",
+                  "suggested_target_field": "disbursement_amount",
+                  "confidence_score": 95,
+                  "ignore": false,
+                  "notes": "Exact normalized match"
+                },
+                {
+                  "source_column": "status",
+                  "inferred_type": "text",
+                  "sample_values": [
+                    "DISBURSED",
+                    "LEAD"
+                  ],
+                  "null_count": 0,
+                  "unique_count": 2,
+                  "pattern": null,
+                  "suggested_target_table": "TRN_Case",
+                  "suggested_target_field": "status",
+                  "confidence_score": 95,
+                  "ignore": false,
+                  "notes": "Exact normalized match"
+                },
+                {
+                  "source_column": "disbursement_date",
+                  "inferred_type": "text",
+                  "sample_values": [
+                    "2026-07-01",
+                    "2026-07-05"
+                  ],
+                  "null_count": 0,
+                  "unique_count": 2,
+                  "pattern": "date",
+                  "suggested_target_table": null,
+                  "suggested_target_field": null,
+                  "confidence_score": 0,
+                  "ignore": true,
+                  "notes": "No mapping found"
+                },
+                {
+                  "source_column": "application_date",
+                  "inferred_type": "text",
+                  "sample_values": [
+                    "2026-06-20",
+                    "2026-06-22"
+                  ],
+                  "null_count": 0,
+                  "unique_count": 2,
+                  "pattern": "date",
+                  "suggested_target_table": null,
+                  "suggested_target_field": null,
+                  "confidence_score": 0,
+                  "ignore": true,
+                  "notes": "No mapping found"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "file": "samples\\Empty_File.xlsx",
+      "entity_type": "MST_Connector",
+      "sheet": "Sheet1",
+      "result": "PASS_IGNORE",
+      "mapped_columns": 0,
+      "ignored_columns": 2,
+      "notes": [
+        "no relevant mapping; ignored"
+      ],
+      "analyze_status": 200
+    }
+  ]
+}

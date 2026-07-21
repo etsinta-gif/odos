@@ -1,0 +1,43 @@
+<!-- src/templates/masters/customer_list.html -->
+{% extends "masters/base.html" %}
+
+{% block title %}Customers - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Customers</h1>
+    <a href="/masters/customers/add" class="btn btn-primary">Add Customer</a>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>PAN</th>
+                <th>GSTIN</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+            <tr>
+                <td>{{ customer.customer_id }}</td>
+                <td>{{ customer.full_name }}</td>
+                <td>{{ customer.pan }}</td>
+                <td>{{ customer.gstin or '-' }}</td>
+                <td>{{ customer.email or '-' }}</td>
+                <td>{{ customer.mobile or '-' }}</td>
+                <td>
+                    <a href="/masters/customers/{{ customer.customer_id }}/edit" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="/masters/customers/{{ customer.customer_id }}/delete" class="btn btn-sm btn-danger" onclick="return confirm('Delete this customer?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

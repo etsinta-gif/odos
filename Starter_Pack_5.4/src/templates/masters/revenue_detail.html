@@ -1,0 +1,26 @@
+{% extends "masters/base.html" %}
+
+{% block title %}Revenue Detail - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Revenue Detail</h1>
+    <a href="/masters/revenue" class="btn btn-secondary">Back to Revenue</a>
+</div>
+
+<div class="detail-card">
+    <dl>
+        <dt>Revenue ID</dt><dd>{{ revenue.revenue_id }}</dd>
+        <dt>Case Number</dt><dd>{{ case.case_number if case else revenue.case_id }}</dd>
+        <dt>Lender</dt><dd>{{ lender.lender_name if lender else '-' }}</dd>
+        <dt>Revenue Date</dt><dd>{{ revenue.revenue_date }}</dd>
+        <dt>Base Revenue Amount</dt><dd>₹{{ "%.2f"|format(revenue.base_revenue_amount) }}</dd>
+        <dt>GST Amount</dt><dd>₹{{ "%.2f"|format(revenue.gst_amount) }}</dd>
+        <dt>TDS Amount</dt><dd>₹{{ "%.2f"|format(revenue.tds_amount) }}</dd>
+        <dt>Net Amount</dt><dd>₹{{ "%.2f"|format(revenue.net_amount) }}</dd>
+        <dt>UTR Number</dt><dd>{{ revenue.utr_number or '-' }}</dd>
+        <dt>Payment Status</dt><dd>{{ revenue.payment_status }}</dd>
+        <dt>Notes</dt><dd>{{ revenue.notes or '-' }}</dd>
+    </dl>
+</div>
+{% endblock %}

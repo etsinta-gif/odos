@@ -1,0 +1,45 @@
+<!-- src/templates/masters/product_list.html -->
+{% extends "masters/base.html" %}
+
+{% block title %}Products - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Products</h1>
+    <a href="/masters/products/add" class="btn btn-primary">Add Product</a>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Product Code</th>
+                <th>Lender</th>
+                <th>Interest Rate</th>
+                <th>Min Loan</th>
+                <th>Max Loan</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.product_id }}</td>
+                <td>{{ product.product_name }}</td>
+                <td>{{ product.product_code or '-' }}</td>
+                <td>{{ product.lender_id or '-' }}</td>
+                <td>{{ product.interest_rate or '-' }}</td>
+                <td>{{ product.min_loan_amount or '-' }}</td>
+                <td>{{ product.max_loan_amount or '-' }}</td>
+                <td>
+                    <a href="/masters/products/{{ product.product_id }}/edit" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="/masters/products/{{ product.product_id }}/delete" class="btn btn-sm btn-danger" onclick="return confirm('Delete this product?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

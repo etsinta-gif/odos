@@ -1,0 +1,26 @@
+{% extends "masters/base.html" %}
+
+{% block title %}Payment Detail - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Payment Detail</h1>
+    <a href="/masters/payments" class="btn btn-secondary">Back to Payments</a>
+</div>
+
+<div class="detail-card">
+    <dl>
+        <dt>Payment ID</dt><dd>{{ payment.payment_id }}</dd>
+        <dt>Payment Number</dt><dd>{{ payment.payment_number or '-' }}</dd>
+        <dt>Payment Date</dt><dd>{{ payment.payment_date }}</dd>
+        <dt>Bank</dt><dd>{{ bank.bank_name if bank else '-' }}</dd>
+        <dt>Amount</dt><dd>₹{{ "%.2f"|format(payment.payment_amount) }}</dd>
+        <dt>Mode</dt><dd>{{ payment.payment_mode }}</dd>
+        <dt>UTR Number</dt><dd>{{ payment.utr_number or '-' }}</dd>
+        <dt>Payment Type</dt><dd>{{ payment.payment_type }}</dd>
+        <dt>Reference ID</dt><dd>{{ payment.reference_id }}</dd>
+        <dt>Reconciliation Status</dt><dd>{{ payment.reconciliation_status }}</dd>
+        <dt>Notes</dt><dd>{{ payment.notes or '-' }}</dd>
+    </dl>
+</div>
+{% endblock %}

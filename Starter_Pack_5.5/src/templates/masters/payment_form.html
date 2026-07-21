@@ -1,0 +1,68 @@
+{% extends "masters/base.html" %}
+
+{% block title %}{{ 'Edit' if action == 'edit' else 'Add' }} Payment - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{{ 'Edit' if action == 'edit' else 'Add' }} Payment</h1>
+    <a href="/masters/payments" class="btn btn-secondary">Back to Payments</a>
+</div>
+
+<form method="POST" action="{% if action == 'edit' %}/masters/payments/{{ payment.payment_id }}/edit{% else %}/masters/payments{% endif %}" class="form-card">
+    <div class="form-row">
+        <label for="payment_date">Payment Date</label>
+        <input type="date" id="payment_date" name="payment_date" required value="{{ payment.payment_date if payment else '' }}">
+    </div>
+    <div class="form-row">
+        <label for="company_bank_account_id">Company Bank Account</label>
+        <select id="company_bank_account_id" name="company_bank_account_id" required>
+            <option value="">Select bank</option>
+            {% for bank in banks %}
+            <option value="{{ bank.bank_account_id }}" {% if payment and bank.bank_account_id == payment.company_bank_account_id %}selected{% endif %}>{{ bank.bank_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="payment_amount">Payment Amount</label>
+        <input type="number" step="0.01" id="payment_amount" name="payment_amount" required value="{{ payment.payment_amount if payment else '' }}">
+    </div>
+    <div class="form-row">
+        <label for="payment_mode">Payment Mode</label>
+        <input type="text" id="payment_mode" name="payment_mode" required value="{{ payment.payment_mode if payment else '' }}">
+    </div>
+    <div class="form-row">
+        <label for="utr_number">UTR Number</label>
+        <input type="text" id="utr_number" name="utr_number" value="{{ payment.utr_number if payment else '' }}">
+    </div>
+    <div class="form-row">
+        <label for="payment_type">Payment Type</label>
+        <select id="payment_type" name="payment_type" required>
+            <option value="">Select type</option>
+            {% for type in payment_types %}
+            <option value="{{ type }}" {% if payment and payment.payment_type == type %}selected{% endif %}>{{ type }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="reference_id">Reference ID</label>
+        <input type="number" id="reference_id" name="reference_id" required value="{{ payment.reference_id if payment else '' }}">
+    </div>
+    {% if action == 'edit' %}
+    <div class="form-row">
+        <label for="reconciliation_status">Reconciliation Status</label>
+        <select id="reconciliation_status" name="reconciliation_status" required>
+            {% for status in reconciliation_statuses %}
+            <option value="{{ status }}" {% if payment and payment.reconciliation_status == status %}selected{% endif %}>{{ status }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    {% endif %}
+    <div class="form-row">
+        <label for="notes">Notes</label>
+        <textarea id="notes" name="notes">{{ payment.notes if payment else '' }}</textarea>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">{{ 'Save Changes' if action == 'edit' else 'Create Payment' }}</button>
+    </div>
+</form>
+{% endblock %}

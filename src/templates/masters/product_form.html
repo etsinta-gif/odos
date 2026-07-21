@@ -1,0 +1,46 @@
+<!-- src/templates/masters/product_form.html -->
+{% extends "masters/base.html" %}
+
+{% block title %}
+    {% if action == 'add' %}Add Product{% else %}Edit Product{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{% if action == 'add' %}Add Product{% else %}Edit Product{% endif %}</h1>
+    <a href="/masters/products" class="btn btn-secondary">Back to List</a>
+</div>
+
+<div class="form-container">
+    <form method="POST" action="{% if action == 'add' %}/masters/products{% else %}/masters/products/{{ product.product_id }}/edit{% endif %}">
+        <div class="form-group">
+            <label for="product_name">Product Name *</label>
+            <input type="text" id="product_name" name="product_name" value="{{ product.product_name if product else '' }}" required>
+        </div>
+        <div class="form-group">
+            <label for="product_code">Product Code</label>
+            <input type="text" id="product_code" name="product_code" value="{{ product.product_code if product else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="lender_id">Lender ID</label>
+            <input type="number" id="lender_id" name="lender_id" value="{{ product.lender_id if product else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="interest_rate">Interest Rate</label>
+            <input type="number" step="0.01" id="interest_rate" name="interest_rate" value="{{ product.interest_rate if product else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="min_loan_amount">Min Loan Amount</label>
+            <input type="number" step="0.01" id="min_loan_amount" name="min_loan_amount" value="{{ product.min_loan_amount if product else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="max_loan_amount">Max Loan Amount</label>
+            <input type="number" step="0.01" id="max_loan_amount" name="max_loan_amount" value="{{ product.max_loan_amount if product else '' }}">
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="/masters/products" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

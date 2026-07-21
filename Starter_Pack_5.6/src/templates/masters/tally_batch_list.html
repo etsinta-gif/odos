@@ -1,0 +1,89 @@
+{% extends "masters/base.html" %}
+
+{% block title %}Tally Export Batches - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Tally Export Batches</h1>
+    <a href="/masters/tally/exports/add" class="btn btn-primary">Create Export Batch</a>
+</div>
+
+<div class="filter-info">
+    <form method="GET" action="/masters/tally/exports" class="filter-form">
+        <div>
+            <label for="export_type">Export Type:</label>
+            <select id="export_type" name="export_type">
+                <option value="">All</option>
+                {% for et in export_types %}
+                <option value="{{ et }}" {% if selected_export_type == et %}selected{% endif %}>{{ et }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="export_status">Export Status:</label>
+            <select id="export_status" name="export_status">
+                <option value="">All</option>
+                {% for es in export_statuses %}
+                <option value="{{ es }}" {% if selected_export_status == es %}selected{% endif %}>{{ es }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="sync_status">Sync Status:</label>
+            <select id="sync_status" name="sync_status">
+                <option value="">All</option>
+                {% for ss in sync_statuses %}
+                <option value="{{ ss }}" {% if selected_sync_status == ss %}selected{% endif %}>{{ ss }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="filter-actions">
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <a href="/masters/tally/exports" class="btn btn-secondary">Clear</a>
+        </div>
+    </form>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Batch #</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Period</th>
+                <th>Records</th>
+                <th>Export Status</th>
+                <th>Sync Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for batch in batches %}
+            <tr>
+                <td>{{ batch.batch_id }}</td>
+                <td>{{ batch.batch_number }}</td>
+                <td>{{ batch.batch_name }}</td>
+                <td><span class="status-badge status-{{ batch.export_type.lower() }}">{{ batch.export_type }}</span></td>
+                <td>{{ batch.period_start }} to {{ batch.period_end }}</td>
+                <td>{{ batch.exported_records }}/{{ batch.total_records }}</td>
+                <td><span class="status-badge status-{{ batch.export_status.lower() }}">{{ batch.export_status }}</span></td>
+                <td><span class="status-badge status-{{ batch.sync_status.lower() }}">{{ batch.sync_status }}</span></td>
+                <td>
+                    <a href="/masters/tally/exports/{{ batch.batch_id }}" class="btn btn-sm btn-info">View</a>
+                    <a href="/masters/tally/exports/{{ batch.batch_id }}/delete" class="btn btn-sm btn-danger" onclick="return confirm('Delete this export batch?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% if not batches %}
+<div class="empty-state">
+    <p>No export batches found.</p>
+    <p><a href="/masters/tally/exports/add">Create your first export batch</a></p>
+</div>
+{% endif %}
+{% endblock %}

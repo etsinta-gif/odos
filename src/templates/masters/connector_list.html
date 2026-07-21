@@ -1,0 +1,43 @@
+<!-- src/templates/masters/connector_list.html -->
+{% extends "masters/base.html" %}
+
+{% block title %}Connectors - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Connectors</h1>
+    <a href="/masters/connectors/add" class="btn btn-primary">Add Connector</a>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Connector Code</th>
+                <th>Full Name</th>
+                <th>PAN</th>
+                <th>Bank Name</th>
+                <th>Account No</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for connector in connectors %}
+            <tr>
+                <td>{{ connector.connector_id }}</td>
+                <td>{{ connector.connector_code or '-' }}</td>
+                <td>{{ connector.full_name }}</td>
+                <td>{{ connector.pan or '-' }}</td>
+                <td>{{ connector.bank_name or '-' }}</td>
+                <td>{{ connector.account_number or '-' }}</td>
+                <td>
+                    <a href="/masters/connectors/{{ connector.connector_id }}/edit" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="/masters/connectors/{{ connector.connector_id }}/delete" class="btn btn-sm btn-danger" onclick="return confirm('Delete this connector?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

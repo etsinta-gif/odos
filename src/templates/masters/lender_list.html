@@ -1,0 +1,43 @@
+<!-- src/templates/masters/lender_list.html -->
+{% extends "masters/base.html" %}
+
+{% block title %}Lenders - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Lenders</h1>
+    <a href="/masters/lenders/add" class="btn btn-primary">Add Lender</a>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Lender Name</th>
+                <th>PAN</th>
+                <th>GSTIN</th>
+                <th>Lender Code</th>
+                <th>NBFC?</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lender in lenders %}
+            <tr>
+                <td>{{ lender.lender_id }}</td>
+                <td>{{ lender.lender_name }}</td>
+                <td>{{ lender.pan }}</td>
+                <td>{{ lender.gstin or '-' }}</td>
+                <td>{{ lender.lender_code or '-' }}</td>
+                <td>{{ 'Yes' if lender.is_nbfc else 'No' }}</td>
+                <td>
+                    <a href="/masters/lenders/{{ lender.lender_id }}/edit" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="/masters/lenders/{{ lender.lender_id }}/delete" class="btn btn-sm btn-danger" onclick="return confirm('Delete this lender?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+<!-- src/templates/masters/lender_form.html -->
+{% extends "masters/base.html" %}
+
+{% block title %}
+    {% if action == 'add' %}Add Lender{% else %}Edit Lender{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{% if action == 'add' %}Add Lender{% else %}Edit Lender{% endif %}</h1>
+    <a href="/masters/lenders" class="btn btn-secondary">Back to List</a>
+</div>
+
+<div class="form-container">
+    <form method="POST" action="{% if action == 'add' %}/masters/lenders{% else %}/masters/lenders/{{ lender.lender_id }}/edit{% endif %}">
+        <div class="form-group">
+            <label for="lender_name">Lender Name *</label>
+            <input type="text" id="lender_name" name="lender_name" value="{{ lender.lender_name if lender else '' }}" required>
+        </div>
+        <div class="form-group">
+            <label for="pan">PAN *</label>
+            <input type="text" id="pan" name="pan" value="{{ lender.pan if lender else '' }}" required>
+        </div>
+        <div class="form-group">
+            <label for="gstin">GSTIN</label>
+            <input type="text" id="gstin" name="gstin" value="{{ lender.gstin if lender else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="lender_code">Lender Code</label>
+            <input type="text" id="lender_code" name="lender_code" value="{{ lender.lender_code if lender else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="is_nbfc">Is NBFC</label>
+            <select id="is_nbfc" name="is_nbfc">
+                <option value="false" {% if lender and not lender.is_nbfc %}selected{% endif %}>No</option>
+                <option value="true" {% if lender and lender.is_nbfc %}selected{% endif %}>Yes</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="credit_rating">Credit Rating</label>
+            <input type="text" id="credit_rating" name="credit_rating" value="{{ lender.credit_rating if lender else '' }}">
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="/masters/lenders" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

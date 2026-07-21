@@ -1,0 +1,232 @@
+{
+  "generated_at": "2026-07-21T10:23:14.361531",
+  "base_url": "http://127.0.0.1:8000",
+  "workspace": "C:\\Users\\etsin\\OneDrive\\Documents\\AI Projects\\ODOS Test\\odos",
+  "summary": {
+    "PASS": 1,
+    "FAIL": 1,
+    "BLOCKED": 16,
+    "PENDING": 13
+  },
+  "cases": [
+    {
+      "test_id": "RG-02",
+      "result": "FAIL",
+      "details": {
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/v1/health (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it\"))"
+      }
+    },
+    {
+      "test_id": "CF-01",
+      "result": "BLOCKED",
+      "details": {
+        "reason": "server_not_reachable"
+      }
+    },
+    {
+      "test_id": "CF-02",
+      "result": "BLOCKED",
+      "details": {
+        "reason": "server_not_reachable"
+      }
+    },
+    {
+      "test_id": "CF-03",
+      "result": "BLOCKED",
+      "details": {
+        "reason": "server_not_reachable"
+      }
+    },
+    {
+      "test_id": "SC-03",
+      "result": "BLOCKED",
+      "details": {
+        "reason": "server_not_reachable"
+      }
+    },
+    {
+      "test_id": "RG-04",
+      "result": "BLOCKED",
+      "details": {
+        "reason": "server_not_reachable"
+      }
+    },
+    {
+      "test_id": "E2E-02",
+      "result": "BLOCKED",
+      "details": {
+        "reason": "server_not_reachable"
+      }
+    },
+    {
+      "test_id": "TR-01",
+      "result": "BLOCKED",
+      "details": {
+        "reason": "server_not_reachable"
+      }
+    },
+    {
+      "test_id": "TR-02",
+      "result": "BLOCKED",
+      "details": {
+        "reason": "server_not_reachable"
+      }
+    },
+    {
+      "test_id": "TR-03",
+      "result": "BLOCKED",
+      "details": {
+        "reason": "server_not_reachable"
+      }
+    },
+    {
+      "test_id": "TR-04",
+      "result": "BLOCKED",
+      "details": {
+        "reason": "server_not_reachable"
+      }
+    },
+    {
+      "test_id": "TR-05",
+      "result": "BLOCKED",
+      "details": {
+        "reason": "server_not_reachable"
+      }
+    },
+    {
+      "test_id": "TR-06",
+      "result": "BLOCKED",
+      "details": {
+        "reason": "server_not_reachable"
+      }
+    },
+    {
+      "test_id": "TR-07",
+      "result": "BLOCKED",
+      "details": {
+        "reason": "server_not_reachable"
+      }
+    },
+    {
+      "test_id": "TR-08",
+      "result": "BLOCKED",
+      "details": {
+        "reason": "server_not_reachable"
+      }
+    },
+    {
+      "test_id": "TR-09",
+      "result": "BLOCKED",
+      "details": {
+        "reason": "server_not_reachable"
+      }
+    },
+    {
+      "test_id": "TR-10",
+      "result": "BLOCKED",
+      "details": {
+        "reason": "server_not_reachable"
+      }
+    },
+    {
+      "test_id": "RG-03",
+      "result": "PASS",
+      "details": {
+        "exit_code": 0,
+        "output_head": "................................                                         [100%]\n============================== warnings summary ===============================\n..\\.venv\\Lib\\site-packages\\starlette\\formparsers.py:12\n  C:\\Users\\etsin\\OneDrive\\Documents\\AI Projects\\ODOS Test\\.venv\\Lib\\site-packages\\starlette\\formparsers.py:12: PendingDeprecationWarning: Please use `import python_multipart` instead.\n    import multipart\n\nsrc\\core\\database.py:9\n  C:\\Users\\etsin\\OneDrive\\Documents\\AI Projects\\ODOS Test\\odos\\src\\core\\database.py:9: MovedIn20Warning: The ``declarative_base()`` function is now availabl"
+      }
+    },
+    {
+      "test_id": "SC-01",
+      "result": "PENDING",
+      "details": {
+        "note": "Requires direct DB schema introspection in target PostgreSQL environment."
+      }
+    },
+    {
+      "test_id": "SC-02",
+      "result": "PENDING",
+      "details": {
+        "note": "Requires DB-level field type verification in target PostgreSQL environment."
+      }
+    },
+    {
+      "test_id": "VG-01",
+      "result": "PENDING",
+      "details": {
+        "note": "Needs invalid PAN fixture row upload under matching template."
+      }
+    },
+    {
+      "test_id": "VG-02",
+      "result": "PENDING",
+      "details": {
+        "note": "Needs disbursement/application date consistency fixture."
+      }
+    },
+    {
+      "test_id": "VG-03",
+      "result": "PENDING",
+      "details": {
+        "note": "Needs non-existent FK fixture upload."
+      }
+    },
+    {
+      "test_id": "VG-05",
+      "result": "PENDING",
+      "details": {
+        "note": "Needs controlled UPDATE policy re-upload scenario."
+      }
+    },
+    {
+      "test_id": "VG-06",
+      "result": "PENDING",
+      "details": {
+        "note": "Needs controlled FAIL policy duplicate scenario."
+      }
+    },
+    {
+      "test_id": "NL-01",
+      "result": "PENDING",
+      "details": {
+        "note": "Needs pre/post migration snapshot evidence from target environment."
+      }
+    },
+    {
+      "test_id": "NL-02",
+      "result": "PENDING",
+      "details": {
+        "note": "Covered partially via duplicate upload behavior in TR cases."
+      }
+    },
+    {
+      "test_id": "NL-03",
+      "result": "PENDING",
+      "details": {
+        "note": "Needs reconciliation dataset old vs canonical fields."
+      }
+    },
+    {
+      "test_id": "NL-04",
+      "result": "PENDING",
+      "details": {
+        "note": "Needs 2 clean cycles and legacy synonym replay evidence."
+      }
+    },
+    {
+      "test_id": "E2E-01",
+      "result": "PENDING",
+      "details": {
+        "note": "Needs all 10 source files available and server execution window."
+      }
+    },
+    {
+      "test_id": "E2E-03",
+      "result": "PENDING",
+      "details": {
+        "note": "Needs deterministic tally export content assertion dataset."
+      }
+    }
+  ],
+  "overall_verdict": "FAIL"
+}

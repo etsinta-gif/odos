@@ -1,0 +1,45 @@
+{% extends "masters/base.html" %}
+
+{% block title %}Tally Export Preview - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Export Preview</h1>
+    <a href="/masters/tally/exports/{{ batch.batch_id }}" class="btn btn-secondary">Back to Batch</a>
+</div>
+
+<div class="detail-card">
+    <dl>
+        <dt>Batch Name</dt><dd>{{ batch.batch_name }}</dd>
+        <dt>Batch Number</dt><dd>{{ batch.batch_number }}</dd>
+        <dt>Export Type</dt><dd>{{ batch.export_type }}</dd>
+        <dt>Period</dt><dd>{{ batch.period_start }} to {{ batch.period_end }}</dd>
+        <dt>Records</dt><dd>{{ details|length }}</dd>
+        <dt>Export Status</dt><dd><span class="status-badge status-{{ batch.export_status.lower() }}">{{ batch.export_status }}</span></dd>
+        <dt>Sync Status</dt><dd><span class="status-badge status-{{ batch.sync_status.lower() }}">{{ batch.sync_status }}</span></dd>
+    </dl>
+</div>
+
+<div class="table-container" style="margin-top: 1rem;">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Source Table</th>
+                <th>Source ID</th>
+                <th>Exported Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for detail in details %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ detail.source_table }}</td>
+                <td>{{ detail.source_id }}</td>
+                <td style="font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; word-break: break-word;">{{ detail.exported_data or '-' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

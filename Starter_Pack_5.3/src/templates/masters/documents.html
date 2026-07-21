@@ -1,0 +1,75 @@
+{% extends "masters/base.html" %}
+
+{% block title %}Document Management{% endblock %}
+
+{% block content %}
+<h1>Document Management</h1>
+
+<section class="upload-section">
+    <h2>Upload Document</h2>
+    <form action="/masters/documents/upload" method="post" enctype="multipart/form-data">
+        <label>Case ID</label>
+        <input type="number" name="case_id" placeholder="Optional case id">
+
+        <label>Customer ID</label>
+        <input type="number" name="customer_id" placeholder="Optional customer id">
+
+        <label>Lender ID</label>
+        <input type="number" name="lender_id" placeholder="Optional lender id">
+
+        <label>Document Type</label>
+        <input type="text" name="document_type" required>
+
+        <label>Uploaded By</label>
+        <input type="text" name="uploaded_by" required>
+
+        <label>File</label>
+        <input type="file" name="file" accept=".pdf,.docx,.png,.jpg,.jpeg" required>
+
+        <button type="submit">Upload</button>
+    </form>
+</section>
+
+<section class="document-list">
+    <h2>Uploaded Documents</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Case</th>
+                <th>Customer</th>
+                <th>Lender</th>
+                <th>Filename</th>
+                <th>Uploaded By</th>
+                <th>Uploaded At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for document in documents %}
+            <tr>
+                <td>{{ document.document_id }}</td>
+                <td>{{ document.document_type }}</td>
+                <td>{{ document.case_id or "-" }}</td>
+                <td>{{ document.customer_id or "-" }}</td>
+                <td>{{ document.lender_id or "-" }}</td>
+                <td>{{ document.filename }}</td>
+                <td>{{ document.uploaded_by }}</td>
+                <td>{{ document.uploaded_at }}</td>
+                <td>
+                    <a href="/masters/documents/download/{{ document.document_id }}">Download</a>
+                    <form action="/masters/documents/delete/{{ document.document_id }}" method="post" style="display:inline">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="9">No documents found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

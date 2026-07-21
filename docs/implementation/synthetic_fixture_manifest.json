@@ -1,0 +1,74 @@
+{
+  "generated_cases": {
+    "TR-01": {
+      "template_name": "MIS_TEMPLATE_LenderMaster.xlsx",
+      "sheet_name": "Master",
+      "header_row": 1,
+      "output_file": "samples/_synthetic_phase5/TR-01_MIS_TEMPLATE_LenderMaster.xlsx",
+      "column_count": 26
+    },
+    "TR-02": {
+      "template_name": "MIS_TEMPLATE_ConnectorMaster.xlsx",
+      "sheet_name": "Master",
+      "header_row": 1,
+      "output_file": "samples/_synthetic_phase5/TR-02_MIS_TEMPLATE_ConnectorMaster.xlsx",
+      "column_count": 24
+    },
+    "TR-03": {
+      "template_name": "MIS_TEMPLATE_SecuredTracker.xlsx",
+      "sheet_name": "Tracker",
+      "header_row": 1,
+      "output_file": "samples/_synthetic_phase5/TR-03_MIS_TEMPLATE_SecuredTracker.xlsx",
+      "column_count": 43
+    },
+    "TR-04": {
+      "template_name": "MIS_TEMPLATE_Salary_Details.xlsx",
+      "sheet_name": "Salary",
+      "header_row": 1,
+      "output_file": "samples/_synthetic_phase5/TR-04_MIS_TEMPLATE_Salary_Details.xlsx",
+      "column_count": 20
+    },
+    "TR-05": {
+      "template_name": "MIS_TEMPLATE_Expense_Payment_Tracker.xlsx",
+      "sheet_name": "Payments",
+      "header_row": 1,
+      "output_file": "samples/_synthetic_phase5/TR-05_MIS_TEMPLATE_Expense_Payment_Tracker.xlsx",
+      "column_count": 9
+    },
+    "TR-06": {
+      "template_name": "MIS_TEMPLATE_Invoice_Dump.xlsx",
+      "sheet_name": "Invoices",
+      "header_row": 1,
+      "output_file": "samples/_synthetic_phase5/TR-06_MIS_TEMPLATE_Invoice_Dump.xlsx",
+      "column_count": 6
+    },
+    "TR-07": {
+      "template_name": "MIS_TEMPLATE_UnsecuredTracker.xlsx",
+      "sheet_name": "Tracker",
+      "header_row": 1,
+      "output_file": "samples/_synthetic_phase5/TR-07_MIS_TEMPLATE_UnsecuredTracker.xlsx",
+      "column_count": 43
+    },
+    "TR-08": {
+      "template_name": "MIS_TEMPLATE_Employee_Master.xlsx",
+      "sheet_name": "Employees",
+      "header_row": 1,
+      "output_file": "samples/_synthetic_phase5/TR-08_MIS_TEMPLATE_Employee_Master.xlsx",
+      "column_count": 11
+    },
+    "TR-09": {
+      "template_name": "MIS_TEMPLATE_Employee_Incentive_Master.xlsx",
+      "sheet_name": "Incentives",
+      "header_row": 1,
+      "output_file": "samples/_synthetic_phase5/TR-09_MIS_TEMPLATE_Employee_Incentive_Master.xlsx",
+      "column_count": 10
+    },
+    "TR-10": {
+      "template_name": "MIS_TEMPLATE_Bank_Statement.xlsx",
+      "sheet_name": "Transactions",
+      "header_row": 1,
+      "output_file": "samples/_synthetic_phase5/TR-10_MIS_TEMPLATE_Bank_Statement.xlsx",
+      "column_count": 4
+    }
+  }
+}

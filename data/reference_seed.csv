@@ -1,0 +1,21 @@
+table,code,name
+REF_LoanType,Secured,Secured Loan
+REF_LoanType,Unsecured,Unsecured Loan
+REF_Channel,Direct,Direct
+REF_Channel,Partner,Partner
+REF_ProductCategory,BL,Business Loan
+REF_ProductCategory,PL,Personal Loan
+REF_ProductCategory,HL,Home Loan
+REF_ProductCategory,LAP,Loan Against Property
+REF_Status,Active,Active
+REF_Status,Inactive,Inactive
+REF_Status,Draft,Draft
+REF_Region,North,North
+REF_Region,South,South
+REF_Region,East,East
+REF_Region,West,West
+REF_BorrowerProfile,SEP,Salaried/Employed Profile
+REF_BorrowerProfile,SENP,Self Employed Non Professional
+REF_LoanNature,Fresh,Fresh
+REF_LoanNature,Top-up,Top-up
+REF_Location,PAN INDIA,PAN INDIA

@@ -1,0 +1,81 @@
+<!-- src/templates/masters/case_form.html -->
+{% extends "masters/base.html" %}
+
+{% block title %}
+    {% if action == 'add' %}Add Case{% else %}Edit Case{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{% if action == 'add' %}Add Case{% else %}Edit Case{% endif %}</h1>
+    <a href="/masters/cases" class="btn btn-secondary">Back to List</a>
+</div>
+
+<div class="form-container">
+    <form method="POST" action="{% if action == 'add' %}/masters/cases{% else %}/masters/cases/{{ case.case_id }}/edit{% endif %}">
+        <div class="form-group">
+            <label for="case_number">Case Number</label>
+            <input type="text" id="case_number" name="case_number" value="{{ case.case_number if case else '' }}" placeholder="Leave blank to auto-generate">
+        </div>
+        <div class="form-group">
+            <label for="customer_id">Customer *</label>
+            <select id="customer_id" name="customer_id" required>
+                <option value="">Select Customer</option>
+                {% for customer in customers %}
+                <option value="{{ customer.customer_id }}" {% if case and case.customer_id == customer.customer_id %}selected{% endif %}>{{ customer.full_name }} ({{ customer.customer_id }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="lender_id">Lender *</label>
+            <select id="lender_id" name="lender_id" required>
+                <option value="">Select Lender</option>
+                {% for lender in lenders %}
+                <option value="{{ lender.lender_id }}" {% if case and case.lender_id == lender.lender_id %}selected{% endif %}>{{ lender.lender_name }} ({{ lender.lender_id }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="product_id">Product *</label>
+            <select id="product_id" name="product_id" required>
+                <option value="">Select Product</option>
+                {% for product in products %}
+                <option value="{{ product.product_id }}" {% if case and case.product_id == product.product_id %}selected{% endif %}>{{ product.product_name }} ({{ product.product_id }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="application_date">Application Date</label>
+            <input type="date" id="application_date" name="application_date" value="{{ case.application_date if case and case.application_date else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="sanction_date">Sanction Date</label>
+            <input type="date" id="sanction_date" name="sanction_date" value="{{ case.sanction_date if case and case.sanction_date else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="disbursement_date">Disbursement Date</label>
+            <input type="date" id="disbursement_date" name="disbursement_date" value="{{ case.disbursement_date if case and case.disbursement_date else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="sanction_amount">Sanction Amount</label>
+            <input type="number" step="0.01" id="sanction_amount" name="sanction_amount" value="{{ case.sanction_amount if case and case.sanction_amount else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="disbursement_amount">Disbursement Amount</label>
+            <input type="number" step="0.01" id="disbursement_amount" name="disbursement_amount" value="{{ case.disbursement_amount if case and case.disbursement_amount else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select id="status" name="status">
+                {% for status in statuses %}
+                <option value="{{ status }}" {% if case and case.status == status %}selected{% endif %}>{{ status }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="/masters/cases" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

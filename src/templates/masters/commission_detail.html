@@ -1,0 +1,27 @@
+{% extends "masters/base.html" %}
+
+{% block title %}Commission Detail - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Commission Detail</h1>
+    <a href="/masters/commission" class="btn btn-secondary">Back to Commission</a>
+</div>
+
+<div class="detail-card">
+    <dl>
+        <dt>Commission ID</dt><dd>{{ commission.commission_id }}</dd>
+        <dt>Case Number</dt><dd>{{ case.case_number if case else commission.case_id }}</dd>
+        <dt>Connector</dt><dd>{{ connector.full_name if connector else '-' }}</dd>
+        <dt>Commission Date</dt><dd>{{ commission.commission_date }}</dd>
+        <dt>Base Commission Amount</dt><dd>₹{{ "%.2f"|format(commission.base_commission_amount) }}</dd>
+        <dt>Bonus Commission Amount</dt><dd>₹{{ "%.2f"|format(commission.bonus_commission_amount) }}</dd>
+        <dt>Gross Commission Amount</dt><dd>₹{{ "%.2f"|format(commission.gross_commission_amount) }}</dd>
+        <dt>GST Amount</dt><dd>₹{{ "%.2f"|format(commission.gst_amount) }}</dd>
+        <dt>TDS Amount</dt><dd>₹{{ "%.2f"|format(commission.tds_amount) }}</dd>
+        <dt>Net Amount</dt><dd>₹{{ "%.2f"|format(commission.net_amount) }}</dd>
+        <dt>Payment Status</dt><dd>{{ commission.payment_status }}</dd>
+        <dt>Notes</dt><dd>{{ commission.notes or '-' }}</dd>
+    </dl>
+</div>
+{% endblock %}

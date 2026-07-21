@@ -1,0 +1,40 @@
+{% extends "masters/base.html" %}
+
+{% block title %}Validation Rules - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Validation Rules</h1>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Table</th>
+                <th>Field</th>
+                <th>Severity</th>
+                <th>Priority</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                <td>{{ row.rule_id }}</td>
+                <td>{{ row.rule_code }}</td>
+                <td>{{ row.rule_name }}</td>
+                <td>{{ row.table_name }}</td>
+                <td>{{ row.field_name }}</td>
+                <td>{{ row.severity }}</td>
+                <td>{{ row.priority }}</td>
+                <td>{{ 'Yes' if row.is_active else 'No' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

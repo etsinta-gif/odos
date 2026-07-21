@@ -1,0 +1,27 @@
+{% extends "masters/base.html" %}
+
+{% block title %}Pilot Report - FCPL{% endblock %}
+
+{% block content %}
+<h1>FCPL Pilot Test Report</h1>
+
+<ul>
+  <li>Connectors: {{ connector_count }}</li>
+  <li>Lenders: {{ lender_count }}</li>
+  <li>Cases: {{ case_count }}</li>
+  <li>Revenue Records: {{ revenue_count }}</li>
+  <li>Commission Records: {{ commission_count }}</li>
+</ul>
+
+{% if connector_count > 0 and lender_count > 0 and case_count > 0 %}
+<p style="color: #0f7a2a;">PASS - Pilot data successfully ingested.</p>
+{% else %}
+<p style="color: #9a6700;">Some key tables are empty. Check ETL logs before sign-off.</p>
+{% endif %}
+
+<p>
+  <a href="/masters/reports/pilot">Refresh</a>
+  |
+  <a href="/masters/etl/upload">Go to ETL Upload</a>
+</p>
+{% endblock %}

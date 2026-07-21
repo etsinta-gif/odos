@@ -1,0 +1,35 @@
+{% extends "masters/base.html" %}
+
+{% block title %}Tax Summary - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Calculated Tax Summary (GST/TDS)</h1>
+    <a href="/masters/data/overview" class="btn btn-primary">Back to Overview</a>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Module</th>
+                <th>Rows</th>
+                <th>Total GST</th>
+                <th>Total TDS</th>
+                <th>Total Net</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, row in summary.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ row.rows }}</td>
+                <td>{{ '%.2f'|format(row.gst_sum or 0.0) }}</td>
+                <td>{{ '%.2f'|format(row.tds_sum or 0.0) }}</td>
+                <td>{{ '%.2f'|format(row.net_sum or 0.0) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

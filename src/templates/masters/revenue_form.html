@@ -1,0 +1,63 @@
+{% extends "masters/base.html" %}
+
+{% block title %}{{ 'Edit' if action == 'edit' else 'Add' }} Revenue - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{{ 'Edit' if action == 'edit' else 'Add' }} Revenue</h1>
+    <a href="/masters/revenue" class="btn btn-secondary">Back to Revenue</a>
+</div>
+
+<form method="POST" action="{% if action == 'edit' %}/masters/revenue/{{ revenue.revenue_id }}/edit{% else %}/masters/revenue{% endif %}" class="form-card">
+    <div class="form-row">
+        <label for="case_id">Case</label>
+        <select id="case_id" name="case_id" required>
+            <option value="">Select case</option>
+            {% for case in cases %}
+                <option value="{{ case.case_id }}" {% if case.case_id == selected_case_id %}selected{% endif %}>
+                    {{ case.case_number }} - {{ case.customer_name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="revenue_date">Revenue Date</label>
+        <input type="date" id="revenue_date" name="revenue_date" required value="{{ revenue.revenue_date if revenue else '' }}">
+    </div>
+    <div class="form-row">
+        <label for="base_revenue_amount">Base Revenue Amount</label>
+        <input type="number" step="0.01" id="base_revenue_amount" name="base_revenue_amount" required value="{{ revenue.base_revenue_amount if revenue else request.query_params.get('base_amount', '') }}">
+    </div>
+    <div class="form-row">
+        <label for="gst_amount">GST Amount</label>
+        <input type="number" step="0.01" id="gst_amount" name="gst_amount" value="{{ revenue.gst_amount if revenue else request.query_params.get('gst_amount', '') }}">
+    </div>
+    <div class="form-row">
+        <label for="tds_amount">TDS Amount</label>
+        <input type="number" step="0.01" id="tds_amount" name="tds_amount" value="{{ revenue.tds_amount if revenue else request.query_params.get('tds_amount', '') }}">
+    </div>
+    <div class="form-row">
+        <label for="net_amount">Net Amount</label>
+        <input type="number" step="0.01" id="net_amount" name="net_amount" required value="{{ revenue.net_amount if revenue else request.query_params.get('net_amount', '') }}">
+    </div>
+    <div class="form-row">
+        <label for="utr_number">UTR Number</label>
+        <input type="text" id="utr_number" name="utr_number" value="{{ revenue.utr_number if revenue else '' }}">
+    </div>
+    <div class="form-row">
+        <label for="payment_status">Payment Status</label>
+        <select id="payment_status" name="payment_status" required>
+            {% for status in payment_statuses %}
+                <option value="{{ status }}" {% if revenue and revenue.payment_status == status %}selected{% elif not revenue and status == 'PENDING' %}selected{% endif %}>{{ status }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="notes">Notes</label>
+        <textarea id="notes" name="notes">{{ revenue.notes if revenue else '' }}</textarea>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">{{ 'Save Changes' if action == 'edit' else 'Create Revenue' }}</button>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "masters/base.html" %}
+
+{% block title %}TDS Rules - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>TDS Rules</h1>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Section</th>
+                <th>Rate</th>
+                <th>Threshold</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                <td>{{ row.tds_rule_id }}</td>
+                <td>{{ row.rule_code }}</td>
+                <td>{{ row.rule_name }}</td>
+                <td>{{ row.section or '-' }}</td>
+                <td>{{ row.rate }}</td>
+                <td>{{ row.threshold if row.threshold is not none else '-' }}</td>
+                <td>{{ 'Yes' if row.is_active else 'No' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

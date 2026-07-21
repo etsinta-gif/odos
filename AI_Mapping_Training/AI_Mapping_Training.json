@@ -1,0 +1,1292 @@
+[
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "CASE NO",
+    "target_table": "TRN_Case",
+    "target_field": "CaseNumber",
+    "confidence_score": 0.99,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "ENQUIRY NO",
+    "target_table": "TRN_Case",
+    "target_field": "EnquiryNumber",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "APPLICATION NUMBER",
+    "target_table": "TRN_Case",
+    "target_field": "ApplicationNumber",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "ENTRY DATE",
+    "target_table": "TRN_Case",
+    "target_field": "EntryDate",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "ENTRY DONE BY",
+    "target_table": "TRN_Case",
+    "target_field": "EntryBy",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "COMPANY NAME",
+    "target_table": "TRN_Case",
+    "target_field": "CompanyName",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "CUSTOMER NAME",
+    "target_table": "TRN_Case",
+    "target_field": "CustomerName",
+    "confidence_score": 0.98,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "BANK NAME",
+    "target_table": "TRN_Case",
+    "target_field": "LenderID",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "PRODUCT",
+    "target_table": "TRN_Case",
+    "target_field": "ProductID",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "CONNECTOR",
+    "target_table": "TRN_Case",
+    "target_field": "Connector1ID",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "CONNECTOR 2",
+    "target_table": "TRN_Case",
+    "target_field": "Connector2ID",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "UNIT HEAD",
+    "target_table": "TRN_Case",
+    "target_field": "UnitHeadID",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "SM NAME",
+    "target_table": "TRN_Case",
+    "target_field": "SalesManagerID",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "REGION",
+    "target_table": "TRN_Case",
+    "target_field": "Region",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "STATUS",
+    "target_table": "TRN_Case",
+    "target_field": "Status",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "TOTAL DISB AMOUNT",
+    "target_table": "TRN_Case",
+    "target_field": "TotalDisbursementAmount",
+    "confidence_score": 0.98,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "DISB DATE",
+    "target_table": "TRN_Case",
+    "target_field": "DisbursementDate",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "PROFILE",
+    "target_table": "TRN_Case",
+    "target_field": "Profile",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "TAXABLE AMOUNT",
+    "target_table": "TRN_Case",
+    "target_field": "TaxableAmount",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "INVOICE DATE",
+    "target_table": "TRN_Case",
+    "target_field": "InvoiceDate",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "INVOICE NO",
+    "target_table": "TRN_Case",
+    "target_field": "InvoiceNumber",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "BILL STATUS",
+    "target_table": "TRN_Case",
+    "target_field": "BillStatus",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "RECEIVE DATE",
+    "target_table": "TRN_Case",
+    "target_field": "ReceiveDate",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "CASE WISE P&L",
+    "target_table": "TRN_Case",
+    "target_field": "ProfitLoss",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "PAYOUT %",
+    "target_table": "TRN_Case",
+    "target_field": "PayoutPercentage",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "REMARKS",
+    "target_table": "TRN_Case",
+    "target_field": "Remarks",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "PAYMENT APPROVAL",
+    "target_table": "TRN_Case",
+    "target_field": "PaymentApproval",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "BANK PAYOUTAMT",
+    "target_table": "TRN_Commission",
+    "target_field": "BankPayoutAmount",
+    "confidence_score": 0.98,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "CONNECTOR PAYOUT AMT",
+    "target_table": "TRN_Commission",
+    "target_field": "ConnectorPayoutAmount",
+    "confidence_score": 0.98,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "CONNECTOR 2 PAYOUT AMT",
+    "target_table": "TRN_Commission",
+    "target_field": "Connector2PayoutAmount",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "UNIT HEAD AMT",
+    "target_table": "TRN_Commission",
+    "target_field": "UnitHeadPayoutAmount",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "SM PAYOUT AMT",
+    "target_table": "TRN_Commission",
+    "target_field": "SalesManagerPayoutAmount",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "PAYMENT AMT",
+    "target_table": "TRN_Commission",
+    "target_field": "PaymentAmount",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "TDS@2%",
+    "target_table": "TRN_Commission",
+    "target_field": "TDSAmount",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "FINAL PAYABLE AMT",
+    "target_table": "TRN_Commission",
+    "target_field": "FinalPayableAmount",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "C-1 UTR",
+    "target_table": "TRN_Commission",
+    "target_field": "UTRNumber",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "CONNECTOR CODE",
+    "target_table": "MST_Connector",
+    "target_field": "ConnectorCode",
+    "confidence_score": 0.98,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "CONNECTOR NAME",
+    "target_table": "MST_Connector",
+    "target_field": "ConnectorName",
+    "confidence_score": 0.98,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "DSA",
+    "target_table": "MST_Connector",
+    "target_field": "DSA",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "LENDER/NBFC",
+    "target_table": "MST_Lender",
+    "target_field": "LenderName",
+    "confidence_score": 0.98,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "NBFC?",
+    "target_table": "MST_Lender",
+    "target_field": "IsNBFC",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "TYPE",
+    "target_table": "MST_Product",
+    "target_field": "ProductType",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "CATEGORY",
+    "target_table": "MST_Product",
+    "target_field": "Category",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "SUB-PRODUCT",
+    "target_table": "MST_Product",
+    "target_field": "SubProduct",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "CHANNEL",
+    "target_table": "MST_Product",
+    "target_field": "Channel",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "BORROWER",
+    "target_table": "MST_Product",
+    "target_field": "BorrowerType",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "EMPLOYER",
+    "target_table": "MST_Product",
+    "target_field": "EmployerType",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "SALARY RANGE",
+    "target_table": "MST_Product",
+    "target_field": "SalaryRange",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "NATURE",
+    "target_table": "MST_Product",
+    "target_field": "LoanNature",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "LOCATION",
+    "target_table": "MST_Product",
+    "target_field": "Location",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "ROI %",
+    "target_table": "MST_Product",
+    "target_field": "ROI_Percent",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "DSA CODE",
+    "target_table": "MST_Connector",
+    "target_field": "DSACode",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "SLAB TYPE",
+    "target_table": "RUL_CommissionRule",
+    "target_field": "SlabType",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "BASE %",
+    "target_table": "RUL_CommissionRule",
+    "target_field": "BaseRate",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "HEADLINE %",
+    "target_table": "RUL_CommissionRule",
+    "target_field": "HeadlineRate",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "QUALIFYING",
+    "target_table": "RUL_ValidationRule",
+    "target_field": "QualifyingType",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "PF %",
+    "target_table": "RUL_ValidationRule",
+    "target_field": "PF_Rate",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "I %",
+    "target_table": "RUL_ValidationRule",
+    "target_field": "Insurance_Rate",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "QUALIFYING NOTES",
+    "target_table": "RUL_ValidationRule",
+    "target_field": "QualifyingNotes",
+    "confidence_score": 0.8,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "COMMERCIAL",
+    "target_table": "RUL_ValidationRule",
+    "target_field": "CommercialNotes",
+    "confidence_score": 0.8,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "POST-DISBURSEMENT",
+    "target_table": "RUL_ValidationRule",
+    "target_field": "PostDisbursementNotes",
+    "confidence_score": 0.8,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "OBSERVED CASES (FY 25-26)",
+    "target_table": "RUL_CommissionRule",
+    "target_field": "ObservedCases",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "CONTEST FREQUENCY",
+    "target_table": "RUL_Contest",
+    "target_field": "Frequency",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "CONTEST TARGET",
+    "target_table": "RUL_Contest",
+    "target_field": "TargetAmount",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "CONTEST BONUS %",
+    "target_table": "RUL_Contest",
+    "target_field": "BonusPercent",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "CONTEST PERIOD",
+    "target_table": "RUL_Contest",
+    "target_field": "Period",
+    "confidence_score": 0.8,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "CONTEST NOTES",
+    "target_table": "RUL_Contest",
+    "target_field": "Notes",
+    "confidence_score": 0.8,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "EMPLOYEE CODE",
+    "target_table": "MST_Employee",
+    "target_field": "EmployeeCode",
+    "confidence_score": 0.98,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "EMPLOYEE NAME",
+    "target_table": "MST_Employee",
+    "target_field": "FullName",
+    "confidence_score": 0.98,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "GENDER",
+    "target_table": "MST_Employee",
+    "target_field": "Gender",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "DATE OF BIRTH",
+    "target_table": "MST_Employee",
+    "target_field": "DateOfBirth",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "FATHER NAME",
+    "target_table": "MST_Employee",
+    "target_field": "FatherName",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "MARITAL STATUS",
+    "target_table": "MST_Employee",
+    "target_field": "MaritalStatus",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "PAN",
+    "target_table": "MST_Employee",
+    "target_field": "PAN",
+    "confidence_score": 0.98,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "AADHAR NUMBER",
+    "target_table": "MST_Employee",
+    "target_field": "AadharNumber",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "EMAIL",
+    "target_table": "MST_Employee",
+    "target_field": "Email",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "MOBILE NUMBER",
+    "target_table": "MST_Employee",
+    "target_field": "MobileNumber",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "ADDRESS",
+    "target_table": "MST_Employee",
+    "target_field": "Address",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "DATE OF JOINING",
+    "target_table": "MST_Employee",
+    "target_field": "DateOfJoining",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "DESIGNATION",
+    "target_table": "MST_Employee",
+    "target_field": "Designation",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "DEPARTMENT",
+    "target_table": "MST_Employee",
+    "target_field": "Department",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "TEAM",
+    "target_table": "MST_Employee",
+    "target_field": "TeamName",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "BRANCH",
+    "target_table": "MST_Employee",
+    "target_field": "BranchName",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "BANK NAME",
+    "target_table": "MST_PartyBankAccount",
+    "target_field": "BankName",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "BANK ACCOUNT NUMBER",
+    "target_table": "MST_PartyBankAccount",
+    "target_field": "AccountNumber",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "IFSC",
+    "target_table": "MST_PartyBankAccount",
+    "target_field": "IFSC",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "UAN",
+    "target_table": "MST_Employee",
+    "target_field": "UAN",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "PF APPLICABLE",
+    "target_table": "MST_Employee",
+    "target_field": "PF_Applicable",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "ESIC APPLICABLE",
+    "target_table": "MST_Employee",
+    "target_field": "ESIC_Applicable",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "PAYABLE DAYS",
+    "target_table": "TRN_Salary",
+    "target_field": "PayableDays",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "ONE DAY SALARY",
+    "target_table": "TRN_Salary",
+    "target_field": "OneDaySalary",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "GROSS EARNINGS",
+    "target_table": "TRN_Salary",
+    "target_field": "GrossEarnings",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "BASIC + DA",
+    "target_table": "TRN_Salary",
+    "target_field": "BasicDA",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "HRA",
+    "target_table": "TRN_Salary",
+    "target_field": "HRA",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "OTHER ALLOWANCE",
+    "target_table": "TRN_Salary",
+    "target_field": "OtherAllowance",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "SPECIAL ALLOWANCE",
+    "target_table": "TRN_Salary",
+    "target_field": "SpecialAllowance",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "PF - EMPLOYEE",
+    "target_table": "TRN_Salary",
+    "target_field": "PF_EmployeeShare",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "PF - EMPLOYER",
+    "target_table": "TRN_Salary",
+    "target_field": "PF_EmployerShare",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "ESIC - EMPLOYEE",
+    "target_table": "TRN_Salary",
+    "target_field": "ESIC_EmployeeShare",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "ESIC - EMPLOYER",
+    "target_table": "TRN_Salary",
+    "target_field": "ESIC_EmployerShare",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "PROFESSIONAL TAX",
+    "target_table": "TRN_Salary",
+    "target_field": "ProfessionalTax",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "MLWF",
+    "target_table": "TRN_Salary",
+    "target_field": "MLWF",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "TDS",
+    "target_table": "TRN_Salary",
+    "target_field": "TDS_Amount",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "ADVANCE SALARY",
+    "target_table": "TRN_Salary",
+    "target_field": "AdvanceSalary",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "NET PAYABLE",
+    "target_table": "TRN_Salary",
+    "target_field": "NetPayable",
+    "confidence_score": 0.98,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "PAYMENT DATE",
+    "target_table": "TRN_Salary",
+    "target_field": "PaymentDate",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "UTR NUMBER",
+    "target_table": "TRN_Salary",
+    "target_field": "UTRNumber",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "PAYMENT STATUS",
+    "target_table": "TRN_Salary",
+    "target_field": "PaymentStatus",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Salary"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "SR NO",
+    "target_table": "TRN_Case",
+    "target_field": "ExternalID",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "ENTRY DATE",
+    "target_table": "TRN_Case",
+    "target_field": "EntryDate",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Secured_Tracker"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "APP NO",
+    "target_table": "TRN_Case",
+    "target_field": "ApplicationNumber",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "DSR_BL_PL"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "MONTH",
+    "target_table": "TRN_Case",
+    "target_field": "ReportMonth",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "DSR_BL_PL"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "PROFILE",
+    "target_table": "TRN_Case",
+    "target_field": "Profile",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "DSR_BL_PL"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "CONNECTOR NAME",
+    "target_table": "TRN_Case",
+    "target_field": "ConnectorID",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "DSR_BL_PL"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "BANKER NAME",
+    "target_table": "TRN_Case",
+    "target_field": "BankerName",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "DSR_BL_PL"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "BANKER NUMBER",
+    "target_table": "TRN_Case",
+    "target_field": "BankerContact",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "DSR_BL_PL"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "LOGIN AMT",
+    "target_table": "TRN_Case",
+    "target_field": "LoginAmount",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "DSR_BL_PL"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "SANCTION AMT",
+    "target_table": "TRN_Case",
+    "target_field": "SanctionAmount",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "DSR_BL_PL"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "DISBURSE AMT",
+    "target_table": "TRN_Case",
+    "target_field": "DisbursementAmount",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "DSR_BL_PL"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "NET AMT",
+    "target_table": "TRN_Case",
+    "target_field": "NetAmount",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "DSR_BL_PL"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "RATE",
+    "target_table": "TRN_Case",
+    "target_field": "InterestRate",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "DSR_BL_PL"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "TENURE",
+    "target_table": "TRN_Case",
+    "target_field": "TenureMonths",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "DSR_BL_PL"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "LOGIN DATE",
+    "target_table": "TRN_Case",
+    "target_field": "LoginDate",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "DSR_BL_PL"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "SANCTION DATE",
+    "target_table": "TRN_Case",
+    "target_field": "SanctionDate",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "DSR_BL_PL"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "DISB DATE",
+    "target_table": "TRN_Case",
+    "target_field": "DisbursementDate",
+    "confidence_score": 0.95,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "DSR_BL_PL"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "REMARK",
+    "target_table": "TRN_Case",
+    "target_field": "Remarks",
+    "confidence_score": 0.9,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "DSR_BL_PL"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "PRORITY",
+    "target_table": "TRN_Case",
+    "target_field": "Priority",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "DSR_BL_PL"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "CONNECTOR CODE",
+    "target_table": "MST_Connector",
+    "target_field": "ConnectorCode",
+    "confidence_score": 0.98,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  },
+  {
+    "source_system": "FCPL_Excel",
+    "source_header": "SR NO",
+    "target_table": "MST_Connector",
+    "target_field": "ExternalID",
+    "confidence_score": 0.85,
+    "is_verified": true,
+    "usage_count": 1,
+    "source_file_example": "Connector_Master"
+  }
+]

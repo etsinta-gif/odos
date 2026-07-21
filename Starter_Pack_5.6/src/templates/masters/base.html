@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ODOS Enterprise{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">ODOS Enterprise</div>
+            <ul class="nav-menu">
+                <li><a href="/masters/revenue">Revenue</a></li>
+                <li><a href="/masters/commission">Commission</a></li>
+                <li><a href="/masters/expenses">Expenses</a></li>
+                <li><a href="/masters/payments">Payments</a></li>
+                <li><a href="/masters/tally/exports">Tally Export</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!-- src/templates/masters/dsa_list.html -->
+{% extends "masters/base.html" %}
+
+{% block title %}DSAs - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1>DSAs</h1>
+        <p class="muted">Create a DSA/tenant first, then start the first Excel upload.</p>
+    </div>
+    <a href="/masters/dsas/add" class="btn btn-primary">Add DSA</a>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>DSA Code</th>
+                <th>DSA Name</th>
+                <th>Contact Person</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dsa in dsas %}
+            <tr>
+                <td>{{ dsa.dsa_id }}</td>
+                <td>{{ dsa.dsa_code }}</td>
+                <td>{{ dsa.dsa_name }}</td>
+                <td>{{ dsa.contact_person or '-' }}</td>
+                <td>{{ dsa.email or '-' }}</td>
+                <td>{{ dsa.mobile or '-' }}</td>
+                <td>
+                    <a href="/masters/dsas/{{ dsa.dsa_id }}/edit" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="/masters/dsas/{{ dsa.dsa_id }}/delete" class="btn btn-sm btn-danger" onclick="return confirm('Deactivate this DSA?')">Deactivate</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

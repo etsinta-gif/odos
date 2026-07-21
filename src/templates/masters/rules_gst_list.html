@@ -1,0 +1,38 @@
+{% extends "masters/base.html" %}
+
+{% block title %}GST Rules - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>GST Rules</h1>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Rate</th>
+                <th>Applicability</th>
+                <th>Reverse Charge</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                <td>{{ row.gst_rule_id }}</td>
+                <td>{{ row.rule_code }}</td>
+                <td>{{ row.rule_name }}</td>
+                <td>{{ row.rate }}</td>
+                <td>{{ row.applicability or '-' }}</td>
+                <td>{{ 'Yes' if row.reverse_charge else 'No' }}</td>
+                <td>{{ 'Yes' if row.is_active else 'No' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "masters/base.html" %}
+
+{% block title %}Commission Slabs - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Commission Slabs</h1>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Rule ID</th>
+                <th>Label</th>
+                <th>Tier Name</th>
+                <th>Tier Min</th>
+                <th>Tier Max</th>
+                <th>Rate</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                <td>{{ row.slab_id }}</td>
+                <td>{{ row.commission_rule_id or '-' }}</td>
+                <td>{{ row.slab_label }}</td>
+                <td>{{ row.tier_name or '-' }}</td>
+                <td>{{ row.tier_min if row.tier_min is not none else '-' }}</td>
+                <td>{{ row.tier_max if row.tier_max is not none else '-' }}</td>
+                <td>{{ row.rate }}</td>
+                <td>{{ 'Yes' if row.is_active else 'No' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

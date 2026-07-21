@@ -1,0 +1,88 @@
+{% extends "masters/base.html" %}
+
+{% block title %}Export Batch Detail - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Export Batch Detail</h1>
+    <a href="/masters/tally/exports" class="btn btn-secondary">Back to List</a>
+</div>
+
+<div class="detail-card">
+    <dl>
+        <dt>Batch ID</dt><dd>{{ batch.batch_id }}</dd>
+        <dt>Batch Number</dt><dd>{{ batch.batch_number }}</dd>
+        <dt>Batch Name</dt><dd>{{ batch.batch_name }}</dd>
+        <dt>Export Type</dt><dd>{{ batch.export_type }}</dd>
+        <dt>Period</dt><dd>{{ batch.period_start }} to {{ batch.period_end }}</dd>
+        <dt>Total Records</dt><dd>{{ batch.total_records }}</dd>
+        <dt>Exported Records</dt><dd>{{ batch.exported_records }}</dd>
+        <dt>Export Status</dt><dd><span class="status-badge status-{{ batch.export_status.lower() }}">{{ batch.export_status }}</span></dd>
+        <dt>Sync Status</dt><dd><span class="status-badge status-{{ batch.sync_status.lower() }}">{{ batch.sync_status }}</span></dd>
+        <dt>Notes</dt><dd>{{ batch.notes or '-' }}</dd>
+        <dt>Created At</dt><dd>{{ batch.created_at }}</dd>
+        <dt>Updated At</dt><dd>{{ batch.updated_at }}</dd>
+    </dl>
+</div>
+
+<div class="form-actions" style="margin-top: 1rem; gap: 0.5rem; display: flex; flex-wrap: wrap;">
+    <a href="/masters/tally/exports/{{ batch.batch_id }}/edit" class="btn btn-warning">Edit Batch</a>
+    {% if batch.file_path %}
+    <a href="{{ batch.file_path }}" class="btn btn-info" target="_blank">Download Export File</a>
+    {% endif %}
+    {% if batch.export_status == 'PENDING' %}
+    <form method="POST" action="/masters/tally/exports/{{ batch.batch_id }}/generate">
+        <button type="submit" class="btn btn-primary">Generate Export File</button>
+    </form>
+    {% endif %}
+    {% if batch.export_status == 'COMPLETED' and batch.sync_status == 'PENDING' %}
+    <form method="POST" action="/masters/tally/exports/{{ batch.batch_id }}/sync">
+        <button type="submit" class="btn btn-success">Mark as Synced to Tally</button>
+    </form>
+    {% endif %}
+    <a href="/masters/tally/exports/{{ batch.batch_id }}/delete" class="btn btn-danger" onclick="return confirm('Delete this export batch?')">Delete Batch</a>
+</div>
+
+{% if details %}
+<hr>
+<h2>Exported Records</h2>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Source Table</th>
+                <th>Source ID</th>
+                <th>Status</th>
+                <th>Preview</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for detail in details %}
+            <tr>
+                <td>{{ detail.detail_id }}</td>
+                <td>{{ detail.source_table }}</td>
+                <td>{{ detail.source_id }}</td>
+                <td><span class="status-badge status-{{ detail.export_status.lower() }}">{{ detail.export_status }}</span></td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-info" onclick="togglePreview('preview-{{ detail.detail_id }}')">Preview</button>
+                    <div id="preview-{{ detail.detail_id }}" style="display:none; margin-top: 0.5rem; background: #fbfbfb; padding: 0.75rem; border-radius: 5px; font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; word-break: break-word;">
+                        {{ detail.exported_data or 'No exported data' }}
+                    </div>
+                </td>
+                <td>{{ detail.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+<script>
+function togglePreview(id) {
+  const elem = document.getElementById(id);
+  elem.style.display = elem.style.display === 'none' ? 'block' : 'none';
+}
+</script>
+{% endblock %}

@@ -1,0 +1,94 @@
+{
+  "health": {
+    "status_code": 200,
+    "body": {
+      "status": "ok"
+    }
+  },
+  "files": [
+    {
+      "file": "samples\\Lender_Master.xlsx",
+      "entity_type": "MST_Lender",
+      "analyze": {
+        "status_code": 200
+      },
+      "approved_mappings": 0,
+      "ignored_columns": 1,
+      "template": null,
+      "upload_1": null,
+      "validate_1": null,
+      "promote_1": null,
+      "lineage_1": null,
+      "upload_2": null,
+      "validate_2": null,
+      "promote_2": null,
+      "lineage_2": null,
+      "notes": [
+        "Nothing relevant detected; all/no key columns ignored"
+      ]
+    },
+    {
+      "file": "samples\\Connector_Master.xlsx",
+      "entity_type": "MST_Connector",
+      "analyze": {
+        "status_code": 200
+      },
+      "approved_mappings": 0,
+      "ignored_columns": 1,
+      "template": null,
+      "upload_1": null,
+      "validate_1": null,
+      "promote_1": null,
+      "lineage_1": null,
+      "upload_2": null,
+      "validate_2": null,
+      "promote_2": null,
+      "lineage_2": null,
+      "notes": [
+        "Nothing relevant detected; all/no key columns ignored"
+      ]
+    },
+    {
+      "file": "samples\\Secured_Tracker.xlsx",
+      "entity_type": "TRN_Case",
+      "analyze": {
+        "status_code": 200
+      },
+      "approved_mappings": 0,
+      "ignored_columns": 1,
+      "template": null,
+      "upload_1": null,
+      "validate_1": null,
+      "promote_1": null,
+      "lineage_1": null,
+      "upload_2": null,
+      "validate_2": null,
+      "promote_2": null,
+      "lineage_2": null,
+      "notes": [
+        "Nothing relevant detected; all/no key columns ignored"
+      ]
+    },
+    {
+      "file": "samples\\Empty_File.xlsx",
+      "entity_type": "MST_Connector",
+      "analyze": {
+        "status_code": 200
+      },
+      "approved_mappings": 0,
+      "ignored_columns": 2,
+      "template": null,
+      "upload_1": null,
+      "validate_1": null,
+      "promote_1": null,
+      "lineage_1": null,
+      "upload_2": null,
+      "validate_2": null,
+      "promote_2": null,
+      "lineage_2": null,
+      "notes": [
+        "Nothing relevant detected; all/no key columns ignored"
+      ]
+    }
+  ]
+}

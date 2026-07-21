@@ -1,0 +1,71 @@
+sheet_name,business_scope,source_column,target_table,target_field,confidence_level,ignore,notes
+Payroll Sheet,EMPLOYEE_SALARY,Sr. No,,,None,True,Serial number column
+Payroll Sheet,EMPLOYEE_SALARY,ID,MST_Employee,employee_code,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,Employee Name,MST_Employee,full_name,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,Remark,TRN_Payment,notes,High,False,Salary sheet payout attribute; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,Gender,MST_Employee,gender,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,DOB,MST_Employee,date_of_birth,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,Father Name,MST_Employee,father_name,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,Marrital status,MST_Employee,marital_status,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,PAN,MST_Employee,pan,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,Email ID,MST_Employee,email,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,Mobile No.,MST_Employee,mobile,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,Aadhar Number,MST_Employee,aadhar_number,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,Address,MST_Employee,address,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,Date of Joining,MST_Employee,date_of_joining,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,Designation,MST_Employee,designation,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,Department,MST_Employee,department,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,Team Name,MST_Employee,team_name,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,Branch Name,TRN_Case,branch_name,High,False,Exact normalized match
+Payroll Sheet,EMPLOYEE_SALARY,PF Aplicable,MST_Employee,pf_applicable,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,ESIC Aplicable,MST_Employee,esic_applicable,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,Gross Salary,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,Days Worked,TRN_Payment,notes,Medium,False,Salary sheet attendance and payroll metadata
+Payroll Sheet,EMPLOYEE_SALARY,Leaves,TRN_Payment,notes,Medium,False,Salary sheet attendance and payroll metadata
+Payroll Sheet,EMPLOYEE_SALARY,Payable Days,TRN_Payment,notes,Medium,False,Salary sheet attendance and payroll metadata; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,One Day Salary,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,Salary for the Month,TRN_Payment,payment_amount,High,False,Salary sheet payout attribute; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,Basic & DA,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,HRA,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,Other Allowance,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,Total Leaves Gross Earning,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,Basic,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,HRA.1,TRN_Expense,amount,Medium,False,Salary sheet payroll amount
+Payroll Sheet,EMPLOYEE_SALARY,Other Allowance / Incentives,TRN_Commission,bonus_commission_amount,Medium,False,Salary sheet incentive and commission component; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,Overtime,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,Total Leaves Gross Earning.1,TRN_Expense,amount,Medium,False,Salary sheet payroll amount
+Payroll Sheet,EMPLOYEE_SALARY,Diff,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,PF,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,ESIC,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,P.TAX,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,MLWF,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,TDS,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,Advance Salary,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,Net Payable,TRN_Payment,payment_amount,High,False,Salary sheet payout attribute; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,Exp,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,Salary Paid Status,TRN_Payment,reconciliation_status,Medium,False,Salary sheet payout attribute
+Payroll Sheet,EMPLOYEE_SALARY,Bank Name,MST_Employee,bank_name,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,Bank Account Number,MST_Employee,bank_account_number,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,Bank IFSC,MST_Employee,bank_ifsc,High,False,Salary sheet employee attribute; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,UTR NUMBER,TRN_Payment,utr_number,Medium,False,Salary sheet payout attribute
+Payroll Sheet,EMPLOYEE_SALARY,PF Wages,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,EE share,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,ER Share,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,Pension,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,Black1,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,ESIC Wages,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,EE Share,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,ER Share.1,TRN_Expense,amount,Medium,False,Salary sheet payroll amount
+Payroll Sheet,EMPLOYEE_SALARY,Total Leaves,TRN_Payment,notes,Medium,False,Salary sheet attendance and payroll metadata; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,CTC,TRN_Expense,amount,Medium,False,Salary sheet payroll amount; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,Unnamed: 59,,,None,True,Unnamed helper column
+Payroll Sheet,EMPLOYEE_SALARY,Salary Increase,TRN_Expense,amount,Medium,False,Salary sheet payroll amount
+Payroll Sheet,EMPLOYEE_SALARY,Firm,TRN_Case,branch_name,Medium,False,Salary sheet organizational unit; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,Completed months,TRN_Payment,notes,Medium,False,Salary sheet attendance and payroll metadata; Formula-backed source column validated against workbook
+Payroll Sheet,EMPLOYEE_SALARY,UAN NUMBER,MST_Employee,uan_number,High,False,Salary sheet employee attribute
+Payroll Sheet,EMPLOYEE_SALARY,Remark.1,TRN_Payment,notes,Medium,False,Salary sheet payout attribute
+Payroll Sheet,EMPLOYEE_SALARY,FCPL DOJ,MST_Employee,date_of_joining,Medium,False,Salary sheet joining date variant; Formula discrepancy detected in source workbook (2 issue(s))
+Payroll Sheet,EMPLOYEE_SALARY,PF Remark,TRN_Payment,notes,Medium,False,Salary sheet attendance and payroll metadata; Formula-backed source column validated against workbook
+Pivot,EMPLOYEE_SALARY_SUMMARY,Grand Total,,,None,True,Salary pivot summary column
+Pivot,EMPLOYEE_SALARY_SUMMARY,1648526,,,None,True,Salary pivot summary column
+Pivot,EMPLOYEE_SALARY_SUMMARY,1608813,,,None,True,Salary pivot summary column

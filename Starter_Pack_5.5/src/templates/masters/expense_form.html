@@ -1,0 +1,92 @@
+{% extends "masters/base.html" %}
+
+{% block title %}{{ 'Edit' if action == 'edit' else 'Add' }} Expense - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{{ 'Edit' if action == 'edit' else 'Add' }} Expense</h1>
+    <a href="/masters/expenses" class="btn btn-secondary">Back to Expenses</a>
+</div>
+
+<form method="POST" action="{% if action == 'edit' %}/masters/expenses/{{ expense.expense_id }}/edit{% else %}/masters/expenses{% endif %}" class="form-card">
+    <div class="form-row">
+        <label for="expense_date">Expense Date</label>
+        <input type="date" id="expense_date" name="expense_date" required value="{{ expense.expense_date if expense else '' }}">
+    </div>
+    <div class="form-row">
+        <label for="vendor_id">Vendor</label>
+        <select id="vendor_id" name="vendor_id">
+            <option value="">Select vendor</option>
+            {% for vendor in vendors %}
+            <option value="{{ vendor.vendor_id }}" {% if vendor.vendor_id == selected_vendor_id %}selected{% endif %}>{{ vendor.vendor_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="expense_category_id">Category</label>
+        <select id="expense_category_id" name="expense_category_id" required>
+            <option value="">Select category</option>
+            {% for category in categories %}
+            <option value="{{ category.expense_category_id }}" {% if category.expense_category_id == selected_category_id %}selected{% endif %}>{{ category.category_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="cost_center_id">Cost Center</label>
+        <select id="cost_center_id" name="cost_center_id">
+            <option value="">Select cost center</option>
+            {% for center in cost_centers %}
+            <option value="{{ center.cost_center_id }}" {% if center.cost_center_id == selected_cost_center_id %}selected{% endif %}>{{ center.center_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="case_id">Case</label>
+        <select id="case_id" name="case_id">
+            <option value="">Select case</option>
+            {% for case in cases %}
+            <option value="{{ case.case_id }}" {% if case.case_id == selected_case_id %}selected{% endif %}>{{ case.case_number }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" required>{{ expense.description if expense else '' }}</textarea>
+    </div>
+    <div class="form-row">
+        <label for="amount">Amount</label>
+        <input type="number" step="0.01" id="amount" name="amount" required value="{{ expense.amount if expense else '' }}">
+    </div>
+    <div class="form-row">
+        <label for="gst_amount">GST Amount</label>
+        <input type="number" step="0.01" id="gst_amount" name="gst_amount" value="{{ expense.gst_amount if expense else '' }}">
+    </div>
+    <div class="form-row">
+        <label for="tds_amount">TDS Amount</label>
+        <input type="number" step="0.01" id="tds_amount" name="tds_amount" value="{{ expense.tds_amount if expense else '' }}">
+    </div>
+    <div class="form-row">
+        <label for="net_amount">Net Amount</label>
+        <input type="number" step="0.01" id="net_amount" name="net_amount" required value="{{ expense.net_amount if expense else '' }}">
+    </div>
+    <div class="form-row">
+        <label for="invoice_reference">Invoice Reference</label>
+        <input type="text" id="invoice_reference" name="invoice_reference" value="{{ expense.invoice_reference if expense else '' }}">
+    </div>
+    <div class="form-row">
+        <label for="payment_status">Payment Status</label>
+        <select id="payment_status" name="payment_status" required>
+            {% for status in payment_statuses %}
+            <option value="{{ status }}" {% if expense and expense.payment_status == status %}selected{% elif not expense and status == 'PENDING' %}selected{% endif %}>{{ status }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="notes">Notes</label>
+        <textarea id="notes" name="notes">{{ expense.notes if expense else '' }}</textarea>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">{{ 'Save Changes' if action == 'edit' else 'Create Expense' }}</button>
+    </div>
+</form>
+{% endblock %}

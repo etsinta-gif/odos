@@ -1,0 +1,130 @@
+source_system,source_header,target_table,target_field,confidence_score,is_verified,usage_count,source_file_example
+FCPL_Excel,CASE NO,TRN_Case,CaseNumber,0.99,TRUE,1,Secured_Tracker
+FCPL_Excel,ENQUIRY NO,TRN_Case,EnquiryNumber,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,APPLICATION NUMBER,TRN_Case,ApplicationNumber,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,ENTRY DATE,TRN_Case,EntryDate,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,ENTRY DONE BY,TRN_Case,EntryBy,0.90,TRUE,1,Secured_Tracker
+FCPL_Excel,COMPANY NAME,TRN_Case,CompanyName,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,CUSTOMER NAME,TRN_Case,CustomerName,0.98,TRUE,1,Secured_Tracker
+FCPL_Excel,BANK NAME,TRN_Case,LenderID,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,PRODUCT,TRN_Case,ProductID,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,CONNECTOR,TRN_Case,Connector1ID,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,CONNECTOR 2,TRN_Case,Connector2ID,0.90,TRUE,1,Secured_Tracker
+FCPL_Excel,UNIT HEAD,TRN_Case,UnitHeadID,0.90,TRUE,1,Secured_Tracker
+FCPL_Excel,SM NAME,TRN_Case,SalesManagerID,0.90,TRUE,1,Secured_Tracker
+FCPL_Excel,REGION,TRN_Case,Region,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,STATUS,TRN_Case,Status,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,TOTAL DISB AMOUNT,TRN_Case,TotalDisbursementAmount,0.98,TRUE,1,Secured_Tracker
+FCPL_Excel,DISB DATE,TRN_Case,DisbursementDate,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,PROFILE,TRN_Case,Profile,0.90,TRUE,1,Secured_Tracker
+FCPL_Excel,TAXABLE AMOUNT,TRN_Case,TaxableAmount,0.90,TRUE,1,Secured_Tracker
+FCPL_Excel,INVOICE DATE,TRN_Case,InvoiceDate,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,INVOICE NO,TRN_Case,InvoiceNumber,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,BILL STATUS,TRN_Case,BillStatus,0.90,TRUE,1,Secured_Tracker
+FCPL_Excel,RECEIVE DATE,TRN_Case,ReceiveDate,0.90,TRUE,1,Secured_Tracker
+FCPL_Excel,CASE WISE P&L,TRN_Case,ProfitLoss,0.85,TRUE,1,Secured_Tracker
+FCPL_Excel,PAYOUT %,TRN_Case,PayoutPercentage,0.85,TRUE,1,Secured_Tracker
+FCPL_Excel,REMARKS,TRN_Case,Remarks,0.90,TRUE,1,Secured_Tracker
+FCPL_Excel,PAYMENT APPROVAL,TRN_Case,PaymentApproval,0.90,TRUE,1,Secured_Tracker
+FCPL_Excel,BANK PAYOUTAMT,TRN_Commission,BankPayoutAmount,0.98,TRUE,1,Secured_Tracker
+FCPL_Excel,CONNECTOR PAYOUT AMT,TRN_Commission,ConnectorPayoutAmount,0.98,TRUE,1,Secured_Tracker
+FCPL_Excel,CONNECTOR 2 PAYOUT AMT,TRN_Commission,Connector2PayoutAmount,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,UNIT HEAD AMT,TRN_Commission,UnitHeadPayoutAmount,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,SM PAYOUT AMT,TRN_Commission,SalesManagerPayoutAmount,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,PAYMENT AMT,TRN_Commission,PaymentAmount,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,TDS@2%,TRN_Commission,TDSAmount,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,FINAL PAYABLE AMT,TRN_Commission,FinalPayableAmount,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,C-1 UTR,TRN_Commission,UTRNumber,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,CONNECTOR CODE,MST_Connector,ConnectorCode,0.98,TRUE,1,Connector_Master
+FCPL_Excel,CONNECTOR NAME,MST_Connector,ConnectorName,0.98,TRUE,1,Connector_Master
+FCPL_Excel,DSA,MST_Connector,DSA,0.95,TRUE,1,Connector_Master
+FCPL_Excel,LENDER/NBFC,MST_Lender,LenderName,0.98,TRUE,1,Connector_Master
+FCPL_Excel,NBFC?,MST_Lender,IsNBFC,0.95,TRUE,1,Connector_Master
+FCPL_Excel,TYPE,MST_Product,ProductType,0.90,TRUE,1,Connector_Master
+FCPL_Excel,CATEGORY,MST_Product,Category,0.95,TRUE,1,Connector_Master
+FCPL_Excel,SUB-PRODUCT,MST_Product,SubProduct,0.90,TRUE,1,Connector_Master
+FCPL_Excel,CHANNEL,MST_Product,Channel,0.85,TRUE,1,Connector_Master
+FCPL_Excel,BORROWER,MST_Product,BorrowerType,0.85,TRUE,1,Connector_Master
+FCPL_Excel,EMPLOYER,MST_Product,EmployerType,0.85,TRUE,1,Connector_Master
+FCPL_Excel,SALARY RANGE,MST_Product,SalaryRange,0.85,TRUE,1,Connector_Master
+FCPL_Excel,NATURE,MST_Product,LoanNature,0.85,TRUE,1,Connector_Master
+FCPL_Excel,LOCATION,MST_Product,Location,0.90,TRUE,1,Connector_Master
+FCPL_Excel,ROI %,MST_Product,ROI_Percent,0.90,TRUE,1,Connector_Master
+FCPL_Excel,DSA CODE,MST_Connector,DSACode,0.90,TRUE,1,Connector_Master
+FCPL_Excel,SLAB TYPE,RUL_CommissionRule,SlabType,0.90,TRUE,1,Connector_Master
+FCPL_Excel,BASE %,RUL_CommissionRule,BaseRate,0.95,TRUE,1,Connector_Master
+FCPL_Excel,HEADLINE %,RUL_CommissionRule,HeadlineRate,0.90,TRUE,1,Connector_Master
+FCPL_Excel,QUALIFYING,RUL_ValidationRule,QualifyingType,0.85,TRUE,1,Connector_Master
+FCPL_Excel,PF %,RUL_ValidationRule,PF_Rate,0.90,TRUE,1,Connector_Master
+FCPL_Excel,I %,RUL_ValidationRule,Insurance_Rate,0.90,TRUE,1,Connector_Master
+FCPL_Excel,QUALIFYING NOTES,RUL_ValidationRule,QualifyingNotes,0.80,TRUE,1,Connector_Master
+FCPL_Excel,COMMERCIAL,RUL_ValidationRule,CommercialNotes,0.80,TRUE,1,Connector_Master
+FCPL_Excel,POST-DISBURSEMENT,RUL_ValidationRule,PostDisbursementNotes,0.80,TRUE,1,Connector_Master
+FCPL_Excel,OBSERVED CASES (FY 25-26),RUL_CommissionRule,ObservedCases,0.85,TRUE,1,Connector_Master
+FCPL_Excel,CONTEST FREQUENCY,RUL_Contest,Frequency,0.85,TRUE,1,Connector_Master
+FCPL_Excel,CONTEST TARGET,RUL_Contest,TargetAmount,0.90,TRUE,1,Connector_Master
+FCPL_Excel,CONTEST BONUS %,RUL_Contest,BonusPercent,0.85,TRUE,1,Connector_Master
+FCPL_Excel,CONTEST PERIOD,RUL_Contest,Period,0.80,TRUE,1,Connector_Master
+FCPL_Excel,CONTEST NOTES,RUL_Contest,Notes,0.80,TRUE,1,Connector_Master
+FCPL_Excel,EMPLOYEE CODE,MST_Employee,EmployeeCode,0.98,TRUE,1,Salary
+FCPL_Excel,EMPLOYEE NAME,MST_Employee,FullName,0.98,TRUE,1,Salary
+FCPL_Excel,GENDER,MST_Employee,Gender,0.95,TRUE,1,Salary
+FCPL_Excel,DATE OF BIRTH,MST_Employee,DateOfBirth,0.95,TRUE,1,Salary
+FCPL_Excel,FATHER NAME,MST_Employee,FatherName,0.90,TRUE,1,Salary
+FCPL_Excel,MARITAL STATUS,MST_Employee,MaritalStatus,0.90,TRUE,1,Salary
+FCPL_Excel,PAN,MST_Employee,PAN,0.98,TRUE,1,Salary
+FCPL_Excel,AADHAR NUMBER,MST_Employee,AadharNumber,0.95,TRUE,1,Salary
+FCPL_Excel,EMAIL,MST_Employee,Email,0.95,TRUE,1,Salary
+FCPL_Excel,MOBILE NUMBER,MST_Employee,MobileNumber,0.95,TRUE,1,Salary
+FCPL_Excel,ADDRESS,MST_Employee,Address,0.90,TRUE,1,Salary
+FCPL_Excel,DATE OF JOINING,MST_Employee,DateOfJoining,0.95,TRUE,1,Salary
+FCPL_Excel,DESIGNATION,MST_Employee,Designation,0.90,TRUE,1,Salary
+FCPL_Excel,DEPARTMENT,MST_Employee,Department,0.90,TRUE,1,Salary
+FCPL_Excel,TEAM,MST_Employee,TeamName,0.85,TRUE,1,Salary
+FCPL_Excel,BRANCH,MST_Employee,BranchName,0.90,TRUE,1,Salary
+FCPL_Excel,BANK NAME,MST_PartyBankAccount,BankName,0.95,TRUE,1,Salary
+FCPL_Excel,BANK ACCOUNT NUMBER,MST_PartyBankAccount,AccountNumber,0.95,TRUE,1,Salary
+FCPL_Excel,IFSC,MST_PartyBankAccount,IFSC,0.95,TRUE,1,Salary
+FCPL_Excel,UAN,MST_Employee,UAN,0.90,TRUE,1,Salary
+FCPL_Excel,PF APPLICABLE,MST_Employee,PF_Applicable,0.90,TRUE,1,Salary
+FCPL_Excel,ESIC APPLICABLE,MST_Employee,ESIC_Applicable,0.90,TRUE,1,Salary
+FCPL_Excel,PAYABLE DAYS,TRN_Salary,PayableDays,0.90,TRUE,1,Salary
+FCPL_Excel,ONE DAY SALARY,TRN_Salary,OneDaySalary,0.90,TRUE,1,Salary
+FCPL_Excel,GROSS EARNINGS,TRN_Salary,GrossEarnings,0.95,TRUE,1,Salary
+FCPL_Excel,BASIC + DA,TRN_Salary,BasicDA,0.85,TRUE,1,Salary
+FCPL_Excel,HRA,TRN_Salary,HRA,0.85,TRUE,1,Salary
+FCPL_Excel,OTHER ALLOWANCE,TRN_Salary,OtherAllowance,0.85,TRUE,1,Salary
+FCPL_Excel,SPECIAL ALLOWANCE,TRN_Salary,SpecialAllowance,0.85,TRUE,1,Salary
+FCPL_Excel,PF - EMPLOYEE,TRN_Salary,PF_EmployeeShare,0.95,TRUE,1,Salary
+FCPL_Excel,PF - EMPLOYER,TRN_Salary,PF_EmployerShare,0.95,TRUE,1,Salary
+FCPL_Excel,ESIC - EMPLOYEE,TRN_Salary,ESIC_EmployeeShare,0.95,TRUE,1,Salary
+FCPL_Excel,ESIC - EMPLOYER,TRN_Salary,ESIC_EmployerShare,0.95,TRUE,1,Salary
+FCPL_Excel,PROFESSIONAL TAX,TRN_Salary,ProfessionalTax,0.95,TRUE,1,Salary
+FCPL_Excel,MLWF,TRN_Salary,MLWF,0.90,TRUE,1,Salary
+FCPL_Excel,TDS,TRN_Salary,TDS_Amount,0.95,TRUE,1,Salary
+FCPL_Excel,ADVANCE SALARY,TRN_Salary,AdvanceSalary,0.90,TRUE,1,Salary
+FCPL_Excel,NET PAYABLE,TRN_Salary,NetPayable,0.98,TRUE,1,Salary
+FCPL_Excel,PAYMENT DATE,TRN_Salary,PaymentDate,0.95,TRUE,1,Salary
+FCPL_Excel,UTR NUMBER,TRN_Salary,UTRNumber,0.95,TRUE,1,Salary
+FCPL_Excel,PAYMENT STATUS,TRN_Salary,PaymentStatus,0.90,TRUE,1,Salary
+FCPL_Excel,SR NO,TRN_Case,ExternalID,0.85,TRUE,1,Secured_Tracker
+FCPL_Excel,ENTRY DATE,TRN_Case,EntryDate,0.95,TRUE,1,Secured_Tracker
+FCPL_Excel,APP NO,TRN_Case,ApplicationNumber,0.95,TRUE,1,DSR_BL_PL
+FCPL_Excel,MONTH,TRN_Case,ReportMonth,0.90,TRUE,1,DSR_BL_PL
+FCPL_Excel,PROFILE,TRN_Case,Profile,0.90,TRUE,1,DSR_BL_PL
+FCPL_Excel,CONNECTOR NAME,TRN_Case,ConnectorID,0.95,TRUE,1,DSR_BL_PL
+FCPL_Excel,BANKER NAME,TRN_Case,BankerName,0.90,TRUE,1,DSR_BL_PL
+FCPL_Excel,BANKER NUMBER,TRN_Case,BankerContact,0.85,TRUE,1,DSR_BL_PL
+FCPL_Excel,LOGIN AMT,TRN_Case,LoginAmount,0.95,TRUE,1,DSR_BL_PL
+FCPL_Excel,SANCTION AMT,TRN_Case,SanctionAmount,0.95,TRUE,1,DSR_BL_PL
+FCPL_Excel,DISBURSE AMT,TRN_Case,DisbursementAmount,0.95,TRUE,1,DSR_BL_PL
+FCPL_Excel,NET AMT,TRN_Case,NetAmount,0.90,TRUE,1,DSR_BL_PL
+FCPL_Excel,RATE,TRN_Case,InterestRate,0.90,TRUE,1,DSR_BL_PL
+FCPL_Excel,TENURE,TRN_Case,TenureMonths,0.85,TRUE,1,DSR_BL_PL
+FCPL_Excel,LOGIN DATE,TRN_Case,LoginDate,0.95,TRUE,1,DSR_BL_PL
+FCPL_Excel,SANCTION DATE,TRN_Case,SanctionDate,0.95,TRUE,1,DSR_BL_PL
+FCPL_Excel,DISB DATE,TRN_Case,DisbursementDate,0.95,TRUE,1,DSR_BL_PL
+FCPL_Excel,REMARK,TRN_Case,Remarks,0.90,TRUE,1,DSR_BL_PL
+FCPL_Excel,PRORITY,TRN_Case,Priority,0.85,TRUE,1,DSR_BL_PL
+FCPL_Excel,CONNECTOR CODE,MST_Connector,ConnectorCode,0.98,TRUE,1,Connector_Master
+FCPL_Excel,SR NO,MST_Connector,ExternalID,0.85,TRUE,1,Connector_Master

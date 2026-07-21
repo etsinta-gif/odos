@@ -1,0 +1,91 @@
+{% extends "masters/base.html" %}
+
+{% block title %}Expenses - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Expenses</h1>
+    <a href="/masters/expenses/add" class="btn btn-primary">Add Expense</a>
+</div>
+
+<div class="filter-info">
+    <form method="GET" action="/masters/expenses" class="filter-form">
+        <div>
+            <label for="vendor_id">Vendor:</label>
+            <select id="vendor_id" name="vendor_id">
+                <option value="">All</option>
+                {% for vendor in vendors %}
+                <option value="{{ vendor.vendor_id }}" {% if vendor_id == vendor.vendor_id %}selected{% endif %}>{{ vendor.vendor_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="expense_category_id">Category:</label>
+            <select id="expense_category_id" name="expense_category_id">
+                <option value="">All</option>
+                {% for category in categories %}
+                <option value="{{ category.expense_category_id }}" {% if expense_category_id == category.expense_category_id %}selected{% endif %}>{{ category.category_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="payment_status">Status:</label>
+            <select id="payment_status" name="payment_status">
+                <option value="">All</option>
+                <option value="PENDING" {% if payment_status == 'PENDING' %}selected{% endif %}>Pending</option>
+                <option value="PAID" {% if payment_status == 'PAID' %}selected{% endif %}>Paid</option>
+                <option value="FAILED" {% if payment_status == 'FAILED' %}selected{% endif %}>Failed</option>
+                <option value="RECONCILED" {% if payment_status == 'RECONCILED' %}selected{% endif %}>Reconciled</option>
+            </select>
+        </div>
+        <div class="filter-actions">
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <a href="/masters/expenses" class="btn btn-secondary">Clear</a>
+        </div>
+    </form>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Vendor</th>
+                <th>Category</th>
+                <th>Cost Center</th>
+                <th>Case</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for expense in expenses %}
+            <tr>
+                <td>{{ expense.expense_id }}</td>
+                <td>{{ expense.expense_date }}</td>
+                <td>{{ expense.vendor_name or '-' }}</td>
+                <td>{{ expense.expense_category_name or '-' }}</td>
+                <td>{{ expense.cost_center_name or '-' }}</td>
+                <td>{{ expense.case_number or expense.case_id or '-' }}</td>
+                <td>₹{{ "%.2f"|format(expense.amount) }}</td>
+                <td><span class="status-badge status-{{ expense.payment_status.lower() }}">{{ expense.payment_status }}</span></td>
+                <td>
+                    <a href="/masters/expenses/{{ expense.expense_id }}" class="btn btn-sm btn-info">View</a>
+                    <a href="/masters/expenses/{{ expense.expense_id }}/edit" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="/masters/expenses/{{ expense.expense_id }}/delete" class="btn btn-sm btn-danger" onclick="return confirm('Delete this expense?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% if not expenses %}
+<div class="empty-state">
+    <p>No expense records found.</p>
+    <p><a href="/masters/expenses/add">Add Expense</a> to get started.</p>
+</div>
+{% endif %}
+{% endblock %}

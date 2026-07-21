@@ -1,0 +1,2271 @@
+{
+  "workbook_fingerprint": "54db17cfe76fa8d8c4580a793d409ca97731921ae3beed728f2b629133b5e8d1",
+  "sheet_count": 2,
+  "sheets": [
+    {
+      "fingerprint": "9ce26cc0a90382baec86f651ea7ce1eb7b51b48daf0839f71e6e145238431326",
+      "sheet_name": "Payroll Sheet",
+      "header_row": 7,
+      "row_count": 72,
+      "columns": [
+        {
+          "source_column": "Sr. No",
+          "inferred_type": "amount",
+          "sample_values": [
+            1.0,
+            2.0,
+            3.0,
+            4.0,
+            5.0
+          ],
+          "null_count": 15,
+          "unique_count": 57,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": null,
+          "suggested_target_field": null,
+          "confidence_score": 0,
+          "ignore": true,
+          "notes": "Serial number column",
+          "confidence_level": "None"
+        },
+        {
+          "source_column": "ID",
+          "inferred_type": "text",
+          "sample_values": [
+            "FIN00023",
+            "FIN00024",
+            "FIN00025",
+            "FIN00026",
+            "FIN00027"
+          ],
+          "null_count": 21,
+          "unique_count": 51,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "employee_code",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "employee_code",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Employee Name",
+          "inferred_type": "text",
+          "sample_values": [
+            "MAHESH BALU MANVE",
+            "PARUL BHARATKUMAR SHAH",
+            "PRIYA JAGDISH JOSHI",
+            "VRINDA KAMLESH DALVI",
+            "DHARA MAHESH MISTRY"
+          ],
+          "null_count": 7,
+          "unique_count": 65,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "full_name",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "full_name",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Remark",
+          "inferred_type": "text",
+          "sample_values": [
+            "Total 2 Day Leave, 2 Day Leave Waived",
+            "Total 5.5 Day Leave, 2 Day Leave Waived",
+            "Total 2.5 Day Leave, 2 Day Leave Waived",
+            "Total 2.5 Day Leave, 2 Day Leave Waived",
+            "Total 4 Day Leave, 2 Day Leave Waived"
+          ],
+          "null_count": 52,
+          "unique_count": 11,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 1,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=SUBTOTAL(9,BM8:BM44)"
+          ],
+          "evaluated_formula_samples": [
+            0
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Payment",
+          "suggested_target_field": "notes",
+          "confidence_score": 89,
+          "ignore": false,
+          "notes": "Salary sheet payout attribute; Formula-backed source column validated against workbook",
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Gender",
+          "inferred_type": "text",
+          "sample_values": [
+            "Male",
+            "Female",
+            "Female",
+            "Female",
+            "Female"
+          ],
+          "null_count": 15,
+          "unique_count": 3,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "gender",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "gender",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "DOB",
+          "inferred_type": "text",
+          "sample_values": [
+            "1993-06-10 00:00:00",
+            "1981-06-11 00:00:00",
+            "1994-10-04 00:00:00",
+            "1981-09-19 00:00:00",
+            "1998-09-30 00:00:00"
+          ],
+          "null_count": 16,
+          "unique_count": 56,
+          "pattern": "date",
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "date_of_birth",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "date_of_birth",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Father Name",
+          "inferred_type": "text",
+          "sample_values": [
+            "Balu Zilu Manve",
+            "BHARATKUMAR SHAH",
+            "Jagdish Ichhashankar Joshi",
+            "Chandrakant Vithal Jadhav",
+            "MAHESH MISTRY"
+          ],
+          "null_count": 16,
+          "unique_count": 56,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "father_name",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "father_name",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Marrital status",
+          "inferred_type": "text",
+          "sample_values": [
+            "married",
+            "Unmarried",
+            "Unmarried",
+            "Married",
+            "Unmarried"
+          ],
+          "null_count": 19,
+          "unique_count": 6,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "marital_status",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "marital_status",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "PAN",
+          "inferred_type": "text",
+          "sample_values": [
+            "AXIPM6485G",
+            "CPTPS1237R",
+            "AVJPJ5742N",
+            "AOIPD1083N",
+            "DIQPM6994A"
+          ],
+          "null_count": 15,
+          "unique_count": 57,
+          "pattern": "pan",
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "pan",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "pan",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Email ID",
+          "inferred_type": "text",
+          "sample_values": [
+            "mahesh.manve15@gmail.com",
+            "Parul4024@gmail.com",
+            "04priyajoshi@gmail.com",
+            "vinayadalvi1511@gmail.com",
+            "dharamistry143@gmail.com"
+          ],
+          "null_count": 17,
+          "unique_count": 55,
+          "pattern": "email",
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "email",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "email",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Mobile No.",
+          "inferred_type": "text",
+          "sample_values": [
+            9768616527,
+            9987774024,
+            9930661769,
+            9270527467,
+            "9833730708/ 8369745221"
+          ],
+          "null_count": 15,
+          "unique_count": 56,
+          "pattern": "phone",
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "mobile",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "mobile",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Aadhar Number",
+          "inferred_type": "text",
+          "sample_values": [
+            "635270005794",
+            "6180 0232 3063",
+            813028326819,
+            "737754869417",
+            "4962 7707 9108"
+          ],
+          "null_count": 17,
+          "unique_count": 55,
+          "pattern": "phone",
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "aadhar_number",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "aadhar_number",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Address",
+          "inferred_type": "text",
+          "sample_values": [
+            "JAY GANESH RAHIVASHI SEVA SANGH ROOM NO. 18 S N DUBE ROAD, KOKANI PADA, DAHISAR EAST MUMBAI 400068",
+            "C/204 DEVI ROYAL COMPLEX, BLDG NO.1, V.S.MARG, OPP. MAKWANA COMPLEX, VIRAR EAST, PALGHAR, MAHARASHTAR- 401305",
+            "419/19,Shiv Shambhu Society ,Sector-4,Lokmanya Tilak Marg. Near Municipal School, Charkop Kandivali West, Maharashtra 400067.",
+            "B/2 SHIV TAPASYA CO OP HOS SOC EKASR ROAD NEAR ICICI BANK BORIVALI WEST MUMBAI 400092",
+            "ROOM NO.4, B.S.DUBEY CHAWL, SANT MIRABAI ROAD, NEAR BHARAT DAIRY, GHARTANPADA-2, DAHISAR EAST, MUMBAI, MAHARASHTRA- 400068"
+          ],
+          "null_count": 17,
+          "unique_count": 55,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "address",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "address",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Date of Joining",
+          "inferred_type": "date",
+          "sample_values": [
+            "2019-09-01 00:00:00",
+            "2024-05-02 00:00:00",
+            "2022-04-01 00:00:00",
+            "2017-12-04 00:00:00",
+            "2023-12-15 00:00:00"
+          ],
+          "null_count": 15,
+          "unique_count": 49,
+          "pattern": "date",
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "date_of_joining",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "date_of_joining",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Designation",
+          "inferred_type": "text",
+          "sample_values": [
+            "Accounts Manager",
+            "Account Executive",
+            "Senior Accountant",
+            "Sr. Accountant",
+            "Back Office Executive"
+          ],
+          "null_count": 16,
+          "unique_count": 24,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "designation",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "designation",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Department",
+          "inferred_type": "text",
+          "sample_values": [
+            "Accounts & Admin",
+            "Accounts & Admin",
+            "Accounts & Admin",
+            "Accounts & Admin",
+            "Operations"
+          ],
+          "null_count": 15,
+          "unique_count": 7,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "department",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "department",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Team Name",
+          "inferred_type": "text",
+          "sample_values": [
+            "Accounts & Admin",
+            "Accounts & Admin",
+            "Accounts & Admin",
+            "Accounts & Admin",
+            "Accounts & Operation Team"
+          ],
+          "null_count": 15,
+          "unique_count": 17,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "team_name",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "team_name",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Branch Name",
+          "inferred_type": "text",
+          "sample_values": [
+            "Borivali",
+            "Borivali",
+            "Borivali",
+            "Borivali",
+            "Borivali"
+          ],
+          "null_count": 15,
+          "unique_count": 6,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "TRN_Case",
+          "suggested_target_field": "branch_name",
+          "confidence_score": 95,
+          "ignore": false,
+          "notes": "Exact normalized match",
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "PF Aplicable",
+          "inferred_type": "text",
+          "sample_values": [
+            "Yes",
+            "No",
+            "No",
+            "Yes",
+            "No"
+          ],
+          "null_count": 15,
+          "unique_count": 2,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "pf_applicable",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "pf_applicable",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "ESIC Aplicable",
+          "inferred_type": "text",
+          "sample_values": [
+            "No",
+            "No",
+            "No",
+            "Yes",
+            "No"
+          ],
+          "null_count": 14,
+          "unique_count": 3,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "esic_applicable",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "esic_applicable",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Gross Salary",
+          "inferred_type": "amount",
+          "sample_values": [
+            70000.0,
+            15000.0,
+            30000.0,
+            19000.0,
+            18000.0
+          ],
+          "null_count": 14,
+          "unique_count": 38,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 3,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=40000-1800",
+            "=72000-25000",
+            "=SUBTOTAL(9,U8:U65)"
+          ],
+          "evaluated_formula_samples": [
+            38200,
+            47000,
+            1142250
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Days Worked",
+          "inferred_type": "amount",
+          "sample_values": [
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0
+          ],
+          "null_count": 15,
+          "unique_count": 1,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "TRN_Payment",
+          "suggested_target_field": "notes",
+          "confidence_score": 62,
+          "ignore": false,
+          "notes": "Salary sheet attendance and payroll metadata",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Leaves",
+          "inferred_type": "amount",
+          "sample_values": [
+            0.0,
+            0.0,
+            3.5,
+            0.5,
+            0.5
+          ],
+          "null_count": 15,
+          "unique_count": 10,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "TRN_Payment",
+          "suggested_target_field": "notes",
+          "confidence_score": 62,
+          "ignore": false,
+          "notes": "Salary sheet attendance and payroll metadata",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Payable Days",
+          "inferred_type": "amount",
+          "sample_values": [
+            30.0,
+            30.0,
+            26.5,
+            29.5,
+            29.5
+          ],
+          "null_count": 15,
+          "unique_count": 10,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 57,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=+V8-W8",
+            "=+V9-W9",
+            "=+V10-W10",
+            "=+V11-W11",
+            "=+V12-W12"
+          ],
+          "evaluated_formula_samples": [
+            30,
+            30,
+            26.5,
+            29.5,
+            29.5
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Payment",
+          "suggested_target_field": "notes",
+          "confidence_score": 67,
+          "ignore": false,
+          "notes": "Salary sheet attendance and payroll metadata; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "One Day Salary",
+          "inferred_type": "amount",
+          "sample_values": [
+            2333.3333333333335,
+            500.0,
+            1000.0,
+            633.3333333333334,
+            600.0
+          ],
+          "null_count": 14,
+          "unique_count": 38,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 58,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=U8/V8",
+            "=U9/V9",
+            "=U10/V10",
+            "=U11/V11",
+            "=U12/V12"
+          ],
+          "evaluated_formula_samples": [
+            2333.3333333333335,
+            500,
+            1000,
+            633.3333333333334,
+            600
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Salary for the Month",
+          "inferred_type": "amount",
+          "sample_values": [
+            70000.0,
+            15000.0,
+            26500.0,
+            18683.333333333336,
+            17700.0
+          ],
+          "null_count": 14,
+          "unique_count": 42,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 58,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=X8*Y8",
+            "=X9*Y9",
+            "=X10*Y10",
+            "=X11*Y11",
+            "=X12*Y12"
+          ],
+          "evaluated_formula_samples": [
+            70000,
+            15000,
+            26500,
+            18683.333333333336,
+            17700
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Payment",
+          "suggested_target_field": "payment_amount",
+          "confidence_score": 89,
+          "ignore": false,
+          "notes": "Salary sheet payout attribute; Formula-backed source column validated against workbook",
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Basic & DA",
+          "inferred_type": "amount",
+          "sample_values": [
+            15000.0,
+            15000.0,
+            20000.0,
+            13000.0,
+            18000.0
+          ],
+          "null_count": 14,
+          "unique_count": 20,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 19,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=+U12",
+            "=+U15",
+            "=+U17",
+            "=+U22",
+            "=+U25"
+          ],
+          "evaluated_formula_samples": [
+            18000,
+            11000,
+            10250,
+            200000,
+            15000
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "HRA",
+          "inferred_type": "amount",
+          "sample_values": [
+            7500.0,
+            0.0,
+            5000.0,
+            3000.0,
+            0.0
+          ],
+          "null_count": 22,
+          "unique_count": 10,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 60,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=+AA8*50%",
+            "=ROUND(AB8*$X8/$V8,0)",
+            "=ROUND(AB9*$X9/$V9,0)",
+            "=ROUND(AB10*$X10/$V10,0)",
+            "=ROUND(AB11*$X11/$V11,0)"
+          ],
+          "evaluated_formula_samples": [
+            7500,
+            7500,
+            0,
+            4417,
+            2950
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Other Allowance",
+          "inferred_type": "amount",
+          "sample_values": [
+            47500.0,
+            0.0,
+            5000.0,
+            3000.0,
+            0.0
+          ],
+          "null_count": 21,
+          "unique_count": 24,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 38,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=+U8-AA8-AB8",
+            "=+U9-AA9-AB9",
+            "=+U10-AA10-AB10",
+            "=+U12-AA12-AB12",
+            "=+U13-AA13-AB13"
+          ],
+          "evaluated_formula_samples": [
+            47500,
+            0,
+            5000,
+            0,
+            31500
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Total Leaves Gross Earning",
+          "inferred_type": "amount",
+          "sample_values": [
+            70000.0,
+            15000.0,
+            30000.0,
+            19000.0,
+            18000.0
+          ],
+          "null_count": 13,
+          "unique_count": 39,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 117,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=SUM(AA8:AC8)",
+            "=SUM(AE8:AH8)",
+            "=SUM(AA9:AC9)",
+            "=SUM(AE9:AH9)",
+            "=SUM(AA10:AC10)"
+          ],
+          "evaluated_formula_samples": [
+            70000,
+            70000,
+            15000,
+            15000,
+            30000
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Basic",
+          "inferred_type": "amount",
+          "sample_values": [
+            15000.0,
+            15000.0,
+            17667.0,
+            12783.0,
+            17700.0
+          ],
+          "null_count": 14,
+          "unique_count": 28,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 58,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=ROUND(AA8*$X8/$V8,0)",
+            "=ROUND(AA9*$X9/$V9,0)",
+            "=ROUND(AA10*$X10/$V10,0)",
+            "=ROUND(AA11*$X11/$V11,0)",
+            "=ROUND(AA12*$X12/$V12,0)"
+          ],
+          "evaluated_formula_samples": [
+            15000,
+            15000,
+            17667,
+            12783,
+            17700
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "HRA.1",
+          "inferred_type": "amount",
+          "sample_values": [
+            7500.0,
+            0.0,
+            4417.0,
+            2950.0,
+            0.0
+          ],
+          "null_count": 21,
+          "unique_count": 14,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 68,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Other Allowance / Incentives",
+          "inferred_type": "amount",
+          "sample_values": [
+            47500.0,
+            0.0,
+            4417.0,
+            2950.0,
+            0.0
+          ],
+          "null_count": 20,
+          "unique_count": 26,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 52,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=ROUND(AC8*$X8/$V8,0)",
+            "=ROUND(AC9*$X9/$V9,0)",
+            "=ROUND(AC10*$X10/$V10,0)",
+            "=ROUND(AC11*$X11/$V11,0)",
+            "=ROUND(AC12*$X12/$V12,0)"
+          ],
+          "evaluated_formula_samples": [
+            47500,
+            0,
+            4417,
+            2950,
+            0
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Commission",
+          "suggested_target_field": "bonus_commission_amount",
+          "confidence_score": 75,
+          "ignore": false,
+          "notes": "Salary sheet incentive and commission component; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Overtime",
+          "inferred_type": "amount",
+          "sample_values": [
+            0.0,
+            0.0,
+            0.0,
+            200.0,
+            350.0
+          ],
+          "null_count": 66,
+          "unique_count": 4,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 1,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=SUBTOTAL(9,AH8:AH65)"
+          ],
+          "evaluated_formula_samples": [
+            550
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Total Leaves Gross Earning.1",
+          "inferred_type": "amount",
+          "sample_values": [
+            70000.0,
+            15000.0,
+            26501.0,
+            18683.0,
+            17700.0
+          ],
+          "null_count": 14,
+          "unique_count": 44,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 68,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Diff",
+          "inferred_type": "amount",
+          "sample_values": [
+            0.0,
+            0.0,
+            -1.0,
+            0.33333333333575865,
+            0.0
+          ],
+          "null_count": 14,
+          "unique_count": 7,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 58,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=Z8-AI8+AH8",
+            "=Z9-AI9+AH9",
+            "=Z10-AI10+AH10",
+            "=Z11-AI11+AH11",
+            "=Z12-AI12+AH12"
+          ],
+          "evaluated_formula_samples": [
+            0,
+            0,
+            -1,
+            0.33333333333575865,
+            0
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "PF",
+          "inferred_type": "amount",
+          "sample_values": [
+            1800.0,
+            0.0,
+            0.0,
+            1533.96,
+            0.0
+          ],
+          "null_count": 22,
+          "unique_count": 6,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 50,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=IF(S8=\"YES\",MIN(AE8*12%,1800),0)",
+            "=IF(S9=\"YES\",MIN(AE9*12%,1800),0)",
+            "=IF(S10=\"YES\",MIN(AE10*12%,1800),0)",
+            "=IF(S11=\"YES\",MIN(AE11*12%,1800),0)",
+            "=IF(S12=\"YES\",MIN(AE12*12%,1800),0)"
+          ],
+          "evaluated_formula_samples": [
+            1800,
+            0,
+            0,
+            1533.96,
+            0
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "ESIC",
+          "inferred_type": "amount",
+          "sample_values": [
+            0.0,
+            0.0,
+            0.0,
+            140.1225,
+            0.0
+          ],
+          "null_count": 23,
+          "unique_count": 4,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 49,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=IF(T8=\"YES\",AI8*0.75%,0)",
+            "=IF(T9=\"YES\",AI9*0.75%,0)",
+            "=IF(T10=\"YES\",AI10*0.75%,0)",
+            "=IF(T11=\"YES\",AI11*0.75%,0)",
+            "=IF(T12=\"YES\",AI12*0.75%,0)"
+          ],
+          "evaluated_formula_samples": [
+            0,
+            0,
+            0,
+            140.1225,
+            0
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "P.TAX",
+          "inferred_type": "amount",
+          "sample_values": [
+            200.0,
+            0.0,
+            200.0,
+            0.0,
+            0.0
+          ],
+          "null_count": 40,
+          "unique_count": 2,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 29,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=IF((AI8)>10000,200,IF((AI8)>7500,175,0))",
+            "=IF((AI9)>25000,200,IF((AI9)>7500,0,0))",
+            "=IF((AI10)>25000,200,IF((AI10)>7500,0,0))",
+            "=IF((AI11)>25000,200,IF((AI11)>7500,0,0))",
+            "=IF((AI12)>25000,200,IF((AI12)>7500,0,0))"
+          ],
+          "evaluated_formula_samples": [
+            200,
+            0,
+            200,
+            0,
+            0
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "MLWF",
+          "inferred_type": "percentage",
+          "sample_values": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "null_count": 21,
+          "unique_count": 1,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 1,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=SUBTOTAL(9,AN8:AN65)"
+          ],
+          "evaluated_formula_samples": [
+            0
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "TDS",
+          "inferred_type": "amount",
+          "sample_values": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "null_count": 14,
+          "unique_count": 26,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 32,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=+AI17*2%",
+            "=+AI19*2%",
+            "=+AI21*2%",
+            "=+AI22*2%",
+            "=+AI23*2%"
+          ],
+          "evaluated_formula_samples": [
+            205,
+            3000,
+            500,
+            4000,
+            400
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Advance Salary",
+          "inferred_type": "amount",
+          "sample_values": [
+            1000.0,
+            2000.0,
+            2000.0,
+            2000.0,
+            0.0
+          ],
+          "null_count": 66,
+          "unique_count": 3,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 1,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=SUBTOTAL(9,AP8:AP65)"
+          ],
+          "evaluated_formula_samples": [
+            0
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Net Payable",
+          "inferred_type": "amount",
+          "sample_values": [
+            68000.0,
+            15000.0,
+            26301.0,
+            17009.0,
+            17700.0
+          ],
+          "null_count": 10,
+          "unique_count": 52,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 58,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=ROUND(AI8-SUM(AK8:AP8),0)",
+            "=ROUND(AI9-SUM(AK9:AP9),0)",
+            "=ROUND(AI10-SUM(AK10:AP10),0)",
+            "=ROUND(AI11-SUM(AK11:AP11),0)",
+            "=ROUND(AI12-SUM(AK12:AP12),0)"
+          ],
+          "evaluated_formula_samples": [
+            68000,
+            15000,
+            26301,
+            17009,
+            17700
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Payment",
+          "suggested_target_field": "payment_amount",
+          "confidence_score": 89,
+          "ignore": false,
+          "notes": "Salary sheet payout attribute; Formula-backed source column validated against workbook",
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Exp",
+          "inferred_type": "text",
+          "sample_values": [
+            "Salary -FCPL",
+            "Salary -FCPL",
+            "Salary -FCPL",
+            "Salary -FCPL",
+            "Salary -FCPL"
+          ],
+          "null_count": 14,
+          "unique_count": 3,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 1,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=SUM(AQ68:AQ71)"
+          ],
+          "evaluated_formula_samples": [
+            1618858
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Salary Paid Status",
+          "inferred_type": "text",
+          "sample_values": [
+            "Back Office",
+            "Back Office",
+            "Back Office",
+            "Back Office",
+            "Back Office"
+          ],
+          "null_count": 15,
+          "unique_count": 2,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "TRN_Payment",
+          "suggested_target_field": "reconciliation_status",
+          "confidence_score": 84,
+          "ignore": false,
+          "notes": "Salary sheet payout attribute",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Bank Name",
+          "inferred_type": "text",
+          "sample_values": [
+            "FEDERAL BANK",
+            "FEDERAL BANK",
+            "FEDERAL BANK",
+            "FEDERAL BANK",
+            "FEDERAL BANK"
+          ],
+          "null_count": 15,
+          "unique_count": 16,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "bank_name",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "bank_name",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Bank Account Number",
+          "inferred_type": "amount",
+          "sample_values": [
+            99980125425160.0,
+            99980125289467.0,
+            99980125421813.0,
+            99980125421797.0,
+            99980125426259.0
+          ],
+          "null_count": 15,
+          "unique_count": 57,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "bank_account_number",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "bank_account_number",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Bank IFSC",
+          "inferred_type": "text",
+          "sample_values": [
+            "FDRL0001622",
+            "FDRL0001622",
+            "FDRL0001622",
+            "FDRL0001622",
+            "FDRL0001622"
+          ],
+          "null_count": 15,
+          "unique_count": 25,
+          "pattern": "utr",
+          "formula_detected": true,
+          "formula_count": 1,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=VLOOKUP(C59,[3]Sheet1!F$9:H$90,3,FALSE)"
+          ],
+          "evaluated_formula_samples": [
+            "FDRL0001622"
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "bank_ifsc",
+          "confidence_score": 95,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute; Formula-backed source column validated against workbook",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "bank_ifsc",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "UTR NUMBER",
+          "inferred_type": "text",
+          "sample_values": [
+            "I040526168638418",
+            "I040526168638419",
+            "I040526168638420",
+            "I040526168638421",
+            "I040526168638422"
+          ],
+          "null_count": 15,
+          "unique_count": 57,
+          "pattern": "phone",
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "TRN_Payment",
+          "suggested_target_field": "utr_number",
+          "confidence_score": 84,
+          "ignore": false,
+          "notes": "Salary sheet payout attribute",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "PF Wages",
+          "inferred_type": "text",
+          "sample_values": [
+            15000,
+            0,
+            0,
+            12783,
+            0
+          ],
+          "null_count": 9,
+          "unique_count": 12,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 56,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=IF(S8=\"Yes\",AE8,0)",
+            "=IF(S9=\"Yes\",AE9,0)",
+            "=IF(S10=\"Yes\",AE10,0)",
+            "=IF(S11=\"Yes\",AE11,0)",
+            "=IF(S12=\"Yes\",AE12,0)"
+          ],
+          "evaluated_formula_samples": [
+            15000,
+            0,
+            0,
+            12783,
+            0
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "EE share",
+          "inferred_type": "amount",
+          "sample_values": [
+            1800.0,
+            0.0,
+            0.0,
+            1534.0,
+            0.0
+          ],
+          "null_count": 10,
+          "unique_count": 7,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 60,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=ROUND(AX8*12%,0)",
+            "=ROUND(AX9*12%,0)",
+            "=ROUND(AX10*12%,0)",
+            "=ROUND(AX11*12%,0)",
+            "=ROUND(AX12*12%,0)"
+          ],
+          "evaluated_formula_samples": [
+            1800,
+            0,
+            0,
+            1534,
+            0
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "ER Share",
+          "inferred_type": "amount",
+          "sample_values": [
+            550.0,
+            0.0,
+            0.0,
+            469.0,
+            0.0
+          ],
+          "null_count": 15,
+          "unique_count": 6,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 112,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=AY8-BA8",
+            "=ROUND(BC8*3.25%,0)",
+            "=AY9-BA9",
+            "=ROUND(BC9*3.25%,0)",
+            "=AY10-BA10"
+          ],
+          "evaluated_formula_samples": [
+            550,
+            0,
+            0,
+            0,
+            0
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Pension",
+          "inferred_type": "amount",
+          "sample_values": [
+            1250.0,
+            0.0,
+            0.0,
+            1065.0,
+            0.0
+          ],
+          "null_count": 15,
+          "unique_count": 6,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 57,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=ROUND(AX8*8.33%,0)",
+            "=ROUND(AX9*8.33%,0)",
+            "=ROUND(AX10*8.33%,0)",
+            "=ROUND(AX11*8.33%,0)",
+            "=ROUND(AX12*8.33%,0)"
+          ],
+          "evaluated_formula_samples": [
+            1250,
+            0,
+            0,
+            1065,
+            0
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Black1",
+          "inferred_type": "percentage",
+          "sample_values": [
+            0.0
+          ],
+          "null_count": 71,
+          "unique_count": 1,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 1,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=SUBTOTAL(9,BB8:BB65)"
+          ],
+          "evaluated_formula_samples": [
+            0
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "ESIC Wages",
+          "inferred_type": "amount",
+          "sample_values": [
+            0.0,
+            0.0,
+            0.0,
+            18683.0,
+            0.0
+          ],
+          "null_count": 15,
+          "unique_count": 4,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 56,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=IF(T8=\"Yes\",AI8,0)",
+            "=IF(T9=\"Yes\",AI9,0)",
+            "=IF(T10=\"Yes\",AI10,0)",
+            "=IF(T11=\"Yes\",AI11,0)",
+            "=IF(T12=\"Yes\",AI12,0)"
+          ],
+          "evaluated_formula_samples": [
+            0,
+            0,
+            0,
+            18683,
+            0
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "EE Share",
+          "inferred_type": "amount",
+          "sample_values": [
+            0.0,
+            0.0,
+            0.0,
+            141.0,
+            0.0
+          ],
+          "null_count": 15,
+          "unique_count": 4,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 56,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=ROUNDUP(BC8*0.75%,0)",
+            "=ROUNDUP(BC9*0.75%,0)",
+            "=ROUNDUP(BC10*0.75%,0)",
+            "=ROUNDUP(BC11*0.75%,0)",
+            "=ROUNDUP(BC12*0.75%,0)"
+          ],
+          "evaluated_formula_samples": [
+            0,
+            0,
+            0,
+            141,
+            0
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "ER Share.1",
+          "inferred_type": "amount",
+          "sample_values": [
+            0.0,
+            0.0,
+            0.0,
+            607.0,
+            0.0
+          ],
+          "null_count": 15,
+          "unique_count": 4,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 68,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Total Leaves",
+          "inferred_type": "amount",
+          "sample_values": [
+            0.0,
+            0.0,
+            0.0,
+            748.0,
+            0.0
+          ],
+          "null_count": 15,
+          "unique_count": 4,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 57,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=BD8+BE8",
+            "=BD9+BE9",
+            "=BD10+BE10",
+            "=BD11+BE11",
+            "=BD12+BE12"
+          ],
+          "evaluated_formula_samples": [
+            0,
+            0,
+            0,
+            748,
+            0
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Payment",
+          "suggested_target_field": "notes",
+          "confidence_score": 67,
+          "ignore": false,
+          "notes": "Salary sheet attendance and payroll metadata; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "CTC",
+          "inferred_type": "amount",
+          "sample_values": [
+            71800.0,
+            15000.0,
+            26501.0,
+            20824.0,
+            17700.0
+          ],
+          "null_count": 14,
+          "unique_count": 44,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 58,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=+BE8+AY8+AI8",
+            "=+BE9+AY9+AI9",
+            "=+BE10+AY10+AI10",
+            "=+BE11+AY11+AI11",
+            "=+BE12+AY12+AI12"
+          ],
+          "evaluated_formula_samples": [
+            71800,
+            15000,
+            26501,
+            20824,
+            17700
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 73,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Unnamed: 59",
+          "inferred_type": "percentage",
+          "sample_values": [
+            0.0
+          ],
+          "null_count": 71,
+          "unique_count": 1,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": null,
+          "suggested_target_field": null,
+          "confidence_score": 0,
+          "ignore": true,
+          "notes": "Unnamed helper column",
+          "confidence_level": "None"
+        },
+        {
+          "source_column": "Salary Increase",
+          "inferred_type": "text",
+          "sample_values": [],
+          "null_count": 72,
+          "unique_count": 0,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "TRN_Expense",
+          "suggested_target_field": "amount",
+          "confidence_score": 68,
+          "ignore": false,
+          "notes": "Salary sheet payroll amount",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Firm",
+          "inferred_type": "percentage",
+          "sample_values": [
+            0.0
+          ],
+          "null_count": 71,
+          "unique_count": 1,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 1,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=SUBTOTAL(9,BJ8:BJ44)"
+          ],
+          "evaluated_formula_samples": [
+            0
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Case",
+          "suggested_target_field": "branch_name",
+          "confidence_score": 71,
+          "ignore": false,
+          "notes": "Salary sheet organizational unit; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "Completed months",
+          "inferred_type": "amount",
+          "sample_values": [
+            78.0,
+            22.0,
+            47.0,
+            99.0,
+            27.0
+          ],
+          "null_count": 24,
+          "unique_count": 33,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 48,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=DATEDIF(N8,$BK$5,\"M\")",
+            "=DATEDIF(N9,$BK$5,\"M\")",
+            "=DATEDIF(N10,$BK$5,\"M\")",
+            "=DATEDIF(N11,$BK$5,\"M\")",
+            "=DATEDIF(N12,$BK$5,\"M\")"
+          ],
+          "evaluated_formula_samples": [
+            78,
+            22,
+            47,
+            99,
+            27
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Payment",
+          "suggested_target_field": "notes",
+          "confidence_score": 67,
+          "ignore": false,
+          "notes": "Salary sheet attendance and payroll metadata; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "UAN NUMBER",
+          "inferred_type": "text",
+          "sample_values": [
+            "101507143887",
+            "100434680512",
+            "100973778542",
+            "NO",
+            "101291427258"
+          ],
+          "null_count": 43,
+          "unique_count": 24,
+          "pattern": "phone",
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "uan_number",
+          "confidence_score": 90,
+          "ignore": false,
+          "notes": "Salary sheet employee attribute",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "uan_number",
+            "create_if_missing": true
+          },
+          "confidence_level": "High"
+        },
+        {
+          "source_column": "Remark.1",
+          "inferred_type": "text",
+          "sample_values": [
+            "Already PF & ESIC Deducted",
+            "Already PF & ESIC Deducted",
+            "Having PF Number Sales Team",
+            "NO",
+            "need to be check"
+          ],
+          "null_count": 55,
+          "unique_count": 7,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": "TRN_Payment",
+          "suggested_target_field": "notes",
+          "confidence_score": 84,
+          "ignore": false,
+          "notes": "Salary sheet payout attribute",
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "FCPL DOJ",
+          "inferred_type": "text",
+          "sample_values": [
+            "2024-10-01 00:00:00",
+            "2024-10-01 00:00:00",
+            "2024-04-01 00:00:00",
+            "2024-10-01 00:00:00",
+            "2024-10-01 00:00:00"
+          ],
+          "null_count": 32,
+          "unique_count": 5,
+          "pattern": "date",
+          "formula_detected": true,
+          "formula_count": 2,
+          "formula_error_count": 2,
+          "formula_samples": [
+            "=VLOOKUP(C17,'[1]Payroll Sheet'!C$8:F$26,4,FALSE)",
+            "=VLOOKUP(C22,'[2]Payroll Sheet'!C$8:E$33,3,FALSE)"
+          ],
+          "evaluated_formula_samples": [
+            "#N/A",
+            "#N/A"
+          ],
+          "formula_status": "FORMULA_ERRORS",
+          "suggested_target_table": "MST_Employee",
+          "suggested_target_field": "date_of_joining",
+          "confidence_score": 71,
+          "ignore": false,
+          "notes": "Salary sheet joining date variant; Formula discrepancy detected in source workbook (2 issue(s))",
+          "lookup": {
+            "table": "MST_Employee",
+            "field": "date_of_joining",
+            "create_if_missing": true
+          },
+          "confidence_level": "Medium"
+        },
+        {
+          "source_column": "PF Remark",
+          "inferred_type": "text",
+          "sample_values": [
+            "Already PF Deducted",
+            "Pf Declaration required, ESIC Aplicable",
+            "Only Pf Declaration required",
+            "Already PF Deducted",
+            "Below 14k"
+          ],
+          "null_count": 29,
+          "unique_count": 10,
+          "pattern": null,
+          "formula_detected": true,
+          "formula_count": 1,
+          "formula_error_count": 0,
+          "formula_samples": [
+            "=SUBTOTAL(9,BO8:BO44)"
+          ],
+          "evaluated_formula_samples": [
+            0
+          ],
+          "formula_status": "FORMULA_DETECTED",
+          "suggested_target_table": "TRN_Payment",
+          "suggested_target_field": "notes",
+          "confidence_score": 67,
+          "ignore": false,
+          "notes": "Salary sheet attendance and payroll metadata; Formula-backed source column validated against workbook",
+          "confidence_level": "Medium"
+        }
+      ],
+      "business_domain": [
+        "employee",
+        "salary"
+      ],
+      "business_scope": "EMPLOYEE_SALARY",
+      "descoped_from": [],
+      "notes": "Employee salary payroll context."
+    },
+    {
+      "fingerprint": "2cc3f21f82202fc9820584baa424b77f11cc247c42e2b90682ccf015413df93c",
+      "sheet_name": "Pivot",
+      "header_row": 7,
+      "row_count": 0,
+      "columns": [
+        {
+          "source_column": "Grand Total",
+          "inferred_type": "text",
+          "sample_values": [],
+          "null_count": 0,
+          "unique_count": 0,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": null,
+          "suggested_target_field": null,
+          "confidence_score": 0,
+          "ignore": true,
+          "notes": "Salary pivot summary column",
+          "confidence_level": "None"
+        },
+        {
+          "source_column": "1648526",
+          "inferred_type": "text",
+          "sample_values": [],
+          "null_count": 0,
+          "unique_count": 0,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": null,
+          "suggested_target_field": null,
+          "confidence_score": 0,
+          "ignore": true,
+          "notes": "Salary pivot summary column",
+          "confidence_level": "None"
+        },
+        {
+          "source_column": "1608813",
+          "inferred_type": "text",
+          "sample_values": [],
+          "null_count": 0,
+          "unique_count": 0,
+          "pattern": null,
+          "formula_detected": false,
+          "formula_count": 0,
+          "formula_error_count": 0,
+          "formula_samples": [],
+          "evaluated_formula_samples": [],
+          "formula_status": "NONE",
+          "suggested_target_table": null,
+          "suggested_target_field": null,
+          "confidence_score": 0,
+          "ignore": true,
+          "notes": "Salary pivot summary column",
+          "confidence_level": "None"
+        }
+      ],
+      "business_domain": [
+        "employee",
+        "salary",
+        "summary"
+      ],
+      "business_scope": "EMPLOYEE_SALARY_SUMMARY",
+      "descoped_from": [
+        "direct_import"
+      ],
+      "notes": "Salary pivot summary context; usually review-only and not imported directly."
+    }
+  ]
+}

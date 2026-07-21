@@ -1,0 +1,89 @@
+sheet_name,business_scope,source_column,target_table,target_field,confidence_level,ignore,notes
+Tracker,COMMISSION_PAYOUT_TRACKER,SR NO,,,None,True,Serial number column
+Tracker,COMMISSION_PAYOUT_TRACKER,ENTRY DATE,TRN_Case,application_date,High,False,Tracker application date
+Tracker,COMMISSION_PAYOUT_TRACKER,ENTRY DONE BY,MST_Employee,full_name,High,False,Tracker employee reference
+Tracker,COMMISSION_PAYOUT_TRACKER,CASE NO,TRN_Case,case_number,High,False,Tracker case identifier
+Tracker,COMMISSION_PAYOUT_TRACKER,ENQUIRY NO,TRN_Case,case_number,High,False,Tracker case identifier
+Tracker,COMMISSION_PAYOUT_TRACKER,APPLICATION NUMBER,TRN_Case,case_number,High,False,Tracker case identifier
+Tracker,COMMISSION_PAYOUT_TRACKER,COMPANY NAME,MST_Lender,lender_name,High,False,Company name in lender master sheet
+Tracker,COMMISSION_PAYOUT_TRACKER,CUSTOMER NAME,MST_Customer,full_name,High,False,Tracker context customer lookup
+Tracker,COMMISSION_PAYOUT_TRACKER,BANK NAME,MST_Lender,lender_name,High,False,Tracker context lender lookup
+Tracker,COMMISSION_PAYOUT_TRACKER,CODE,MST_DSA,dsa_code,High,False,Tracker tenant DSA code
+Tracker,COMMISSION_PAYOUT_TRACKER,BRANCH,TRN_Case,branch_name,Medium,False,Tracker branch name
+Tracker,COMMISSION_PAYOUT_TRACKER,RM NAME,MST_Employee,full_name,High,False,Tracker employee reference
+Tracker,COMMISSION_PAYOUT_TRACKER,PRODUCT,MST_Product,product_name,High,False,Product name in lender master sheet
+Tracker,COMMISSION_PAYOUT_TRACKER,CONNECTOR,MST_Connector,full_name,High,False,Tracker context connector lookup
+Tracker,COMMISSION_PAYOUT_TRACKER,CONNECTOR 2,MST_Connector,full_name,High,False,Tracker context connector lookup
+Tracker,COMMISSION_PAYOUT_TRACKER,Referred by,TRN_Case,referral_source,Medium,False,Tracker referral source
+Tracker,COMMISSION_PAYOUT_TRACKER,UNIT HEAD,MST_Employee,full_name,High,False,Tracker employee reference
+Tracker,COMMISSION_PAYOUT_TRACKER,SM NAME,MST_Employee,full_name,High,False,Tracker employee reference
+Tracker,COMMISSION_PAYOUT_TRACKER,REGION,REF_Region,name,Medium,False,Tracker region lookup
+Tracker,COMMISSION_PAYOUT_TRACKER,STATUS,TRN_Case,status,High,False,Status mapped with REF_Status lookup
+Tracker,COMMISSION_PAYOUT_TRACKER,TOTAL DISB AMOUNT,TRN_Case,disbursement_amount,High,False,Tracker disbursement amount
+Tracker,COMMISSION_PAYOUT_TRACKER,DISB DATE,TRN_Case,disbursement_date,High,False,Tracker disbursement date
+Tracker,COMMISSION_PAYOUT_TRACKER,PROFILE,REF_BorrowerProfile,name,Medium,False,Tracker borrower profile
+Tracker,COMMISSION_PAYOUT_TRACKER,BANK PAYOUT%,RUL_CommissionRule,headline_percent,Medium,False,Tracker payout percentage
+Tracker,COMMISSION_PAYOUT_TRACKER,BANK PAYOUTAMT,TRN_Commission,gross_commission_amount,Medium,False,Tracker payout gross amount
+Tracker,COMMISSION_PAYOUT_TRACKER,CONNECTOR PAYOUT%,RUL_CommissionRule,headline_percent,Medium,False,Tracker payout percentage
+Tracker,COMMISSION_PAYOUT_TRACKER,CONNECTOR PAYOUT AMT,TRN_Commission,gross_commission_amount,Medium,False,Tracker payout gross amount
+Tracker,COMMISSION_PAYOUT_TRACKER,CONNECTOR 2 PAYOUT%,RUL_CommissionRule,headline_percent,Medium,False,Tracker payout percentage
+Tracker,COMMISSION_PAYOUT_TRACKER,CONNECTOR 2 PAYOUT AMT,TRN_Commission,gross_commission_amount,Medium,False,Tracker payout gross amount
+Tracker,COMMISSION_PAYOUT_TRACKER,UNIT HEAD%,RUL_CommissionRule,headline_percent,Medium,False,Tracker payout percentage
+Tracker,COMMISSION_PAYOUT_TRACKER,UNIT HEAD AMT,TRN_Commission,gross_commission_amount,Medium,False,Tracker payout gross amount
+Tracker,COMMISSION_PAYOUT_TRACKER,SM PAYOUT%,RUL_CommissionRule,headline_percent,Medium,False,Tracker payout percentage
+Tracker,COMMISSION_PAYOUT_TRACKER,SM PAYOUT AMT,TRN_Commission,gross_commission_amount,Medium,False,Tracker payout gross amount
+Tracker,COMMISSION_PAYOUT_TRACKER,INVOICE DATE,TRN_Commission,commission_date,Medium,False,Tracker commission lifecycle date
+Tracker,COMMISSION_PAYOUT_TRACKER,INVOICE NO,TRN_Payment,payment_number,Medium,False,Tracker invoice reference as payment number
+Tracker,COMMISSION_PAYOUT_TRACKER,Taxable Amount,TRN_Commission,gross_commission_amount,Medium,False,Tracker payout gross amount
+Tracker,COMMISSION_PAYOUT_TRACKER,Bill Status,TRN_Commission,payment_status,Medium,False,Tracker payout status
+Tracker,COMMISSION_PAYOUT_TRACKER,Receive date,TRN_Commission,commission_date,Medium,False,Tracker commission lifecycle date
+Tracker,COMMISSION_PAYOUT_TRACKER,Case wise P&L,TRN_Commission,gross_commission_amount,Medium,False,Tracker payout gross amount
+Tracker,COMMISSION_PAYOUT_TRACKER,Payout %,RUL_CommissionRule,headline_percent,Medium,False,Tracker payout percentage
+Tracker,COMMISSION_PAYOUT_TRACKER,Remarks,TRN_Commission,notes,Medium,False,Tracker payout notes
+Tracker,COMMISSION_PAYOUT_TRACKER,Payment Approval,TRN_Commission,payment_status,Medium,False,Tracker payout status
+Tracker,COMMISSION_PAYOUT_TRACKER,Approval Date 1,TRN_Commission,commission_date,Medium,False,Tracker commission lifecycle date
+Tracker,COMMISSION_PAYOUT_TRACKER,Approval Date 2,TRN_Commission,commission_date,Medium,False,Tracker commission lifecycle date
+Tracker,COMMISSION_PAYOUT_TRACKER,Unnamed: 44,,,None,True,Unnamed helper column
+Tracker,COMMISSION_PAYOUT_TRACKER,Payment Request Date C-1,TRN_Payment,payment_date,Medium,False,Tracker payout date
+Tracker,COMMISSION_PAYOUT_TRACKER,Percentage Formula,RUL_CommissionRule,headline_percent,Medium,False,Tracker payout percentage
+Tracker,COMMISSION_PAYOUT_TRACKER,Advance/Recovery,TRN_Commission,notes,Medium,False,Tracker payout notes
+Tracker,COMMISSION_PAYOUT_TRACKER,PAYMENT AMT,TRN_Payment,payment_amount,Medium,False,Tracker payout payment amount
+Tracker,COMMISSION_PAYOUT_TRACKER,TDS@2%,TRN_Commission,tds_amount,Medium,False,Tracker payout TDS
+Tracker,COMMISSION_PAYOUT_TRACKER,FINAL PAYABLE AMT,TRN_Payment,payment_amount,Medium,False,Tracker payout payment amount
+Tracker,COMMISSION_PAYOUT_TRACKER,Connector Name -1,MST_Connector,full_name,High,False,Tracker context connector lookup
+Tracker,COMMISSION_PAYOUT_TRACKER,C-1 UTR,TRN_Payment,utr_number,High,False,Tracker payout UTR
+Tracker,COMMISSION_PAYOUT_TRACKER,Payment Request Date C-2,TRN_Payment,payment_date,Medium,False,Tracker payout date
+Tracker,COMMISSION_PAYOUT_TRACKER,Bank,MST_Connector,bank_name,High,False,Alias match with 'bank_name'
+Tracker,COMMISSION_PAYOUT_TRACKER,Account No,MST_Connector,account_number,High,False,Alias match with 'account_number'
+Tracker,COMMISSION_PAYOUT_TRACKER,IFSC Code,MST_Connector,ifsc,High,False,Alias match with 'ifsc'
+Tracker,COMMISSION_PAYOUT_TRACKER,Connector 2 PAYMENT DATE,TRN_Payment,payment_date,Medium,False,Tracker payout date
+Tracker,COMMISSION_PAYOUT_TRACKER,FORMULA PERCENTAGE,RUL_CommissionRule,headline_percent,Medium,False,Tracker payout percentage
+Tracker,COMMISSION_PAYOUT_TRACKER,Connector 2 PAYMENT AMT,TRN_Payment,payment_amount,Medium,False,Tracker payout payment amount
+Tracker,COMMISSION_PAYOUT_TRACKER,Connector 2 TDS@2%,TRN_Commission,tds_amount,Medium,False,Tracker payout TDS
+Tracker,COMMISSION_PAYOUT_TRACKER,Connector 2 FINAL PAYABLE AMT,TRN_Payment,payment_amount,Medium,False,Tracker payout payment amount
+Tracker,COMMISSION_PAYOUT_TRACKER,Connector 2 Name,MST_Connector,full_name,High,False,Tracker context connector lookup
+Tracker,COMMISSION_PAYOUT_TRACKER,C-2 UTR,TRN_Payment,utr_number,High,False,Tracker payout UTR
+Tracker,COMMISSION_PAYOUT_TRACKER,Payment Request Date C-2.1,TRN_Payment,payment_date,Medium,False,Tracker payout date
+Tracker,COMMISSION_PAYOUT_TRACKER,Bank.1,MST_Connector,bank_name,High,False,Alias match with 'bank_name'
+Tracker,COMMISSION_PAYOUT_TRACKER,Account No.1,MST_Connector,account_number,High,False,Alias match with 'account_number'
+Tracker,COMMISSION_PAYOUT_TRACKER,IFSC Code.1,MST_Connector,ifsc,High,False,Alias match with 'ifsc'
+Tracker,COMMISSION_PAYOUT_TRACKER,PAID TO UNIT HEAD,TRN_Commission,payment_status,Medium,False,Tracker payout status
+Tracker,COMMISSION_PAYOUT_TRACKER,Payee Name (UH),MST_Employee,full_name,High,False,Tracker employee reference
+Tracker,COMMISSION_PAYOUT_TRACKER,PAYMENT DATE,TRN_Payment,payment_date,Medium,False,Tracker payout date
+Tracker,COMMISSION_PAYOUT_TRACKER,PAYMENT AMT.1,TRN_Payment,payment_amount,Medium,False,Tracker payout payment amount
+Tracker,COMMISSION_PAYOUT_TRACKER,TDS@2%.1,TRN_Commission,tds_amount,Medium,False,Tracker payout TDS
+Tracker,COMMISSION_PAYOUT_TRACKER,FINAL PAYABLE AMT.1,TRN_Payment,payment_amount,Medium,False,Tracker payout payment amount
+Tracker,COMMISSION_PAYOUT_TRACKER,PAID TO SM,TRN_Commission,payment_status,Medium,False,Tracker payout status
+Tracker,COMMISSION_PAYOUT_TRACKER,PAYMENT DATE.1,TRN_Payment,payment_date,Medium,False,Tracker payout date
+Tracker,COMMISSION_PAYOUT_TRACKER,PAYMENT AMT.2,TRN_Payment,payment_amount,Medium,False,Tracker payout payment amount
+Tracker,COMMISSION_PAYOUT_TRACKER,TDS@2%.2,TRN_Commission,tds_amount,Medium,False,Tracker payout TDS
+Tracker,COMMISSION_PAYOUT_TRACKER,FINAL PAYABLE AMT.2,TRN_Payment,payment_amount,Medium,False,Tracker payout payment amount
+Bank Account Master,CONNECTOR_BANK_MASTER,Connector Code,MST_Connector,connector_code,High,False,Connector bank master context
+Bank Account Master,CONNECTOR_BANK_MASTER,Connector Name,MST_Connector,full_name,High,False,Connector bank master context
+Bank Account Master,CONNECTOR_BANK_MASTER,Connector PAN,MST_Connector,pan,High,False,Connector bank master context
+Bank Account Master,CONNECTOR_BANK_MASTER,Connector Bank,MST_Connector,bank_name,High,False,Connector bank master context
+Bank Account Master,CONNECTOR_BANK_MASTER,Connector Account No,MST_Connector,account_number,High,False,Connector bank master context
+Bank Account Master,CONNECTOR_BANK_MASTER,Connector IFSC CODE,MST_Connector,ifsc,High,False,Connector bank master context
+Bank Account Master,CONNECTOR_BANK_MASTER,Unit Head,MST_Employee,full_name,High,False,Employee reference in connector master context
+Bank Account Master,CONNECTOR_BANK_MASTER,GST,MST_Connector,gstin,High,False,Connector GST context
+Bank Account Master,CONNECTOR_BANK_MASTER,Unnamed: 8,,,None,True,Unnamed helper column

@@ -1,0 +1,110 @@
+{
+  "workbook_fingerprint": "a133a0b67888ad3ac716348a9a0c07843e81ac059738fb1d2dff87fa3e8c227c",
+  "sheet_count": 1,
+  "sheets": [
+    {
+      "fingerprint": "98ac60f639a60b1e99593d55854874d2dc93e26307db51186f406c1d77f6e752",
+      "sheet_name": "Master",
+      "header_row": 1,
+      "row_count": 2,
+      "columns": [
+        {
+          "source_column": "Lender / NBFC",
+          "inferred_type": "text",
+          "sample_values": [
+            "ABC Finance",
+            "XYZ Capital"
+          ],
+          "null_count": 0,
+          "unique_count": 2,
+          "pattern": null,
+          "suggested_target_table": "MST_Lender",
+          "suggested_target_field": "lender_name",
+          "confidence_score": 92,
+          "ignore": false,
+          "notes": "Alias match with 'lender_name'"
+        },
+        {
+          "source_column": "NBFC?",
+          "inferred_type": "percentage",
+          "sample_values": [
+            true,
+            false
+          ],
+          "null_count": 0,
+          "unique_count": 2,
+          "pattern": null,
+          "suggested_target_table": "MST_Lender",
+          "suggested_target_field": "is_nbfc",
+          "confidence_score": 92,
+          "ignore": false,
+          "notes": "Alias match with 'is_nbfc'"
+        },
+        {
+          "source_column": "PAN",
+          "inferred_type": "text",
+          "sample_values": [
+            "ABCDE1234F",
+            "FGHIJ5678K"
+          ],
+          "null_count": 0,
+          "unique_count": 2,
+          "pattern": "pan",
+          "suggested_target_table": "MST_Lender",
+          "suggested_target_field": "pan",
+          "confidence_score": 95,
+          "ignore": false,
+          "notes": "Exact normalized match"
+        },
+        {
+          "source_column": "GSTIN",
+          "inferred_type": "text",
+          "sample_values": [
+            "27ABCDE1234F1Z5",
+            "27FGHIJ5678K1Z2"
+          ],
+          "null_count": 0,
+          "unique_count": 2,
+          "pattern": "pan",
+          "suggested_target_table": "MST_Lender",
+          "suggested_target_field": "gstin",
+          "confidence_score": 95,
+          "ignore": false,
+          "notes": "Exact normalized match"
+        },
+        {
+          "source_column": "< \u20b950 L",
+          "inferred_type": "percentage",
+          "sample_values": [
+            0.5,
+            0.6
+          ],
+          "null_count": 0,
+          "unique_count": 2,
+          "pattern": null,
+          "suggested_target_table": "RUL_CommissionSlab",
+          "suggested_target_field": "rate",
+          "confidence_score": 70,
+          "ignore": false,
+          "notes": "Detected as slab column"
+        },
+        {
+          "source_column": "\u20b950 L \u2013 < \u20b91 Cr",
+          "inferred_type": "percentage",
+          "sample_values": [
+            0.7,
+            0.8
+          ],
+          "null_count": 0,
+          "unique_count": 2,
+          "pattern": null,
+          "suggested_target_table": "RUL_CommissionSlab",
+          "suggested_target_field": "rate",
+          "confidence_score": 70,
+          "ignore": false,
+          "notes": "Detected as slab column"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "archived_at": "2026-07-20T14:02:12.538985+00:00",
+  "db_path": "C:\\Users\\etsin\\OneDrive\\Documents\\AI Projects\\ODOS Test\\odos\\odos.db",
+  "tables": {
+    "mst_customer": [],
+    "mst_dsa": [
+      {
+        "dsa_id": 1,
+        "dsa_code": "DSA-PRIMARY",
+        "dsa_name": "Primary DSA",
+        "contact_person": "Operations",
+        "email": "ops@example.com",
+        "mobile": "9999999999",
+        "is_active": 1,
+        "created_at": "2026-07-20 14:01:56.279224",
+        "updated_at": "2026-07-20 14:01:56.279228"
+      }
+    ],
+    "mst_lender": [],
+    "mst_product": [],
+    "mst_employee": [],
+    "mst_connector": [],
+    "mst_vendor": [],
+    "mst_expense_category": [],
+    "mst_cost_center": [],
+    "mst_company_bank_account": [],
+    "trn_case": [
+      {
+        "case_id": 1,
+        "case_number": "CASE-001",
+        "customer_id": 1,
+        "lender_id": 1,
+        "product_id": 1,
+        "application_date": null,
+        "sanction_date": null,
+        "disbursement_date": null,
+        "sanction_amount": 1000000.0,
+        "disbursement_amount": 950000.0,
+        "status": "DISBURSED",
+        "is_active": 1,
+        "created_at": "2026-07-20 14:01:56.591450",
+        "updated_at": "2026-07-20 14:01:56.591453"
+      },
+      {
+        "case_id": 2,
+        "case_number": "CASE-002",
+        "customer_id": 1,
+        "lender_id": 1,
+        "product_id": 1,
+        "application_date": null,
+        "sanction_date": null,
+        "disbursement_date": null,
+        "sanction_amount": 2000000.0,
+        "disbursement_amount": 1800000.0,
+        "status": "LEAD",
+        "is_active": 1,
+        "created_at": "2026-07-20 14:01:56.595254",
+        "updated_at": "2026-07-20 14:01:56.595257"
+      }
+    ],
+    "trn_case_status_history": [],
+    "trn_revenue": [
+      {
+        "revenue_id": 1,
+        "case_id": 1,
+        "revenue_date": "2026-07-20",
+        "amount": null,
+        "base_revenue_amount": 20000.0,
+        "gst_amount": 0.0,
+        "tds_amount": 0.0,
+        "net_amount": 20000.0,
+        "utr_number": null,
+        "payment_status": "PENDING",
+        "notes": null,
+        "is_active": 1,
+        "created_by": null,
+        "updated_by": null,
+        "created_at": "2026-07-20 14:01:56.596891",
+        "updated_at": "2026-07-20 14:01:56.596894"
+      },
+      {
+        "revenue_id": 2,
+        "case_id": 2,
+        "revenue_date": "2026-07-20",
+        "amount": null,
+        "base_revenue_amount": 40000.0,
+        "gst_amount": 0.0,
+        "tds_amount": 0.0,
+        "net_amount": 40000.0,
+        "utr_number": null,
+        "payment_status": "PENDING",
+        "notes": null,
+        "is_active": 1,
+        "created_by": null,
+        "updated_by": null,
+        "created_at": "2026-07-20 14:01:56.598156",
+        "updated_at": "2026-07-20 14:01:56.598158"
+      }
+    ],
+    "trn_commission": [
+      {
+        "commission_id": 1,
+        "case_id": 1,
+        "connector_id": 1,
+        "commission_date": "2026-07-20",
+        "amount": null,
+        "base_commission_amount": 10000.0,
+        "bonus_commission_amount": 0.0,
+        "gross_commission_amount": 10000.0,
+        "gst_amount": 0.0,
+        "tds_amount": 0.0,
+        "net_amount": 10000.0,
+        "payment_status": "PENDING",
+        "notes": null,
+        "is_active": 1,
+        "created_by": null,
+        "updated_by": null,
+        "created_at": "2026-07-20 14:01:56.596032",
+        "updated_at": "2026-07-20 14:01:56.596034"
+      },
+      {
+        "commission_id": 2,
+        "case_id": 2,
+        "connector_id": 1,
+        "commission_date": "2026-07-20",
+        "amount": null,
+        "base_commission_amount": 20000.0,
+        "bonus_commission_amount": 0.0,
+        "gross_commission_amount": 20000.0,
+        "gst_amount": 0.0,
+        "tds_amount": 0.0,
+        "net_amount": 20000.0,
+        "payment_status": "PENDING",
+        "notes": null,
+        "is_active": 1,
+        "created_by": null,
+        "updated_by": null,
+        "created_at": "2026-07-20 14:01:56.598057",
+        "updated_at": "2026-07-20 14:01:56.598059"
+      }
+    ],
+    "trn_expense": [],
+    "trn_payment": [],
+    "trn_recurring_expense": [],
+    "trn_expense_claim": [],
+    "trn_tally_export_batch": [],
+    "trn_tally_export_detail": [],
+    "rul_validation_rule": [],
+    "rul_commission_rule": [],
+    "rul_commission_slab": [],
+    "rul_gst_rule": [],
+    "rul_tds_rule": [],
+    "etl_import_batch": [
+      {
+        "batch_id": 1,
+        "batch_guid": "4f4cd712-5a78-4c6f-920f-035829c73242",
+        "company_id": 1,
+        "source_system": "FCPL",
+        "file_name": "Secured_Tracker.xlsx",
+        "import_status": "PROMOTED",
+        "is_atomic_transaction": 0,
+        "is_complete": 1,
+        "import_datetime": "2026-07-20 14:01:56.535578",
+        "total_rows": 2,
+        "successful_rows": 2,
+        "failed_rows": 0,
+        "template_id": 15
+      }
+    ],
+    "etl_staging_raw_data": [
+      {
+        "staging_id": 1,
+        "batch_guid": "4f4cd712-5a78-4c6f-920f-035829c73242",
+        "company_id": 1,
+        "table_name": "TRN_Case",
+        "column_name": "row_data",
+        "source_row_number": 2,
+        "source_column_name": "",
+        "source_value": "{\"case_number\": \"CASE-001\", \"disbursement_amount\": 950000, \"sanction_amount\": 1000000, \"status\": \"DISBURSED\"}",
+        "target_field": "",
+        "stored_value": "{\"case_number\": \"CASE-001\", \"disbursement_amount\": 950000, \"sanction_amount\": 1000000, \"status\": \"DISBURSED\"}",
+        "validation_status": "PASSED",
+        "is_promoted": 1,
+        "import_datetime": "2026-07-20 14:01:56.553959"
+      },
+      {
+        "staging_id": 2,
+        "batch_guid": "4f4cd712-5a78-4c6f-920f-035829c73242",
+        "company_id": 1,
+        "table_name": "TRN_Case",
+        "column_name": "row_data",
+        "source_row_number": 3,
+        "source_column_name": "",
+        "source_value": "{\"case_number\": \"CASE-002\", \"disbursement_amount\": 1800000, \"sanction_amount\": 2000000, \"status\": \"LEAD\"}",
+        "target_field": "",
+        "stored_value": "{\"case_number\": \"CASE-002\", \"disbursement_amount\": 1800000, \"sanction_amount\": 2000000, \"status\": \"LEAD\"}",
+        "validation_status": "PASSED",
+        "is_promoted": 1,
+        "import_datetime": "2026-07-20 14:01:56.554160"
+      }
+    ],
+    "etl_error_log": [],
+    "etl_data_lineage": [
+      {
+        "lineage_id": 1,
+        "batch_guid": "4f4cd712-5a78-4c6f-920f-035829c73242",
+        "staging_id": 1,
+        "target_table": "TRN_Case",
+        "target_id": 1,
+        "created_at": "2026-07-20 14:01:56.592983"
+      },
+      {
+        "lineage_id": 2,
+        "batch_guid": "4f4cd712-5a78-4c6f-920f-035829c73242",
+        "staging_id": 2,
+        "target_table": "TRN_Case",
+        "target_id": 2,
+        "created_at": "2026-07-20 14:01:56.597427"
+      }
+    ]
+  }
+}

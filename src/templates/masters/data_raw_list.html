@@ -1,0 +1,33 @@
+{% extends "masters/base.html" %}
+
+{% block title %}Raw Data - {{ dataset }}{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Raw Data: {{ dataset }}</h1>
+    <a href="/masters/data/overview" class="btn btn-primary">Back to Overview</a>
+</div>
+
+<p>Total rows: {{ total }} | Showing up to: {{ limit }}</p>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                {% for col in columns %}
+                <th>{{ col }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                {% for col in columns %}
+                <td>{{ row[col] if row[col] is not none else '-' }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

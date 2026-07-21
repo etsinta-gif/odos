@@ -1,0 +1,219 @@
+{% extends "masters/base.html" %}
+
+{% block title %}ETL Upload - FCPL Pilot{% endblock %}
+
+{% block content %}
+<div style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:flex-start; margin-bottom: 18px;">
+  <div>
+    <h1 style="margin-bottom: 6px;">ETL Upload</h1>
+    <p style="margin: 0; color: #555;">One screen for add, analyze, and promote.</p>
+  </div>
+  <div style="display:flex; gap:8px; flex-wrap:wrap;">
+    <a href="/masters/dsas" class="btn btn-secondary">DSA</a>
+    <a href="/docs" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Open Swagger Docs</a>
+  </div>
+</div>
+
+<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 18px;">
+  <div style="padding: 14px; border: 1px solid #ddd; border-radius: 10px; background: #fff;">
+    <strong>1. DSA</strong>
+    {% if active_dsa %}
+    <p style="margin: 8px 0 0 0;">Active: {{ active_dsa.dsa_name }} ({{ active_dsa.dsa_code }})</p>
+    {% else %}
+    <p style="margin: 8px 0 0 0; color: #b00020;">No active DSA. Create one first.</p>
+    {% endif %}
+  </div>
+  <div style="padding: 14px; border: 1px solid #ddd; border-radius: 10px; background: #fff;">
+    <strong>2. Upload</strong>
+    <p style="margin: 8px 0 0 0;">Choose file, pick entity, upload.</p>
+  </div>
+  <div style="padding: 14px; border: 1px solid #ddd; border-radius: 10px; background: #fff;">
+    <strong>3. Promote</strong>
+    <p style="margin: 8px 0 0 0;">Use the latest staged batch below.</p>
+  </div>
+</div>
+
+<div style="margin-bottom: 16px; padding: 12px; border: 1px solid #cfd8dc; border-radius: 10px; background: #f7fbff;">
+  <strong>Strict template mode</strong>
+  <p style="margin: 8px 0 0 0;">Only pre-approved MIS templates are allowed. New template creation is currently blocked.</p>
+</div>
+
+{% if error %}
+<p style="color: #b00020; font-weight: 600;">{{ error }}</p>
+{% endif %}
+{% if success %}
+<p style="color: #0f7a2a; font-weight: 600;">{{ success }}</p>
+{% endif %}
+{% if template_missing_columns %}
+<div style="margin: 8px 0 14px 0; padding: 10px; border: 1px solid #ef9a9a; border-radius: 8px; background: #fff6f6;">
+  <strong>Template mismatch details</strong>
+  <ul style="margin: 8px 0 0 18px;">
+    {% for col in template_missing_columns %}
+    <li>{{ col }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+<div style="display:grid; grid-template-columns: 2fr 1fr; gap: 16px; align-items:start;">
+  <form method="POST" action="/masters/etl/upload" enctype="multipart/form-data" style="padding: 16px; border: 1px solid #ddd; border-radius: 12px; background: #fff;">
+    <h2 style="margin-top: 0;">Upload or analyze file</h2>
+    <div style="margin-bottom: 12px;">
+      <label for="file">Excel file</label><br>
+      <input type="file" id="file" name="file" accept=".xlsx,.xls" required>
+    </div>
+    <div style="margin-bottom: 12px;">
+      <label for="template_name">Approved template</label>
+      <select id="template_name" name="template_name" required>
+        {% for template in fixed_template_options %}
+        <option value="{{ template.template_name }}" {% if selected_template_name == template.template_name %}selected{% endif %}>{{ template.template_name }} - {{ template.label }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <button type="submit" name="intent" value="analyze" class="btn btn-secondary">Analyze template match</button>
+      <button type="submit" name="intent" value="upload" class="btn btn-primary">Upload and stage</button>
+    </div>
+  </form>
+
+  <div style="padding: 16px; border: 1px solid #ddd; border-radius: 12px; background: #fff;">
+    <h2 style="margin-top: 0;">Promote latest staged batch</h2>
+    {% if latest_staged_batch %}
+    <p style="margin: 0 0 8px 0;"><strong>{{ latest_staged_batch.file_name }}</strong></p>
+    <p style="margin: 0 0 12px 0; color: #666;">{{ latest_staged_batch.batch_guid }}</p>
+    <form method="POST" action="/api/v1/etl/promote">
+      <input type="hidden" name="batch_guid" value="{{ latest_staged_batch.batch_guid }}">
+      <button type="submit" class="btn btn-primary">Promote latest</button>
+    </form>
+    {% else %}
+    <p style="color:#666;">No staged batch yet. Upload a file first.</p>
+    {% endif %}
+  </div>
+</div>
+
+{% if analysis_proposal %}
+<div id="analysis-result" style="margin-top: 24px; padding: 16px; border: 2px solid #1f6feb; border-radius: 12px; background: #fff; box-shadow: 0 0 0 3px rgba(31,111,235,0.08);">
+  <h2 style="margin-top: 0;">Analysis result and matching</h2>
+  <p style="margin: 0 0 8px 0; color: #555;">File: <strong>{{ analysis_file_name }}</strong> | Template: <strong>{{ analysis_template_name }}</strong></p>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom: 12px;">
+    {% for sheet in analysis_proposal.sheets %}
+    <button type="button" class="btn btn-secondary sheet-tab" data-sheet="sheet-{{ loop.index0 }}">{{ sheet.sheet_name }}</button>
+    {% endfor %}
+  </div>
+
+  {% for sheet in analysis_proposal.sheets %}
+  <section id="sheet-{{ loop.index0 }}" class="sheet-panel" style="display: {% if analysis_selected_sheet == sheet.sheet_name %}block{% else %}none{% endif %}; margin-bottom: 18px;">
+    <div style="margin-bottom: 8px; color: #666;">Rows: {{ sheet.row_count }} | Header row: {{ sheet.header_row }}</div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Source Column</th>
+            <th>Suggested Match</th>
+            <th>Confidence</th>
+            <th>Ignore</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for column in sheet.columns %}
+          <tr>
+            <td>{{ column.source_column }}</td>
+            <td>{% if column.suggested_target_table %}{{ column.suggested_target_table }}.{{ column.suggested_target_field }}{% else %}-{% endif %}</td>
+            <td>{{ column.confidence_score }}{% if column.confidence_level %} ({{ column.confidence_level }}){% endif %}</td>
+            <td>{{ 'Yes' if column.ignore else 'No' }}</td>
+            <td>{{ column.notes or '-' }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  {% endfor %}
+
+  <div style="padding-top: 8px; border-top: 1px solid #eee; color: #666;">
+    Template creation and approval are disabled in strict mode.
+  </div>
+</div>
+<script>
+(() => {
+  const tabs = document.querySelectorAll('.sheet-tab');
+  const panels = document.querySelectorAll('.sheet-panel');
+  const sheetSelect = null;
+
+  const showSheet = (sheetName) => {
+    panels.forEach((panel) => {
+      panel.style.display = panel.id === sheetName ? 'block' : 'none';
+    });
+    tabs.forEach((tab) => {
+      tab.classList.toggle('btn-primary', tab.getAttribute('data-sheet') === sheetName);
+      tab.classList.toggle('btn-secondary', tab.getAttribute('data-sheet') !== sheetName);
+    });
+  };
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const sheetId = tab.getAttribute('data-sheet');
+      showSheet(sheetId);
+    });
+  });
+
+    if (tabs.length > 0) {
+      const firstTab = tabs[0];
+      showSheet(firstTab.getAttribute('data-sheet'));
+      document.getElementById('analysis-result')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+})();
+</script>
+{% endif %}
+<script>
+(() => {
+  const uploadForm = document.querySelector('form[action="/masters/etl/upload"]');
+  if (!uploadForm) {
+    return;
+  }
+  uploadForm.addEventListener('submit', () => {
+    uploadForm.querySelectorAll('button[type="submit"]').forEach((button) => {
+      button.disabled = true;
+    });
+  });
+})();
+</script>
+
+<h2 style="margin-top: 24px;">Batches</h2>
+<table border="1" cellpadding="6" cellspacing="0" style="width:100%; background:#fff;">
+  <thead>
+    <tr>
+      <th>Batch GUID</th>
+      <th>File Name</th>
+      <th>Status</th>
+      <th>Total Rows</th>
+      <th>Success</th>
+      <th>Failed</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for batch in batches %}
+    <tr>
+      <td>{{ batch.batch_guid }}</td>
+      <td>{{ batch.file_name }}</td>
+      <td>{{ batch.import_status }}</td>
+      <td>{{ batch.total_rows }}</td>
+      <td>{{ batch.successful_rows }}</td>
+      <td>{{ batch.failed_rows }}</td>
+      <td>
+        <a href="/api/v1/etl/staging?batch_guid={{ batch.batch_guid }}">View</a>
+        {% if batch.import_status == "STAGED" %}
+        <form method="POST" action="/api/v1/etl/promote" style="display:inline;">
+          <input type="hidden" name="batch_guid" value="{{ batch.batch_guid }}">
+          <button type="submit">Promote</button>
+        </form>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

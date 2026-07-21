@@ -1,0 +1,81 @@
+{% extends "masters/base.html" %}
+
+{% block title %}Payments - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Payments</h1>
+    <a href="/masters/payments/add" class="btn btn-primary">Add Payment</a>
+</div>
+
+<div class="filter-info">
+    <form method="GET" action="/masters/payments" class="filter-form">
+        <div>
+            <label for="payment_type">Type:</label>
+            <select id="payment_type" name="payment_type">
+                <option value="">All</option>
+                <option value="EXPENSE" {% if payment_type == 'EXPENSE' %}selected{% endif %}>Expense</option>
+                <option value="COMMISSION" {% if payment_type == 'COMMISSION' %}selected{% endif %}>Commission</option>
+                <option value="SALARY" {% if payment_type == 'SALARY' %}selected{% endif %}>Salary</option>
+                <option value="VENDOR" {% if payment_type == 'VENDOR' %}selected{% endif %}>Vendor</option>
+            </select>
+        </div>
+        <div>
+            <label for="reconciliation_status">Reconciliation Status:</label>
+            <select id="reconciliation_status" name="reconciliation_status">
+                <option value="">All</option>
+                <option value="PENDING" {% if reconciliation_status == 'PENDING' %}selected{% endif %}>Pending</option>
+                <option value="RECONCILED" {% if reconciliation_status == 'RECONCILED' %}selected{% endif %}>Reconciled</option>
+                <option value="FAILED" {% if reconciliation_status == 'FAILED' %}selected{% endif %}>Failed</option>
+            </select>
+        </div>
+        <div class="filter-actions">
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <a href="/masters/payments" class="btn btn-secondary">Clear</a>
+        </div>
+    </form>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Bank</th>
+                <th>Amount</th>
+                <th>Type</th>
+                <th>UTR</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for payment in payments %}
+            <tr>
+                <td>{{ payment.payment_id }}</td>
+                <td>{{ payment.payment_date }}</td>
+                <td>{{ payment.bank_name or '-' }}</td>
+                <td>₹{{ "%.2f"|format(payment.payment_amount) }}</td>
+                <td>{{ payment.payment_type }}</td>
+                <td>{{ payment.utr_number or '-' }}</td>
+                <td><span class="status-badge status-{{ payment.reconciliation_status.lower() }}">{{ payment.reconciliation_status }}</span></td>
+                <td>
+                    <a href="/masters/payments/{{ payment.payment_id }}" class="btn btn-sm btn-info">View</a>
+                    <a href="/masters/payments/{{ payment.payment_id }}/edit" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="/masters/payments/{{ payment.payment_id }}/delete" class="btn btn-sm btn-danger" onclick="return confirm('Delete this payment?')">Delete</a>
+                    <a href="/masters/payments/{{ payment.payment_id }}/reconcile" class="btn btn-sm btn-secondary">Reconcile</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% if not payments %}
+<div class="empty-state">
+    <p>No payment records found.</p>
+    <p><a href="/masters/payments/add">Add Payment</a> to get started.</p>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "masters/base.html" %}
+
+{% block title %}Data Overview - ODOS Enterprise{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Data Overview</h1>
+    <a href="/masters/data/tax-summary" class="btn btn-primary">Tax Summary</a>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Dataset</th>
+                <th>Rows</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in counts %}
+            <tr>
+                <td>{{ item.dataset }}</td>
+                <td>{{ item.rows }}</td>
+                <td><a href="/masters/data/raw/{{ item.dataset }}">Open</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
