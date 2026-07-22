@@ -9,6 +9,12 @@ import os
 from src.core.database import Base, engine, SessionLocal
 from src.admin.api import mapping as mapping_router
 from src.ai.api import router as ai_feedback_router
+from src.alerts.api import alerts as alerts_router
+from src.alerts import models as alerts_models  # noqa: F401
+from src.alerts.services.scheduler import scheduler as alert_scheduler
+from src.bi.api import dashboards as bi_dashboards_router
+from src.bi.api import reports as bi_reports_router
+from src.bi.api import trends as bi_trends_router
 from src.masters.api import case, commission, connector, customer, dashboard, document, dsa, employee, etl, expense, lender, payment, product, redflags, revenue
 from src.masters.ui import routes as ui_routes
 from src.masters.ui import routes_dsa
@@ -16,6 +22,7 @@ from src.masters.ui import routes_5_1, routes_5_2, routes_5_3, routes_5_4, route
 from src.masters.api.tally import router as tally_api_router
 from src.metadata import models as metadata_models  # noqa: F401
 from src.ai import models as ai_models  # noqa: F401
+from src.bi import models as bi_models  # noqa: F401
 from src.reference import models as reference_models  # noqa: F401
 from src.rules.api import rules as rules_router
 from src.rules import models as rules_models  # noqa: F401
@@ -24,6 +31,10 @@ from src.security.api import auth as auth_router
 from src.security import models as security_models  # noqa: F401
 
 app = FastAPI()
+
+
+def _is_truthy(value: str | None) -> bool:
+    return (value or "").strip().lower() in {"1", "true", "yes", "on"}
 
 cors_origins = [origin.strip() for origin in os.getenv("CORS_ALLOW_ORIGINS", "http://localhost:3000,http://localhost:5173").split(",") if origin.strip()]
 app.add_middleware(
@@ -54,6 +65,8 @@ app.include_router(revenue.router)
 app.include_router(commission.router)
 app.include_router(dashboard.router)
 app.include_router(redflags.router)
+app.include_router(alerts_router.router)
+app.include_router(alerts_router.legacy_router)
 app.include_router(expense.router)
 app.include_router(payment.router)
 app.include_router(etl.router)
@@ -61,6 +74,9 @@ app.include_router(tally_api_router)
 app.include_router(mapping_router.router)
 app.include_router(ai_feedback_router)
 app.include_router(rules_router.router)
+app.include_router(bi_reports_router.router)
+app.include_router(bi_dashboards_router.router)
+app.include_router(bi_trends_router.router)
 app.include_router(auth_router.router)
 app.include_router(ui_routes.router)
 app.include_router(routes_dsa.router)
@@ -194,6 +210,44 @@ def startup_event():
             conn.execute("ALTER TABLE mst_connector ADD COLUMN connector_name VARCHAR(255)")
             altered = True
 
+        # INTEL-1 compatibility columns for existing SQLite databases.
+        _ensure_column("mst_lender", "default_gst_rate", "ALTER TABLE mst_lender ADD COLUMN default_gst_rate NUMERIC(5,2) DEFAULT 0")
+        _ensure_column("mst_lender", "default_tds_rate", "ALTER TABLE mst_lender ADD COLUMN default_tds_rate NUMERIC(5,2) DEFAULT 0")
+        _ensure_column("mst_lender", "max_commission", "ALTER TABLE mst_lender ADD COLUMN max_commission NUMERIC(15,2)")
+        _ensure_column("mst_lender", "metadata", "ALTER TABLE mst_lender ADD COLUMN metadata JSON DEFAULT '{}' ")
+
+        _ensure_column("mst_connector", "default_gst_rate", "ALTER TABLE mst_connector ADD COLUMN default_gst_rate NUMERIC(5,2) DEFAULT 0")
+        _ensure_column("mst_connector", "default_tds_rate", "ALTER TABLE mst_connector ADD COLUMN default_tds_rate NUMERIC(5,2) DEFAULT 0")
+        _ensure_column("mst_connector", "max_commission", "ALTER TABLE mst_connector ADD COLUMN max_commission NUMERIC(15,2)")
+        _ensure_column("mst_connector", "metadata", "ALTER TABLE mst_connector ADD COLUMN metadata JSON DEFAULT '{}' ")
+
+        _ensure_column("trn_revenue", "party_id", "ALTER TABLE trn_revenue ADD COLUMN party_id INTEGER")
+        _ensure_column("trn_revenue", "reported_amount", "ALTER TABLE trn_revenue ADD COLUMN reported_amount NUMERIC(15,2)")
+        _ensure_column("trn_revenue", "reported_gst", "ALTER TABLE trn_revenue ADD COLUMN reported_gst NUMERIC(15,2) DEFAULT 0")
+        _ensure_column("trn_revenue", "reported_tds", "ALTER TABLE trn_revenue ADD COLUMN reported_tds NUMERIC(15,2) DEFAULT 0")
+        _ensure_column("trn_revenue", "reported_net", "ALTER TABLE trn_revenue ADD COLUMN reported_net NUMERIC(15,2)")
+        _ensure_column("trn_revenue", "system_gst", "ALTER TABLE trn_revenue ADD COLUMN system_gst NUMERIC(15,2) DEFAULT 0")
+        _ensure_column("trn_revenue", "system_tds", "ALTER TABLE trn_revenue ADD COLUMN system_tds NUMERIC(15,2) DEFAULT 0")
+        _ensure_column("trn_revenue", "gst_match", "ALTER TABLE trn_revenue ADD COLUMN gst_match BOOLEAN DEFAULT 0")
+        _ensure_column("trn_revenue", "tds_match", "ALTER TABLE trn_revenue ADD COLUMN tds_match BOOLEAN DEFAULT 0")
+        _ensure_column("trn_revenue", "data", "ALTER TABLE trn_revenue ADD COLUMN data JSON DEFAULT '{}' ")
+
+        _ensure_column("trn_commission", "party_id", "ALTER TABLE trn_commission ADD COLUMN party_id INTEGER")
+        _ensure_column("trn_commission", "reported_commission", "ALTER TABLE trn_commission ADD COLUMN reported_commission NUMERIC(15,2)")
+        _ensure_column("trn_commission", "reported_gst", "ALTER TABLE trn_commission ADD COLUMN reported_gst NUMERIC(15,2) DEFAULT 0")
+        _ensure_column("trn_commission", "reported_tds", "ALTER TABLE trn_commission ADD COLUMN reported_tds NUMERIC(15,2) DEFAULT 0")
+        _ensure_column("trn_commission", "reported_net", "ALTER TABLE trn_commission ADD COLUMN reported_net NUMERIC(15,2)")
+        _ensure_column("trn_commission", "exceeds_max", "ALTER TABLE trn_commission ADD COLUMN exceeds_max BOOLEAN DEFAULT 0")
+        _ensure_column("trn_commission", "gst_match", "ALTER TABLE trn_commission ADD COLUMN gst_match BOOLEAN DEFAULT 0")
+        _ensure_column("trn_commission", "tds_match", "ALTER TABLE trn_commission ADD COLUMN tds_match BOOLEAN DEFAULT 0")
+        _ensure_column("trn_commission", "data", "ALTER TABLE trn_commission ADD COLUMN data JSON DEFAULT '{}' ")
+
+        _ensure_column("trn_payment", "case_id", "ALTER TABLE trn_payment ADD COLUMN case_id INTEGER")
+        _ensure_column("trn_payment", "party_id", "ALTER TABLE trn_payment ADD COLUMN party_id INTEGER")
+        _ensure_column("trn_payment", "amount", "ALTER TABLE trn_payment ADD COLUMN amount NUMERIC(15,2)")
+        _ensure_column("trn_payment", "mode", "ALTER TABLE trn_payment ADD COLUMN mode VARCHAR(50)")
+        _ensure_column("trn_payment", "data", "ALTER TABLE trn_payment ADD COLUMN data JSON DEFAULT '{}' ")
+
         commission_rule_columns = _table_columns("rul_commission_rule")
         commission_rule_alter_statements = {
             "connector_share_percent": "ALTER TABLE rul_commission_rule ADD COLUMN connector_share_percent FLOAT",
@@ -221,11 +275,20 @@ def startup_event():
     finally:
         conn.close()
 
+    if _is_truthy(os.getenv("ALERT_SCHEDULER_ENABLED", "0")):
+        alert_scheduler.start()
+
     db = SessionLocal()
     try:
         seed_fixed_templates(db)
     finally:
         db.close()
+
+
+@app.on_event("shutdown")
+def shutdown_event():
+    if _is_truthy(os.getenv("ALERT_SCHEDULER_ENABLED", "0")):
+        alert_scheduler.stop()
 
 @app.get("/")
 async def read_root(request: Request):
