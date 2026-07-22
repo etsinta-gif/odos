@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import Boolean, Column, Date, DateTime, Float, Integer, String, Text, UniqueConstraint
+from sqlalchemy import Boolean, Column, Date, DateTime, Float, Integer, JSON, Numeric, String, Text, UniqueConstraint
 
 from src.core.database import Base
 
@@ -90,6 +90,7 @@ class TRN_Revenue(Base):
     revenue_id = Column(Integer, primary_key=True, index=True)
     company_id = Column(Integer, nullable=False, index=True, default=1)
     case_id = Column(Integer, nullable=True, index=True)
+    party_id = Column(Integer, nullable=True, index=True)
     revenue_date = Column(Date, nullable=False)
     rate_percent = Column(Float, nullable=True)
     gross_amount = Column(Float, nullable=True)
@@ -98,6 +99,15 @@ class TRN_Revenue(Base):
     gst_amount = Column(Float, default=0.0)
     tds_amount = Column(Float, default=0.0)
     net_amount = Column(Float, nullable=False)
+    reported_amount = Column(Numeric(15, 2), nullable=True)
+    reported_gst = Column(Numeric(15, 2), nullable=False, default=0.0)
+    reported_tds = Column(Numeric(15, 2), nullable=False, default=0.0)
+    reported_net = Column(Numeric(15, 2), nullable=True)
+    system_gst = Column(Numeric(15, 2), nullable=False, default=0.0)
+    system_tds = Column(Numeric(15, 2), nullable=False, default=0.0)
+    gst_match = Column(Boolean, nullable=False, default=False)
+    tds_match = Column(Boolean, nullable=False, default=False)
+    data = Column(JSON, nullable=False, default=dict)
     utr_number = Column(String(255), nullable=True, unique=True)
     payment_status = Column(String(50), default="PENDING")
     notes = Column(Text, nullable=True)
@@ -114,6 +124,7 @@ class TRN_Commission(Base):
     commission_id = Column(Integer, primary_key=True, index=True)
     company_id = Column(Integer, nullable=False, index=True, default=1)
     case_id = Column(Integer, nullable=True, index=True)
+    party_id = Column(Integer, nullable=True, index=True)
     connector_id = Column(Integer, nullable=True, index=True)
     commission_date = Column(Date, nullable=False)
     rate_percent = Column(Float, nullable=True)
@@ -125,6 +136,14 @@ class TRN_Commission(Base):
     gst_amount = Column(Float, default=0.0)
     tds_amount = Column(Float, default=0.0)
     net_amount = Column(Float, nullable=False)
+    reported_commission = Column(Numeric(15, 2), nullable=True)
+    reported_gst = Column(Numeric(15, 2), nullable=False, default=0.0)
+    reported_tds = Column(Numeric(15, 2), nullable=False, default=0.0)
+    reported_net = Column(Numeric(15, 2), nullable=True)
+    exceeds_max = Column(Boolean, nullable=False, default=False)
+    gst_match = Column(Boolean, nullable=False, default=False)
+    tds_match = Column(Boolean, nullable=False, default=False)
+    data = Column(JSON, nullable=False, default=dict)
     payment_request_date = Column(Date, nullable=True)
     payment_paid_date = Column(Date, nullable=True)
     utr_number = Column(String(255), nullable=True)
@@ -175,12 +194,17 @@ class TRN_Payment(Base):
 
     payment_id = Column(Integer, primary_key=True, index=True)
     company_id = Column(Integer, nullable=False, index=True, default=1)
+    case_id = Column(Integer, nullable=True, index=True)
+    party_id = Column(Integer, nullable=True, index=True)
     payment_number = Column(String(100), nullable=True, unique=True, index=True)
     payment_date = Column(Date, nullable=False)
     company_bank_account_id = Column(Integer, nullable=True, index=True)
     payment_amount = Column(Float, nullable=False)
+    amount = Column(Numeric(15, 2), nullable=True)
     payment_mode = Column(String(100), nullable=False)
+    mode = Column(String(50), nullable=True)
     utr_number = Column(String(255), nullable=True, unique=True)
+    data = Column(JSON, nullable=False, default=dict)
     payment_type = Column(String(100), nullable=False)
     reference_id = Column(Integer, nullable=True, index=True)
     reconciliation_status = Column(String(50), default="PENDING")
@@ -391,6 +415,28 @@ class ETL_DataLineage(Base):
     target_table = Column(String(100), nullable=False)
     target_id = Column(Integer, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
+
+
+class ETL_RedFlag(Base):
+    __tablename__ = "etl_red_flag"
+
+    red_flag_id = Column(Integer, primary_key=True, index=True)
+    company_id = Column(Integer, nullable=False, index=True, default=1)
+    batch_guid = Column(String(64), nullable=True, index=True)
+    record_type = Column(String(50), nullable=False, index=True)
+    record_id = Column(Integer, nullable=False, index=True)
+    severity = Column(String(20), nullable=False, index=True)
+    category = Column(String(50), nullable=False, index=True)
+    message = Column(Text, nullable=False)
+    field = Column(String(100), nullable=True)
+    reported_value = Column(String(100), nullable=True)
+    expected_value = Column(String(100), nullable=True)
+    status = Column(String(20), nullable=False, default="OPEN", index=True)
+    resolution_notes = Column(Text, nullable=True)
+    resolved_by = Column(Integer, nullable=True, index=True)
+    resolved_at = Column(DateTime, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
 
 class RUL_CommissionSlab(Base):

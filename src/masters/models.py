@@ -1,8 +1,39 @@
 from datetime import datetime
 
-from sqlalchemy import Boolean, Column, Date, DateTime, Float, Integer, String, Text
+from sqlalchemy import Boolean, Column, Date, DateTime, Float, Integer, JSON, Numeric, String, Text, UniqueConstraint
 
 from src.core.database import Base
+
+
+class MST_Party(Base):
+    __tablename__ = "mst_party"
+    __table_args__ = (
+        UniqueConstraint("company_id", "pan", name="uq_mst_party_company_pan"),
+    )
+
+    party_id = Column(Integer, primary_key=True, index=True)
+    company_id = Column(Integer, nullable=False, index=True, default=1)
+
+    # Core identity
+    name = Column(String(255), nullable=False)
+    pan = Column(String(20), nullable=False, index=True)
+    gstin = Column(String(30), nullable=True)
+    classification = Column(String(50), nullable=False, default="Unknown")
+
+    # Cross-verification defaults
+    default_gst_rate = Column(Numeric(5, 2), nullable=False, default=0.0)
+    default_tds_rate = Column(Numeric(5, 2), nullable=False, default=0.0)
+    max_commission = Column(Numeric(15, 2), nullable=True)
+
+    # Source-specific flexibility
+    metadata_json = Column("metadata", JSON, nullable=False, default=dict)
+
+    # Status and audit
+    is_active = Column(Boolean, default=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    created_by = Column(Integer, nullable=True, index=True)
+    updated_by = Column(Integer, nullable=True, index=True)
 
 
 class MST_Customer(Base):
@@ -33,6 +64,10 @@ class MST_Lender(Base):
     gstin = Column(String(30), nullable=True)
     lender_code = Column(String(50), nullable=True, unique=True)
     dsa_code = Column(String(100), nullable=True)
+    default_gst_rate = Column(Numeric(5, 2), nullable=False, default=0.0)
+    default_tds_rate = Column(Numeric(5, 2), nullable=False, default=0.0)
+    max_commission = Column(Numeric(15, 2), nullable=True)
+    metadata_json = Column("metadata", JSON, nullable=False, default=dict)
     is_nbfc = Column(Boolean, default=False)
     credit_rating = Column(String(20), nullable=True)
     is_active = Column(Boolean, default=True)
@@ -106,6 +141,10 @@ class MST_Connector(Base):
     bank_name = Column(String(100), nullable=True)
     account_number = Column(String(50), nullable=True)
     ifsc = Column(String(20), nullable=True)
+    default_gst_rate = Column(Numeric(5, 2), nullable=False, default=0.0)
+    default_tds_rate = Column(Numeric(5, 2), nullable=False, default=0.0)
+    max_commission = Column(Numeric(15, 2), nullable=True)
+    metadata_json = Column("metadata", JSON, nullable=False, default=dict)
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

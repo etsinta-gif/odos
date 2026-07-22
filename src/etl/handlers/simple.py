@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 from datetime import date, datetime
+from decimal import Decimal
 
 from sqlalchemy.orm import Session
 
@@ -10,11 +11,14 @@ from src.masters.models import (
     MST_ConnectorBank,
     MST_Employee,
     MST_EmployeeBankAccount,
+    MST_Lender,
     MST_Vendor,
 )
+from src.etl.services.cross_verify import CrossVerificationService, VerificationDefaults
 from src.reference.models import REF_ExpenseCategory
 from src.rules.models import RUL_InternalIncentiveScheme
 from src.transactions.models import (
+    ETL_RedFlag,
     TRN_BankStatementLine,
     TRN_Case,
     TRN_CaseConnectorSplit,
@@ -179,7 +183,58 @@ def promote_revenue(session: Session, staging_rows: list[dict], template: object
         if row_data.get("net_amount") in (None, ""):
             row_data["net_amount"] = row_data.get("gross_amount") or row_data.get("amount") or 0.0
         item["mapped_data"] = row_data
-    return _promote_simple(session, staging_rows, TRN_Revenue, "revenue_id", ["case_id", "utr_number"], ["net_amount"], conflict_resolution)
+
+    result = _promote_simple(session, staging_rows, TRN_Revenue, "revenue_id", ["case_id", "utr_number"], ["net_amount"], conflict_resolution)
+
+    verifier = CrossVerificationService()
+    generated_flags = 0
+    for row_wrapper, revenue_id in result.get("records", []):
+        row_data = dict(row_wrapper.get("mapped_data", {}))
+        staging_row = row_wrapper.get("staging_row")
+        revenue = session.query(TRN_Revenue).filter(TRN_Revenue.revenue_id == revenue_id).first()
+        if revenue is None:
+            continue
+
+        defaults = VerificationDefaults(
+            default_gst_rate=Decimal(str(row_data.get("default_gst_rate", 0) or 0)),
+            default_tds_rate=Decimal(str(row_data.get("default_tds_rate", 0) or 0)),
+        )
+        if revenue.case_id:
+            case = session.query(TRN_Case).filter(TRN_Case.case_id == revenue.case_id).first()
+            if case and case.lender_id:
+                lender = session.query(MST_Lender).filter(MST_Lender.lender_id == case.lender_id).first()
+                if lender:
+                    defaults.default_gst_rate = Decimal(str(lender.default_gst_rate or defaults.default_gst_rate))
+                    defaults.default_tds_rate = Decimal(str(lender.default_tds_rate or defaults.default_tds_rate))
+
+        verification = verifier.verify_revenue(row_data, defaults)
+        revenue.party_id = revenue.party_id or row_data.get("party_id")
+        revenue.reported_amount = verification["reported_amount"]
+        revenue.reported_gst = verification["reported_gst"]
+        revenue.reported_tds = verification["reported_tds"]
+        revenue.reported_net = verification["reported_net"]
+        revenue.system_gst = verification["system_gst"]
+        revenue.system_tds = verification["system_tds"]
+        revenue.gst_match = verification["gst_match"]
+        revenue.tds_match = verification["tds_match"]
+        if not revenue.data:
+            revenue.data = {}
+
+        for flag_payload in verification["red_flags"]:
+            session.add(
+                verifier.build_red_flag(
+                    company_id=staging_row.company_id if staging_row is not None else revenue.company_id,
+                    batch_guid=getattr(staging_row, "batch_guid", None),
+                    record_type="revenue",
+                    record_id=revenue.revenue_id,
+                    payload=flag_payload,
+                )
+            )
+            generated_flags += 1
+
+    if generated_flags:
+        result["red_flags"] = generated_flags
+    return result
 
 
 def promote_commission_txn(session: Session, staging_rows: list[dict], template: object, conflict_resolution: str = "SKIP") -> dict:
@@ -190,7 +245,58 @@ def promote_commission_txn(session: Session, staging_rows: list[dict], template:
         if row_data.get("net_amount") in (None, ""):
             row_data["net_amount"] = row_data.get("gross_amount") or row_data.get("amount") or 0.0
         item["mapped_data"] = row_data
-    return _promote_simple(session, staging_rows, TRN_Commission, "commission_id", ["case_id", "connector_id", "utr_number"], ["net_amount"], conflict_resolution)
+
+    result = _promote_simple(session, staging_rows, TRN_Commission, "commission_id", ["case_id", "connector_id", "utr_number"], ["net_amount"], conflict_resolution)
+
+    verifier = CrossVerificationService()
+    generated_flags = 0
+    for row_wrapper, commission_id in result.get("records", []):
+        row_data = dict(row_wrapper.get("mapped_data", {}))
+        staging_row = row_wrapper.get("staging_row")
+        commission = session.query(TRN_Commission).filter(TRN_Commission.commission_id == commission_id).first()
+        if commission is None:
+            continue
+
+        defaults = VerificationDefaults(
+            default_gst_rate=Decimal(str(row_data.get("default_gst_rate", 0) or 0)),
+            default_tds_rate=Decimal(str(row_data.get("default_tds_rate", 0) or 0)),
+            max_commission=Decimal(str(row_data.get("max_commission"))) if row_data.get("max_commission") not in (None, "") else None,
+        )
+        if commission.connector_id:
+            connector = session.query(MST_Connector).filter(MST_Connector.connector_id == commission.connector_id).first()
+            if connector:
+                defaults.default_gst_rate = Decimal(str(connector.default_gst_rate or defaults.default_gst_rate))
+                defaults.default_tds_rate = Decimal(str(connector.default_tds_rate or defaults.default_tds_rate))
+                if connector.max_commission is not None:
+                    defaults.max_commission = Decimal(str(connector.max_commission))
+
+        verification = verifier.verify_commission(row_data, defaults)
+        commission.party_id = commission.party_id or row_data.get("party_id")
+        commission.reported_commission = verification["reported_commission"]
+        commission.reported_gst = verification["reported_gst"]
+        commission.reported_tds = verification["reported_tds"]
+        commission.reported_net = verification["reported_net"]
+        commission.gst_match = verification["gst_match"]
+        commission.tds_match = verification["tds_match"]
+        commission.exceeds_max = verification["exceeds_max"]
+        if not commission.data:
+            commission.data = {}
+
+        for flag_payload in verification["red_flags"]:
+            session.add(
+                verifier.build_red_flag(
+                    company_id=staging_row.company_id if staging_row is not None else commission.company_id,
+                    batch_guid=getattr(staging_row, "batch_guid", None),
+                    record_type="commission",
+                    record_id=commission.commission_id,
+                    payload=flag_payload,
+                )
+            )
+            generated_flags += 1
+
+    if generated_flags:
+        result["red_flags"] = generated_flags
+    return result
 
 
 def promote_case_connector_split(session: Session, staging_rows: list[dict], template: object, conflict_resolution: str = "SKIP") -> dict:

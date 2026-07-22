@@ -17,6 +17,10 @@ class LenderCreate(BaseModel):
     lender_code: Optional[str] = None
     is_nbfc: Optional[bool] = False
     credit_rating: Optional[str] = None
+    default_gst_rate: Optional[float] = 0.0
+    default_tds_rate: Optional[float] = 0.0
+    max_commission: Optional[float] = None
+    metadata_json: Optional[dict] = None
 
 class LenderUpdate(BaseModel):
     lender_name: Optional[str] = None
@@ -26,6 +30,10 @@ class LenderUpdate(BaseModel):
     is_nbfc: Optional[bool] = None
     credit_rating: Optional[str] = None
     is_active: Optional[bool] = None
+    default_gst_rate: Optional[float] = None
+    default_tds_rate: Optional[float] = None
+    max_commission: Optional[float] = None
+    metadata_json: Optional[dict] = None
 
 class LenderResponse(BaseModel):
     lender_id: int
@@ -35,6 +43,10 @@ class LenderResponse(BaseModel):
     lender_code: Optional[str]
     is_nbfc: bool
     credit_rating: Optional[str]
+    default_gst_rate: float
+    default_tds_rate: float
+    max_commission: Optional[float]
+    metadata_json: dict
     is_active: bool
 
     class Config:
@@ -88,6 +100,10 @@ def create_lender(lender_data: LenderCreate, db: Session = Depends(get_db)):
         lender_code=lender_data.lender_code,
         is_nbfc=lender_data.is_nbfc,
         credit_rating=lender_data.credit_rating,
+        default_gst_rate=lender_data.default_gst_rate or 0.0,
+        default_tds_rate=lender_data.default_tds_rate or 0.0,
+        max_commission=lender_data.max_commission,
+        metadata_json=lender_data.metadata_json or {},
         is_active=True
     )
     db.add(new_lender)

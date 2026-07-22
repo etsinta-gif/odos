@@ -270,6 +270,7 @@ def promote_batch(db: Session, batch_guid: str, conflict_resolution: str = "SKIP
                 "updated": result.get("updated", 0),
                 "skipped": result.get("skipped", 0),
                 "failed": result.get("failed", 0),
+                "red_flags": result.get("red_flags", 0),
             }
             for row_wrapper, target_id in result.get("records", []):
                 staging_row = row_wrapper["staging_row"]
@@ -305,6 +306,7 @@ def promote_batch(db: Session, batch_guid: str, conflict_resolution: str = "SKIP
 
     total_written = sum(result.get("created", 0) + result.get("updated", 0) for result in results.values())
     total_failed = sum(result.get("failed", 0) for result in results.values())
+    total_red_flags = sum(result.get("red_flags", 0) for result in results.values())
     has_target_failures = total_failed > 0
     batch.successful_rows += total_written
     batch.failed_rows = total_failed
@@ -320,6 +322,7 @@ def promote_batch(db: Session, batch_guid: str, conflict_resolution: str = "SKIP
         "summary": {
             "total_created_or_updated": total_written,
             "total_failed": total_failed,
+            "total_red_flags": total_red_flags,
             "has_target_failures": has_target_failures,
         },
     }

@@ -3,7 +3,7 @@ from pathlib import Path
 
 from fastapi.testclient import TestClient
 
-from app.main import app
+from app.main import app, startup_event
 from src.core.database import Base, engine
 
 
@@ -11,6 +11,7 @@ client = TestClient(app)
 
 
 def setup_module(module):
+    startup_event()
     Base.metadata.create_all(bind=engine)
 
 

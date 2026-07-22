@@ -18,6 +18,10 @@ class ConnectorCreate(BaseModel):
     bank_name: Optional[str] = None
     account_number: Optional[str] = None
     ifsc: Optional[str] = None
+    default_gst_rate: Optional[float] = 0.0
+    default_tds_rate: Optional[float] = 0.0
+    max_commission: Optional[float] = None
+    metadata_json: Optional[dict] = None
 
 class ConnectorUpdate(BaseModel):
     connector_code: Optional[str] = None
@@ -28,6 +32,10 @@ class ConnectorUpdate(BaseModel):
     account_number: Optional[str] = None
     ifsc: Optional[str] = None
     is_active: Optional[bool] = None
+    default_gst_rate: Optional[float] = None
+    default_tds_rate: Optional[float] = None
+    max_commission: Optional[float] = None
+    metadata_json: Optional[dict] = None
 
 class ConnectorResponse(BaseModel):
     connector_id: int
@@ -38,6 +46,10 @@ class ConnectorResponse(BaseModel):
     bank_name: Optional[str]
     account_number: Optional[str]
     ifsc: Optional[str]
+    default_gst_rate: float
+    default_tds_rate: float
+    max_commission: Optional[float]
+    metadata_json: dict
     is_active: bool
 
     class Config:
@@ -85,6 +97,10 @@ def create_connector(connector_data: ConnectorCreate, db: Session = Depends(get_
         bank_name=connector_data.bank_name,
         account_number=connector_data.account_number,
         ifsc=connector_data.ifsc,
+        default_gst_rate=connector_data.default_gst_rate or 0.0,
+        default_tds_rate=connector_data.default_tds_rate or 0.0,
+        max_commission=connector_data.max_commission,
+        metadata_json=connector_data.metadata_json or {},
         is_active=True
     )
     db.add(new_connector)
