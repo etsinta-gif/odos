@@ -1,6 +1,6 @@
 import pytest
 
-from src.core.database import engine_options
+from src.core.database import engine_options, normalize_database_url
 from src.core.deployment_config import database_url_from_environment, public_http_url
 
 
@@ -10,6 +10,19 @@ def test_sqlite_engine_uses_thread_compatibility_option() -> None:
 
 def test_postgresql_engine_omits_sqlite_connection_arguments() -> None:
     assert engine_options("postgresql+psycopg://odos:odos@db:5432/odos") == {}
+
+
+def test_supabase_pooler_url_uses_psycopg_and_ssl() -> None:
+    normalized = normalize_database_url(
+        "postgresql://postgres.project:password@aws-0-region.pooler.supabase.com:6543/postgres?pgbouncer=true"
+    )
+    assert normalized.startswith("postgresql+psycopg://")
+    assert "pgbouncer=true" in normalized
+    assert "sslmode=require" in normalized
+
+
+def test_database_url_does_not_change_sqlite() -> None:
+    assert normalize_database_url("sqlite:///./odos.db") == "sqlite:///./odos.db"
 
 
 @pytest.mark.parametrize(
