@@ -1,27 +1,32 @@
 # Streamlit Deployment
 
-The Streamlit app is a public wrapper around the deployed ODOS frontend. Streamlit Cloud does not run the local Docker Desktop stack. The frontend, API, database, Redis, and persistent file storage must be hosted independently.
+The Streamlit app provides the native ODOS login screen. It no longer embeds the React frontend or depends on a local Docker Desktop stack. The login uses the existing ODOS authentication service and a hosted database.
 
 ## Required hosted services
 
-- A public HTTPS URL for the ODOS frontend and API.
 - A persistent PostgreSQL database.
-- Redis for production readiness and cache-backed services.
-- Persistent storage for uploaded documents, generated exports, and backups. Use a mounted persistent volume or object storage; container-local files are ephemeral.
+- A hosted database user containing the ODOS users and authentication tables.
 
 ## Streamlit configuration
 
-In Streamlit Cloud, add this secret or environment variable:
+In Streamlit Cloud, add this secret:
 
 ```toml
-ODOS_FRONTEND_URL = "https://frontend.example.com"
+DATABASE_URL = "postgresql+psycopg://<user>:<password>@<postgres-host>:5432/<database>"
+SECRET_KEY = "<long-random-secret>"
 ```
 
-The value must be the deployed frontend URL. Do not use `localhost`, `127.0.0.1`, a Docker service name, or a private network address.
+The database must be reachable from Streamlit Cloud. Do not use `localhost`, `127.0.0.1`, a Docker service name, or a private network address. The app displays a configuration error instead of silently creating a local SQLite database when `DATABASE_URL` is missing.
+
+The native login is available directly at:
+
+```text
+https://odosv0.streamlit.app
+```
 
 ## Backend configuration
 
-Configure these values in the backend host or deployment secret manager. Keep them out of GitHub:
+If you continue running the FastAPI backend separately, configure these values in its host secret manager. Keep them out of GitHub:
 
 ```text
 APP_ENV=production
@@ -34,7 +39,7 @@ BACKUP_DIR=/var/backups/odos
 
 Production and staging refuse to start without `DATABASE_URL`; they never silently create or use `./odos.db`.
 
-## Deploy with the included images
+## Optional Docker deployment
 
 From the repository root, build the images with the same commands used by CI:
 
