@@ -1,21 +1,22 @@
 # Streamlit Deployment
 
-The Streamlit app provides a native login and read-only data pages. It does not embed the React frontend, use Supabase, connect to Docker, or write to a database. It reads the existing `odos.db` snapshot committed with the repository.
+The Streamlit app is the shared public entry point and embeds the remotely hosted ODOS React admin frontend. The React frontend and FastAPI backend must run on a remote host; they do not run on the Streamlit server or your laptop.
 
 ## Required hosted services
 
-- The existing `odos.db` file committed with the repository.
+- A public React frontend URL.
+- A public FastAPI backend URL.
+- Hosted PostgreSQL and any required Redis/persistent storage.
 
 ## Streamlit configuration
 
-In Streamlit Cloud, add these secrets:
+In Streamlit Cloud, add this secret:
 
 ```toml
-ODOS_USERNAME = "admin"
-ODOS_PASSWORD = "choose-a-strong-password"
+ODOS_FRONTEND_URL = "https://your-frontend.onrender.com"
 ```
 
-The password is stored only in Streamlit Secrets. Do not commit it to GitHub. A SHA-256 value may also be used with `ODOS_PASSWORD_HASH = "sha256:<digest>"`.
+Do not use `localhost`, `127.0.0.1`, a Docker service name, or `https://odosv0.streamlit.app` as this value. The Streamlit URL is the wrapper; `ODOS_FRONTEND_URL` is the separate public React frontend.
 
 The native login is available directly at:
 
@@ -38,7 +39,7 @@ BACKUP_DIR=/var/backups/odos
 
 Production and staging refuse to start without `DATABASE_URL`; they never silently create or use `./odos.db`.
 
-## Optional Docker deployment
+## Remote Docker deployment
 
 From the repository root, build the images with the same commands used by CI:
 
