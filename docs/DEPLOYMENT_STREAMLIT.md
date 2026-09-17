@@ -1,22 +1,21 @@
 # Streamlit Deployment
 
-The Streamlit app provides the native ODOS login screen. It no longer embeds the React frontend or depends on a local Docker Desktop stack. The login uses the existing ODOS authentication service and a hosted database.
+The Streamlit app provides a native login and read-only data pages. It does not embed the React frontend, use Supabase, connect to Docker, or write to a database. It reads the existing `odos.db` snapshot committed with the repository.
 
 ## Required hosted services
 
-- A persistent PostgreSQL database.
-- A hosted database user containing the ODOS users and authentication tables.
+- The existing `odos.db` file committed with the repository.
 
 ## Streamlit configuration
 
-In Streamlit Cloud, add this secret:
+In Streamlit Cloud, add these secrets:
 
 ```toml
-DATABASE_URL = "postgresql+psycopg://<user>:<password>@<external-postgres-host>:5432/<database>?sslmode=require"
-SECRET_KEY = "<long-random-secret>"
+ODOS_USERNAME = "admin"
+ODOS_PASSWORD = "choose-a-strong-password"
 ```
 
-The database must be reachable from Streamlit Cloud. Use the provider's **external** connection URL, not an internal Render hostname. Do not use `localhost`, `127.0.0.1`, a Docker service name, or a private network address. Add `?sslmode=require` when the provider requires SSL. The app displays a connection error instead of exposing a raw SQLAlchemy traceback when the database cannot be reached.
+The password is stored only in Streamlit Secrets. Do not commit it to GitHub. A SHA-256 value may also be used with `ODOS_PASSWORD_HASH = "sha256:<digest>"`.
 
 The native login is available directly at:
 
@@ -26,7 +25,7 @@ https://odosv0.streamlit.app
 
 ## Backend configuration
 
-If you continue running the FastAPI backend separately, configure these values in its host secret manager. Keep them out of GitHub:
+The old FastAPI/Docker deployment remains optional and is not used by this Streamlit-only app. Its configuration below applies only if that separate deployment is used:
 
 ```text
 APP_ENV=production

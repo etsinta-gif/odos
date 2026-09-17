@@ -1,102 +1,115 @@
-import os
+from __future__ import annotations
+
+import hashlib
+import hmac
+import sqlite3
+from pathlib import Path
 
 import streamlit as st
-from sqlalchemy.exc import SQLAlchemyError
 
 
-def _configure_runtime_from_secrets() -> None:
-	for name in ("APP_ENV", "DATABASE_URL", "SECRET_KEY", "ACCESS_TOKEN_EXPIRE_MINUTES", "REFRESH_TOKEN_EXPIRE_DAYS"):
-		if os.getenv(name):
-			continue
-		try:
-			value = st.secrets.get(name)
-		except Exception:
-			value = None
-		if value:
-			os.environ[name] = str(value)
+st.set_page_config(page_title="ODOS", page_icon="O", layout="wide")
+DATABASE_PATH = Path(__file__).with_name("odos.db")
 
 
-_configure_runtime_from_secrets()
-
-if not os.getenv("DATABASE_URL", "").strip():
-	st.set_page_config(page_title="ODOS", layout="wide")
-	st.title("ODOS")
-	st.error("DATABASE_URL is not configured.")
-	st.info("Add DATABASE_URL to Streamlit Cloud Secrets for the hosted PostgreSQL database.")
-	st.stop()
-
-from src.core.database import SessionLocal
-from src.security.auth import authenticate_user
+def _secret(name: str, default: str = "") -> str:
+    try:
+        value = st.secrets.get(name, default)
+    except Exception:
+        value = default
+    return str(value).strip()
 
 
-st.set_page_config(page_title="ODOS", layout="wide")
+def _password_matches(password: str, configured: str) -> bool:
+    if configured.startswith("sha256:"):
+        digest = hashlib.sha256(password.encode("utf-8")).hexdigest()
+        return hmac.compare_digest(digest, configured.removeprefix("sha256:"))
+    return hmac.compare_digest(password, configured)
 
 
-def _normalize_username(username: str | None) -> str:
-	return str(username or "").strip()
-
-if "odos_user" not in st.session_state:
-	st.session_state.odos_user = None
+def _read_only_connection() -> sqlite3.Connection:
+    uri = f"file:{DATABASE_PATH.as_posix()}?mode=ro"
+    return sqlite3.connect(uri, uri=True)
 
 
-def _sign_out() -> None:
-	st.session_state.odos_user = None
+def _table_names(connection: sqlite3.Connection) -> list[str]:
+    rows = connection.execute(
+        "SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%' ORDER BY name"
+    ).fetchall()
+    return [str(row[0]) for row in rows]
 
 
-if st.session_state.odos_user is None:
-	st.title("ODOS")
-	st.subheader("Admin login")
+def _login() -> None:
+    st.title("ODOS")
+    st.subheader("Login")
+    configured_username = _secret("ODOS_USERNAME")
+    configured_password = _secret("ODOS_PASSWORD") or _secret("ODOS_PASSWORD_HASH")
+    if not configured_username or not configured_password:
+        st.error("ODOS_USERNAME and ODOS_PASSWORD must be configured in Streamlit Secrets.")
+        st.code('ODOS_USERNAME = "admin"\nODOS_PASSWORD = "your-password"')
+        st.stop()
 
-	with st.form("odos_login"):
-		username = st.text_input("Username", autocomplete="username")
-		password = st.text_input("Password", type="password", autocomplete="current-password")
-		submitted = st.form_submit_button("Log in", type="primary", use_container_width=True)
+    with st.form("odos_login"):
+        username = st.text_input("Username")
+        password = st.text_input("Password", type="password")
+        submitted = st.form_submit_button("Log in", type="primary", use_container_width=True)
 
-	if submitted:
-		if not _normalize_username(username) or not password:
-			st.error("Username and password are required.")
-		else:
-			db = SessionLocal()
-			database_error = False
-			try:
-				user = authenticate_user(
-					db,
-					_normalize_username(username),
-					password,
-					source_ip=None,
-					user_agent="Streamlit",
-				)
-			except SQLAlchemyError:
-				user = None
-				database_error = True
-				st.error("The hosted database could not be reached.")
-				st.info(
-					"Check Streamlit Secrets: DATABASE_URL must use the database provider's "
-					"external hostname, valid credentials, and SSL if required. Do not use "
-					"localhost, 127.0.0.1, or a Docker service name."
-				)
-			finally:
-				db.close()
+    if submitted:
+        if hmac.compare_digest(username.strip(), configured_username) and _password_matches(password, configured_password):
+            st.session_state.authenticated = True
+            st.rerun()
+        st.error("Invalid username or password.")
 
-			if database_error:
-				pass
-			elif user is None:
-				st.error("Invalid username or password.")
-			else:
-				st.session_state.odos_user = {
-					"user_id": user.user_id,
-					"username": user.username,
-					"roles": [role.role_name for role in user.roles],
-					"password_change_required": bool(getattr(user, "must_change_password", False)),
-				}
-				st.rerun()
+
+def _data_pages() -> None:
+    with st.sidebar:
+        st.title("ODOS")
+        st.caption("Read-only Streamlit edition")
+        page = st.radio("Page", ["Dashboard", "Data browser"], label_visibility="collapsed")
+        st.divider()
+        if st.button("Log out", use_container_width=True):
+            st.session_state.authenticated = False
+            st.rerun()
+
+    if not DATABASE_PATH.exists():
+        st.error("The existing odos.db data file is not present in this deployment.")
+        return
+
+    try:
+        connection = _read_only_connection()
+    except sqlite3.Error:
+        st.error("The existing ODOS data file could not be opened read-only.")
+        return
+
+    try:
+        tables = _table_names(connection)
+        if page == "Dashboard":
+            st.title("ODOS Dashboard")
+            st.caption("Read-only view of the current data snapshot")
+            columns = st.columns(4)
+            for index, table in enumerate(tables[:4]):
+                count = connection.execute(f'SELECT COUNT(*) FROM "{table}"').fetchone()[0]
+                columns[index].metric(table, f"{count:,}")
+            st.subheader("Available data")
+            st.dataframe({"Table": tables}, use_container_width=True, hide_index=True)
+        else:
+            st.title("Data browser")
+            if not tables:
+                st.info("No tables are available in the current data snapshot.")
+                return
+            selected = st.selectbox("Select a table", tables)
+            limit = st.number_input("Rows to display", min_value=1, max_value=500, value=50, step=10)
+            rows = connection.execute(f'SELECT * FROM "{selected}" LIMIT ?', (int(limit),)).fetchall()
+            headers = [description[0] for description in connection.description or []]
+            st.dataframe([dict(zip(headers, row)) for row in rows], use_container_width=True, hide_index=True)
+    finally:
+        connection.close()
+
+
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+if st.session_state.authenticated:
+    _data_pages()
 else:
-	user = st.session_state.odos_user
-	st.title("ODOS")
-	st.success(f"Logged in as {user['username']}")
-	st.write(f"Roles: {', '.join(user['roles']) or 'No assigned roles'}")
-	if user["password_change_required"]:
-		st.warning("Your password must be changed before using the application.")
-	if st.button("Log out"):
-		_sign_out()
-		st.rerun()
+    _login()
