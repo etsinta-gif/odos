@@ -1,6 +1,7 @@
 import os
 
 import streamlit as st
+from sqlalchemy.exc import SQLAlchemyError
 
 
 def _configure_runtime_from_secrets() -> None:
@@ -56,6 +57,7 @@ if st.session_state.odos_user is None:
 			st.error("Username and password are required.")
 		else:
 			db = SessionLocal()
+			database_error = False
 			try:
 				user = authenticate_user(
 					db,
@@ -64,10 +66,21 @@ if st.session_state.odos_user is None:
 					source_ip=None,
 					user_agent="Streamlit",
 				)
+			except SQLAlchemyError:
+				user = None
+				database_error = True
+				st.error("The hosted database could not be reached.")
+				st.info(
+					"Check Streamlit Secrets: DATABASE_URL must use the database provider's "
+					"external hostname, valid credentials, and SSL if required. Do not use "
+					"localhost, 127.0.0.1, or a Docker service name."
+				)
 			finally:
 				db.close()
 
-			if user is None:
+			if database_error:
+				pass
+			elif user is None:
 				st.error("Invalid username or password.")
 			else:
 				st.session_state.odos_user = {

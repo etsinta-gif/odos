@@ -12,11 +12,11 @@ The Streamlit app provides the native ODOS login screen. It no longer embeds the
 In Streamlit Cloud, add this secret:
 
 ```toml
-DATABASE_URL = "postgresql+psycopg://<user>:<password>@<postgres-host>:5432/<database>"
+DATABASE_URL = "postgresql+psycopg://<user>:<password>@<external-postgres-host>:5432/<database>?sslmode=require"
 SECRET_KEY = "<long-random-secret>"
 ```
 
-The database must be reachable from Streamlit Cloud. Do not use `localhost`, `127.0.0.1`, a Docker service name, or a private network address. The app displays a configuration error instead of silently creating a local SQLite database when `DATABASE_URL` is missing.
+The database must be reachable from Streamlit Cloud. Use the provider's **external** connection URL, not an internal Render hostname. Do not use `localhost`, `127.0.0.1`, a Docker service name, or a private network address. Add `?sslmode=require` when the provider requires SSL. The app displays a connection error instead of exposing a raw SQLAlchemy traceback when the database cannot be reached.
 
 The native login is available directly at:
 
