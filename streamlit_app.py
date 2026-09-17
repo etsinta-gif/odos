@@ -65,7 +65,7 @@ def _data_pages() -> None:
     with st.sidebar:
         st.title("ODOS")
         st.caption("Read-only Streamlit edition")
-        page = st.radio("Page", ["Dashboard", "Data browser"], label_visibility="collapsed")
+        page = st.radio("Page", ["Admin Home", "Dashboards", "Data browser"], label_visibility="collapsed")
         st.divider()
         if st.button("Log out", use_container_width=True):
             st.session_state.authenticated = False
@@ -83,15 +83,36 @@ def _data_pages() -> None:
 
     try:
         tables = _table_names(connection)
-        if page == "Dashboard":
-            st.title("ODOS Dashboard")
-            st.caption("Read-only view of the current data snapshot")
+        if page == "Admin Home":
+            st.title("ODOS Admin Home")
+            st.caption("Read-only administration view of the current data snapshot")
+            st.subheader("Data overview")
             columns = st.columns(4)
             for index, table in enumerate(tables[:4]):
                 count = connection.execute(f'SELECT COUNT(*) FROM "{table}"').fetchone()[0]
                 columns[index].metric(table, f"{count:,}")
-            st.subheader("Available data")
+            st.subheader("Available dashboards")
+            dashboard_tables = [
+                table for table in tables if any(token in table.lower() for token in ("dashboard", "report", "trend", "metric", "bi_"))
+            ]
+            if dashboard_tables:
+                st.dataframe({"Dashboard data": dashboard_tables}, use_container_width=True, hide_index=True)
+            else:
+                st.info("No dashboard-specific tables are present in the current data snapshot.")
+            st.subheader("All data tables")
             st.dataframe({"Table": tables}, use_container_width=True, hide_index=True)
+        elif page == "Dashboards":
+            st.title("Dashboards")
+            dashboard_tables = [
+                table for table in tables if any(token in table.lower() for token in ("dashboard", "report", "trend", "metric", "bi_"))
+            ]
+            if not dashboard_tables:
+                st.info("No dashboard-specific tables are present in the current data snapshot.")
+            else:
+                selected = st.selectbox("Select dashboard data", dashboard_tables)
+                rows = connection.execute(f'SELECT * FROM "{selected}" LIMIT 100').fetchall()
+                headers = [description[0] for description in connection.description or []]
+                st.dataframe([dict(zip(headers, row)) for row in rows], use_container_width=True, hide_index=True)
         else:
             st.title("Data browser")
             if not tables:
