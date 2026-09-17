@@ -25,10 +25,14 @@ if not os.getenv("DATABASE_URL", "").strip():
 	st.stop()
 
 from src.core.database import SessionLocal
-from src.security.auth import authenticate_user, normalize_username
+from src.security.auth import authenticate_user
 
 
 st.set_page_config(page_title="ODOS", layout="wide")
+
+
+def _normalize_username(username: str | None) -> str:
+	return str(username or "").strip()
 
 if "odos_user" not in st.session_state:
 	st.session_state.odos_user = None
@@ -48,14 +52,14 @@ if st.session_state.odos_user is None:
 		submitted = st.form_submit_button("Log in", type="primary", use_container_width=True)
 
 	if submitted:
-		if not normalize_username(username) or not password:
+		if not _normalize_username(username) or not password:
 			st.error("Username and password are required.")
 		else:
 			db = SessionLocal()
 			try:
 				user = authenticate_user(
 					db,
-					normalize_username(username),
+					_normalize_username(username),
 					password,
 					source_ip=None,
 					user_agent="Streamlit",
