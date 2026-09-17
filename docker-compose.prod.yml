@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: odos_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?POSTGRES_USER must be configured}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be configured}
+      POSTGRES_DB: ${POSTGRES_DB:?POSTGRES_DB must be configured}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - odos_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: odos_redis
+    restart: always
+    networks:
+      - odos_network
+
+  backend:
+    image: ${DOCKER_REGISTRY:-ghcr.io}/${IMAGE_NAMESPACE:?IMAGE_NAMESPACE must be configured}/odos-backend:${VERSION:-latest}
+    container_name: odos_backend
+    environment:
+      APP_ENV: production
+      DATABASE_URL: postgresql://${POSTGRES_USER:?POSTGRES_USER must be configured}:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be configured}@db:5432/${POSTGRES_DB:?POSTGRES_DB must be configured}
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: ${SECRET_KEY:?SECRET_KEY must be configured}
+      BACKUP_DIR: /var/backups/odos
+      ODOS_ENABLE_STARTUP_CREATE_ALL: '1'
+      CORS_ALLOW_ORIGINS: ${CORS_ALLOW_ORIGINS:?CORS_ALLOW_ORIGINS must be configured}
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
+      - redis
+    restart: always
+    networks:
+      - odos_network
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:8000/api/system/health/liveness']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    image: ${DOCKER_REGISTRY:-ghcr.io}/${IMAGE_NAMESPACE:?IMAGE_NAMESPACE must be configured}/odos-frontend:${VERSION:-latest}
+    container_name: odos_frontend
+    ports:
+      - '80:80'
+    depends_on:
+      - backend
+    restart: always
+    networks:
+      - odos_network
+
+volumes:
+  postgres_data:
+
+networks:
+  odos_network:
+    driver: bridge
