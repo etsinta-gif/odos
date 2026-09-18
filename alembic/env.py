@@ -8,7 +8,7 @@ from sqlalchemy import pool
 from alembic import context
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
-from src.core.database import Base
+from src.core.database import Base, DATABASE_URL
 import src.masters.models  # noqa: F401
 import src.metadata.models  # noqa: F401
 import src.reference.models  # noqa: F401
@@ -16,6 +16,8 @@ import src.rules.models  # noqa: F401
 import src.transactions.models  # noqa: F401
 
 config = context.config
+database_url = DATABASE_URL
+config.set_main_option("sqlalchemy.url", database_url.replace("%", "%%"))
 fileConfig(config.config_file_name)
 
 target_metadata = Base.metadata
