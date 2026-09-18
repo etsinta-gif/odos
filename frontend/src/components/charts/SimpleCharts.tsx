@@ -3,16 +3,17 @@ type SeriesPoint = { label: string; value: number };
 type ChartProps = {
   title: string;
   points: SeriesPoint[];
+  compactLabels?: boolean;
 };
 
-export function BarChart({ title, points }: ChartProps) {
+export function BarChart({ title, points, compactLabels = false }: ChartProps) {
   const max = Math.max(...points.map((p) => p.value), 1);
   return (
     <div className="space-y-2">
       <p className="text-xs text-brand-deep/70">{title}</p>
       {points.map((point) => (
         <div key={point.label}>
-          <div className="flex justify-between text-xs"><span>{point.label}</span><span>{point.value}</span></div>
+          <div className={`flex justify-between whitespace-nowrap ${compactLabels ? 'text-[10px]' : 'text-xs'}`}><span>{point.label}</span><span>{point.value}</span></div>
           <div className="h-2 bg-brand-sand rounded">
             <div className="h-2 bg-brand-mint rounded" style={{ width: `${Math.max(4, (point.value / max) * 100)}%` }} />
           </div>
