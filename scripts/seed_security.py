@@ -30,10 +30,14 @@ def seed_security() -> None:
 
         admin = db.query(SEC_User).filter(SEC_User.username == "admin").first()
         if not admin:
+            admin_password = os.getenv("ODOS_ADMIN_PASSWORD")
+            if not admin_password:
+                raise RuntimeError("ODOS_ADMIN_PASSWORD is required to create the initial admin user")
             admin = SEC_User(
-                company_id=1,
+                industry_id=0,
+                company_id=0,
                 username="admin",
-                password_hash=get_password_hash("Admin@123"),
+                password_hash=get_password_hash(admin_password),
                 email="admin@odos.local",
                 full_name="System Administrator",
                 is_active=True,
@@ -46,6 +50,9 @@ def seed_security() -> None:
 
         db.commit()
         print("Security seed complete: roles + admin user")
+    except Exception:
+        db.rollback()
+        raise
     finally:
         db.close()
 
